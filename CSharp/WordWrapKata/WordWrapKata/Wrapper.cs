@@ -4,7 +4,7 @@ namespace WordWrapKata
     {
         public static string wrap(string s, int i)
         {
-            return " ";
+            return s;
         }
     }
 }
