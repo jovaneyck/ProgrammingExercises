@@ -11,7 +11,9 @@ namespace WordWrapKata
             int indexToWrapAt;
 
             if (lastUsefullWhiteSpaceLocation != -1 && lastUsefullWhiteSpaceLocation < columnLength)
+            {
                 indexToWrapAt = lastUsefullWhiteSpaceLocation;
+            }
             else
             {
                 indexToWrapAt = columnLength;
