@@ -13,19 +13,25 @@ namespace WordWrapKata
     class WrapperTest
     {
         [Test]
-        public void ShouldKeepASpaceIntact()
+        public void KeepsASpaceIntact()
         {
             string result = Wrapper.wrap(" ", 5);
             Assert.AreEqual(" ", result);
         }
 
         [Test]
-        public void ShouldKeepAShortWordIntact()
+        public void KeepsAShortWordIntact()
         {
             string word = "hello";
             string result = Wrapper.wrap(word, 5);
 
             Assert.AreEqual(word, result);
+        }
+
+        [Test]
+        public void WrapsALongWord()
+        {
+            Assert.AreEqual("pan\ntry", Wrapper.wrap("pantry", 3));
         }
     }
 }
