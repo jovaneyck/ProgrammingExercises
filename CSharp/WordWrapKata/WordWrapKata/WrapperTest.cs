@@ -18,5 +18,14 @@ namespace WordWrapKata
             string result = Wrapper.wrap(" ", 5);
             Assert.AreEqual(" ", result);
         }
+
+        [Test]
+        public void ShouldKeepAShortWordIntact()
+        {
+            string word = "hello";
+            string result = Wrapper.wrap(word, 5);
+
+            Assert.AreEqual(word, result);
+        }
     }
 }
