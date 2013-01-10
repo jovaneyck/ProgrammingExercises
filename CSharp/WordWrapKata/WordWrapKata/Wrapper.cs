@@ -10,7 +10,9 @@ namespace WordWrapKata
             }
             else
             {
-                return stringToWrap.Substring(0, columnLength) + "\n" +stringToWrap.Substring(columnLength, stringToWrap.Length - columnLength);
+                var firstPart = stringToWrap.Substring(0, columnLength);
+                string secondPart = stringToWrap.Substring(columnLength, stringToWrap.Length - columnLength);
+                return firstPart + "\n" + wrap(secondPart, columnLength);
             }
         }
     }

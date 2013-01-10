@@ -33,5 +33,11 @@ namespace WordWrapKata
         {
             Assert.AreEqual("pan\ntry", Wrapper.wrap("pantry", 3));
         }
+
+        [Test]
+        public void WrapsAVeryLongWord()
+        {
+            Assert.AreEqual("pan\ntry\npan\ntry", Wrapper.wrap("pantrypantry", 3));
+        }
     }
 }
