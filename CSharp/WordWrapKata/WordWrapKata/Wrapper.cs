@@ -5,29 +5,23 @@ namespace WordWrapKata
         public static string wrap(string stringToWrap, int columnLength)
         {
             if (stringToWrap.Length <= columnLength)
-            {
                 return stringToWrap;
-            }
+
+            int firstWhiteSpaceLocation = stringToWrap.IndexOf(' ');
+            int indexToWrapAt;
+            if (firstWhiteSpaceLocation != -1 && firstWhiteSpaceLocation < columnLength)
+                indexToWrapAt = firstWhiteSpaceLocation;
             else
             {
-                int firstWhiteSpaceLocation = stringToWrap.IndexOf(" ");
-                string firstPart;
-                string secondPart;
-
-                if(firstWhiteSpaceLocation != -1 && firstWhiteSpaceLocation < columnLength)
-                {
-                    firstPart = stringToWrap.Substring(0, firstWhiteSpaceLocation);
-                    secondPart = stringToWrap.Substring(firstWhiteSpaceLocation, stringToWrap.Length - firstWhiteSpaceLocation).Trim();
-                }
-                else
-                {
-                    firstPart = stringToWrap.Substring(0, columnLength);
-                    secondPart = stringToWrap.Substring(columnLength, stringToWrap.Length - columnLength).Trim(); 
-                }
-
-
-                return firstPart + "\n" + wrap(secondPart, columnLength);
+                indexToWrapAt = columnLength;
             }
+
+            string firstPart = stringToWrap.Substring(0, indexToWrapAt);
+            string secondPart = stringToWrap.Substring(indexToWrapAt, stringToWrap.Length - indexToWrapAt).Trim(); 
+
+
+
+            return firstPart + "\n" + wrap(secondPart, columnLength);
         }
     }
 }
