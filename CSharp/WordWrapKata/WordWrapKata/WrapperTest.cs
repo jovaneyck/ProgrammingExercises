@@ -45,5 +45,11 @@ namespace WordWrapKata
         {
             Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 4));
         }
+
+        [Test]
+        public void PreferWhiteSpaceOverWrappingMidWord()
+        {
+            Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 6));
+        }
     }
 }
