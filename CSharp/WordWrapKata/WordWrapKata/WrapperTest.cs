@@ -51,5 +51,12 @@ namespace WordWrapKata
         {
             Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 6));
         }
+
+        [Test]
+        public void DontForceNewlinesWhenNotNecessary()
+        {
+            string stringToWrap = "do not wrap";
+            Assert.AreEqual(stringToWrap, Wrapper.wrap(stringToWrap, 100));
+        }
     }
 }

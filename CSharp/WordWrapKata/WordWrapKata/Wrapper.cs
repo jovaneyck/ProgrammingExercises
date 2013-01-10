@@ -7,7 +7,7 @@ namespace WordWrapKata
             if (stringToWrap.Length <= columnLength)
                 return stringToWrap;
 
-            int firstWhiteSpaceLocation = stringToWrap.IndexOf(' ');
+            int firstWhiteSpaceLocation = stringToWrap.LastIndexOf(' ', columnLength);
             int indexToWrapAt;
             if (firstWhiteSpaceLocation != -1 && firstWhiteSpaceLocation < columnLength)
                 indexToWrapAt = firstWhiteSpaceLocation;
