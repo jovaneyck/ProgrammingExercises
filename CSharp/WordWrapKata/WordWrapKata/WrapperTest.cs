@@ -58,5 +58,11 @@ namespace WordWrapKata
             string stringToWrap = "do not wrap";
             Assert.AreEqual(stringToWrap, Wrapper.wrap(stringToWrap, 100));
         }
+
+        [Test]
+        public void WrapALongSentence()
+        {
+            Assert.AreEqual("i am not\nsure if\nthis\nwill\nwork\ncorrectl\ny", Wrapper.wrap("i am not sure if this will work correctly",8));
+        }
     }
 }
