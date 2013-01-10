@@ -39,5 +39,11 @@ namespace WordWrapKata
         {
             Assert.AreEqual("pan\ntry\npan\ntry", Wrapper.wrap("pantrypantry", 3));
         }
+
+        [Test]
+        public void RemovesAWhiteSpaceOnAWrappingPosition()
+        {
+            Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 4));
+        }
     }
 }
