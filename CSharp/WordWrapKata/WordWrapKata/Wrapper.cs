@@ -2,9 +2,9 @@ namespace WordWrapKata
 {
     class Wrapper
     {
-        public static string wrap(string s, int i)
+        public static string wrap(string stringToWrap, int columnLength)
         {
-            return s;
+            return stringToWrap;
         }
     }
 }
