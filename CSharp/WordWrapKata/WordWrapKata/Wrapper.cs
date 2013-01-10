@@ -11,7 +11,7 @@ namespace WordWrapKata
             else
             {
                 var firstPart = stringToWrap.Substring(0, columnLength);
-                string secondPart = stringToWrap.Substring(columnLength, stringToWrap.Length - columnLength);
+                string secondPart = stringToWrap.Substring(columnLength, stringToWrap.Length - columnLength).Trim();
                 return firstPart + "\n" + wrap(secondPart, columnLength);
             }
         }
