@@ -16,7 +16,7 @@ namespace WordWrapKata
         public void ShouldKeepASpaceIntact()
         {
             string result = Wrapper.wrap(" ", 5);
-            Assert.Equals(" ", result);
+            Assert.AreEqual(" ", result);
         }
     }
 }
