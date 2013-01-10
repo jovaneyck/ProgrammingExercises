@@ -1,0 +1,12 @@
+**/*.exe 
+**/*.dll
+_Resharper.*
+***/*.suo
+**/*.user
+*.user
+*.suo
+*.dll
+**/bin/**
+**/obj/**
+bin/**
+dll/**
