@@ -1,6 +1,11 @@
-*.class
+*.exe
+*.pdb
+*.dll
+*.user
+*.suo
+*.exe.config
 
-# Package Files #
-# *.jar #include referenced libraries
-*.war
-*.ear
+*obj*
+*bin*
+*_Resharper*
+*packages*
