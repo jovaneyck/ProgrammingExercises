@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using WordWrapKata;
 
 namespace WordWrapKata
 {
@@ -13,9 +8,16 @@ namespace WordWrapKata
     class WrapperTest
     {
         [Test]
+        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "Column length", MatchType = MessageMatch.Contains)]
+        public void CannotUseNegativeColumnLengths()
+        {
+            var wrapper = new Wrapper(0);
+        }
+
+        [Test]
         public void KeepsASpaceIntact()
         {
-            string result = Wrapper.wrap(" ", 5);
+            string result = (new Wrapper(5)).Wrap(" ");
             Assert.AreEqual(" ", result);
         }
 
@@ -23,7 +25,7 @@ namespace WordWrapKata
         public void KeepsAShortWordIntact()
         {
             string word = "hello";
-            string result = Wrapper.wrap(word, 5);
+            string result = (new Wrapper(5)).Wrap(word);
 
             Assert.AreEqual(word, result);
         }
@@ -31,38 +33,38 @@ namespace WordWrapKata
         [Test]
         public void WrapsALongWord()
         {
-            Assert.AreEqual("pan\ntry", Wrapper.wrap("pantry", 3));
+            Assert.AreEqual("pan\ntry", (new Wrapper(3)).Wrap("pantry"));
         }
 
         [Test]
         public void WrapsAVeryLongWord()
         {
-            Assert.AreEqual("pan\ntry\npan\ntry", Wrapper.wrap("pantrypantry", 3));
+            Assert.AreEqual("pan\ntry\npan\ntry", (new Wrapper(3)).Wrap("pantrypantry"));
         }
 
         [Test]
         public void RemovesAWhiteSpaceOnAWrappingPosition()
         {
-            Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 4));
+            Assert.AreEqual("wrap\nhere", (new Wrapper(4)).Wrap("wrap here"));
         }
 
         [Test]
         public void PreferWhiteSpaceOverWrappingMidWord()
         {
-            Assert.AreEqual("wrap\nhere", Wrapper.wrap("wrap here", 6));
+            Assert.AreEqual("wrap\nhere", (new Wrapper(6)).Wrap("wrap here"));
         }
 
         [Test]
         public void DontForceNewlinesWhenNotNecessary()
         {
             string stringToWrap = "do not wrap";
-            Assert.AreEqual(stringToWrap, Wrapper.wrap(stringToWrap, 100));
+            Assert.AreEqual(stringToWrap, (new Wrapper(100)).Wrap(stringToWrap));
         }
 
         [Test]
         public void WrapALongSentence()
         {
-            Assert.AreEqual("i am not\nsure if\nthis\nwill\nwork\ncorrectl\ny", Wrapper.wrap("i am not sure if this will work correctly",8));
+            Assert.AreEqual("i am not\nsure if\nthis\nwill\nwork\ncorrectl\ny", (new Wrapper(8)).Wrap("i am not sure if this will work correctly"));
         }
     }
 }
