@@ -4,7 +4,7 @@ namespace FizzBuzz
     {
         public string FizzBuzzify(int number)
         {
-            if (IsDivisibleByThree(number) && IsDivisibleByFive(number))
+            if (IsFizz(number) && IsBuzz(number))
                 return "FizzBuzz";
             if (IsFizz(number))
                 return "Fizz";
