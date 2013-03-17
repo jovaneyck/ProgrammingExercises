@@ -6,11 +6,21 @@ namespace FizzBuzz
         {
             if (IsDivisibleByThree(number) && IsDivisibleByFive(number))
                 return "FizzBuzz";
-            if (IsDivisibleByThree(number) || ContainsThree(number))
+            if (IsFizz(number))
                 return "Fizz";
-            if (IsDivisibleByFive(number) || ContainsFive(number))
+            if (IsBuzz(number))
                 return "Buzz";
             return number.ToString();
+        }
+
+        private bool IsFizz(int number)
+        {
+            return IsDivisibleByThree(number) || ContainsThree(number);
+        }
+
+        private bool IsBuzz(int number)
+        {
+            return IsDivisibleByFive(number) || ContainsFive(number);
         }
 
         private bool ContainsFive(int number)
