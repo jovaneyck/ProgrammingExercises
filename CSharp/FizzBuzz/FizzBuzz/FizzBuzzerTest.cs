@@ -25,13 +25,18 @@ namespace FizzBuzz
         [Test]
         public void HandlesThreeCorrectly()
         {
-            Assert.AreEqual("Fizz", FizzBuzzify(3));
+            TestFizzbuzzedNumber("Fizz", 3);
+        }
+
+        private void TestFizzbuzzedNumber(string expected, int number)
+        {
+            Assert.AreEqual(expected, FizzBuzzify(number));
         }
 
         [Test]
         public void HandlesFiveCorrectly()
         {
-            Assert.AreEqual("Buzz", FizzBuzzify(5));
+            TestFizzbuzzedNumber("Buzz", 5);
         }
 
         private string FizzBuzzify(int number)
