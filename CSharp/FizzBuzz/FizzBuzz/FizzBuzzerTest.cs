@@ -12,9 +12,16 @@ namespace FizzBuzz
             Assert.AreEqual(number, FizzBuzzify(number));
         }
 
+        [Test]
+        public void TransformsTwoCorrectly()
+        {
+            const int number = 2;
+            Assert.AreEqual(number, FizzBuzzify(number));
+        }
+
         private int FizzBuzzify(int number)
         {
-            return 1;
+            return number;
         }
     }
 }
