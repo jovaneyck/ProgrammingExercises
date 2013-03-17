@@ -13,7 +13,7 @@ namespace FizzBuzz
 
         private void TestNormalNumber(int number)
         {
-            Assert.AreEqual(number, FizzBuzzify(number));
+            Assert.AreEqual(number.ToString(), FizzBuzzify(number));
         }
 
         [Test]
@@ -22,9 +22,17 @@ namespace FizzBuzz
             TestNormalNumber(2);
         }
 
-        private int FizzBuzzify(int number)
+        [Test]
+        public void HandlesThreeCorrectly()
         {
-            return number;
+            Assert.AreEqual("Fizz", FizzBuzzify(3));
+        }
+
+        private string FizzBuzzify(int number)
+        {
+            if (number == 3)
+                return "Fizz";
+            return number.ToString();
         }
     }
 }
