@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
@@ -10,6 +6,11 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+            FizzBuzz buzzer = new FizzBuzz();
+
+            for(int number = 1; number <= 100; number++)
+                Console.WriteLine(buzzer.FizzBuzzify(number));
+            Console.ReadKey();
         }
     }
 }
