@@ -8,35 +8,30 @@ namespace FizzBuzz
         [Test]
         public void HandlesOneCorrectly()
         {
-            TestNormalNumber(1);
+            TestNumber("1", 1);
         }
 
-        private void TestNormalNumber(int number)
-        {
-            Assert.AreEqual(number.ToString(), FizzBuzzify(number));
-        }
-
-        [Test]
-        public void HandlesTwoCorrectly()
-        {
-            TestNormalNumber(2);
-        }
-
-        [Test]
-        public void HandlesThreeCorrectly()
-        {
-            TestFizzbuzzedNumber("Fizz", 3);
-        }
-
-        private void TestFizzbuzzedNumber(string expected, int number)
+        private void TestNumber(string expected, int number)
         {
             Assert.AreEqual(expected, FizzBuzzify(number));
         }
 
         [Test]
+        public void HandlesTwoCorrectly()
+        {
+            TestNumber("2", 2);
+        }
+
+        [Test]
+        public void HandlesThreeCorrectly()
+        {
+            TestNumber("Fizz", 3);
+        }
+
+        [Test]
         public void HandlesFiveCorrectly()
         {
-            TestFizzbuzzedNumber("Buzz", 5);
+            TestNumber("Buzz", 5);
         }
 
         private string FizzBuzzify(int number)
