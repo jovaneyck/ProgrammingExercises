@@ -5,6 +5,14 @@ namespace FizzBuzz
     [TestFixture]
     class FizzBuzzerTest
     {
+        private FizzBuzz _fizzBuzz;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _fizzBuzz = new FizzBuzz();
+        }
+
         [Test]
         public void HandlesOneCorrectly()
         {
@@ -13,7 +21,7 @@ namespace FizzBuzz
 
         private void TestNumber(string expected, int number)
         {
-            Assert.AreEqual(expected, FizzBuzzify(number));
+            Assert.AreEqual(expected, _fizzBuzz.FizzBuzzify(number));
         }
 
         [Test]
@@ -56,17 +64,6 @@ namespace FizzBuzz
         public void Thirty()
         {
             TestNumber("FizzBuzz", 30);
-        }
-
-        private string FizzBuzzify(int number)
-        {
-            if (number % 15 == 0)
-                return "FizzBuzz";
-            if (number % 3 == 0)
-                return "Fizz";
-            if (number % 5 == 0)
-                return "Buzz";
-            return number.ToString();
         }
     }
 }
