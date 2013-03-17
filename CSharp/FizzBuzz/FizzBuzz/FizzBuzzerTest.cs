@@ -46,8 +46,16 @@ namespace FizzBuzz
             TestNumber("Buzz", 10);
         }
 
+        [Test]
+        public void Fifteen()
+        {
+            TestNumber("FizzBuzz", 15);
+        }
+
         private string FizzBuzzify(int number)
         {
+            if (number % 15 == 0)
+                return "FizzBuzz";
             if (number % 3 == 0)
                 return "Fizz";
             if (number % 5 == 0)
