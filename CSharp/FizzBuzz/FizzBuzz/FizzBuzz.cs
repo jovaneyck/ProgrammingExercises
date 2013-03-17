@@ -6,14 +6,29 @@ namespace FizzBuzz
         {
             if (IsDivisibleByThree(number) && IsDivisibleByFive(number))
                 return "FizzBuzz";
-            if (IsDivisibleByThree(number) || number.ToString().Contains("3"))
+            if (IsDivisibleByThree(number) || ContainsThree(number))
                 return "Fizz";
-            if (IsDivisibleByFive(number) || number.ToString().Contains("5"))
+            if (IsDivisibleByFive(number) || ContainsFive(number))
                 return "Buzz";
             return number.ToString();
         }
 
-        private static bool IsDivisibleByFive(int number)
+        private bool ContainsFive(int number)
+        {
+            return Contains(number, "5");
+        }
+
+        private bool Contains(int numberToCheck, string numberToContain)
+        {
+            return numberToCheck.ToString().Contains(numberToContain);
+        }
+
+        private bool ContainsThree(int number)
+        {
+            return Contains(number, "3");
+        }
+
+        private bool IsDivisibleByFive(int number)
         {
             return number % 5 == 0;
         }
