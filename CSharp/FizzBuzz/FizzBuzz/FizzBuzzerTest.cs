@@ -6,7 +6,7 @@ namespace FizzBuzz
     class FizzBuzzerTest
     {
         [Test]
-        public void TransformsOneCorrectly()
+        public void HandlesOneCorrectly()
         {
             TestNormalNumber(1);
         }
@@ -17,7 +17,7 @@ namespace FizzBuzz
         }
 
         [Test]
-        public void TransformsTwoCorrectly()
+        public void HandlesTwoCorrectly()
         {
             TestNormalNumber(2);
         }
