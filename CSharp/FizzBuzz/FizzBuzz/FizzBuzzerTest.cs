@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework;
 
+/**
+ * Kata source: http://codingdojo.org/cgi-bin/wiki.pl?KataFizzBuzz 
+ */
 namespace FizzBuzz
 {
     [TestFixture]
