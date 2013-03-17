@@ -6,7 +6,7 @@ namespace FizzBuzz
         {
             if (IsDivisibleByThree(number) && IsDivisibleByFive(number))
                 return "FizzBuzz";
-            if (IsDivisibleByThree(number))
+            if (IsDivisibleByThree(number) || number.ToString().Contains("3"))
                 return "Fizz";
             if (IsDivisibleByFive(number))
                 return "Buzz";

@@ -58,6 +58,12 @@ namespace FizzBuzz
         }
 
         [Test]
+        public void Thirteen()
+        {
+            TestNumber("Fizz", 13);
+        }
+
+        [Test]
         public void Fifteen()
         {
             TestNumber("FizzBuzz", 15);
