@@ -28,10 +28,18 @@ namespace FizzBuzz
             Assert.AreEqual("Fizz", FizzBuzzify(3));
         }
 
+        [Test]
+        public void HandlesFiveCorrectly()
+        {
+            Assert.AreEqual("Buzz", FizzBuzzify(5));
+        }
+
         private string FizzBuzzify(int number)
         {
             if (number == 3)
                 return "Fizz";
+            if (number == 5)
+                return "Buzz";
             return number.ToString();
         }
     }
