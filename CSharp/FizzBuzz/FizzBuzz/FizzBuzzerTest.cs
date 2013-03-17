@@ -8,15 +8,18 @@ namespace FizzBuzz
         [Test]
         public void TransformsOneCorrectly()
         {
-            const int number = 1;
+            TestNormalNumber(1);
+        }
+
+        private void TestNormalNumber(int number)
+        {
             Assert.AreEqual(number, FizzBuzzify(number));
         }
 
         [Test]
         public void TransformsTwoCorrectly()
         {
-            const int number = 2;
-            Assert.AreEqual(number, FizzBuzzify(number));
+            TestNormalNumber(2);
         }
 
         private int FizzBuzzify(int number)
