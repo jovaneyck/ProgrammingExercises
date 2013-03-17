@@ -74,5 +74,18 @@ namespace FizzBuzz
         {
             TestNumber("FizzBuzz", 30);
         }
+
+        [Ignore("Too difficult for now, this is a FizzBuzz case!")]
+        [Test]
+        public void FiftyOne()
+        {
+            TestNumber("Buzz", 51);
+        }
+
+        [Test]
+        public void FiftyTwo()
+        {
+            TestNumber("Buzz", 52);
+        }
     }
 }

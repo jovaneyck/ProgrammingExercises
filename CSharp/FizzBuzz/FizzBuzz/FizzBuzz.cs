@@ -8,7 +8,7 @@ namespace FizzBuzz
                 return "FizzBuzz";
             if (IsDivisibleByThree(number) || number.ToString().Contains("3"))
                 return "Fizz";
-            if (IsDivisibleByFive(number))
+            if (IsDivisibleByFive(number) || number.ToString().Contains("5"))
                 return "Buzz";
             return number.ToString();
         }
