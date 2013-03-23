@@ -41,13 +41,13 @@ namespace RomanNumerals
 
         private string ToRoman(int number)
         {
+            const string oneInRoman = "I";
+
             if (number == 4)
                 return "IV";
             if(number == 1)
-                return "I";
-            if(number == 2)
-                return "II";
-            return "III";
+                return oneInRoman;
+            return oneInRoman + ToRoman(number - 1);
         }
     }
 }
