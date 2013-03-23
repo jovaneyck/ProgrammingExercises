@@ -77,20 +77,28 @@ namespace RomanNumerals
 
         private string ToRoman(int number)
         {
-            const string oneInRoman = "I";
+            IDictionary<int, string> romanLiterals =
+                new Dictionary<int, string>()
+                {
+                    {1, "I"},
+                    {4, "IV"},
+                    {5, "V"},
+                    {9, "IX"},
+                    {10, "X"}
+                };
 
             if (number >= 10)
-                return "X" + ToRoman(number - 10);
+                return romanLiterals[10] + ToRoman(number - 10);
             if (number == 9)
-                return "IX";
+                return romanLiterals[9];
             if (number >= 5)
-                return "V" + ToRoman(number - 5);
+                return romanLiterals[5] + ToRoman(number - 5);
             if (number == 4)
-                return "IV";
+                return romanLiterals[4];
             if (number == 0)
                 return "";
 
-            return oneInRoman + ToRoman(number - 1);
+            return romanLiterals[1] + ToRoman(number - 1);
         }
     }
 }
