@@ -51,6 +51,12 @@ namespace RomanNumerals
             Verify(6, "VI");
         }
 
+        [Test]
+        public void Seven()
+        {
+            Verify(7, "VII");
+        }
+
         private string ToRoman(int number)
         {
             const string oneInRoman = "I";
