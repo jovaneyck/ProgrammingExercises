@@ -10,81 +10,22 @@ namespace RomanNumerals
     [TestFixture]
     class RomanTest
     {
-        [Test]
-        public void One()
+        [TestCase(1, Result = "I")]
+        [TestCase(2, Result = "II")]
+        [TestCase(3, Result = "III")]
+        [TestCase(4, Result = "IV")]
+        [TestCase(5, Result = "V")]
+        [TestCase(6, Result = "VI")]
+        [TestCase(7, Result = "VII")]
+        [TestCase(9, Result = "IX")]
+        [TestCase(10, Result = "X")]
+        [TestCase(11, Result = "XI")]
+        [TestCase(14, Result = "XIV")]
+        [TestCase(15, Result = "XV")]
+        [TestCase(16, Result = "XVI")]
+        public string TranslatesCorrectly(int number)
         {
-            Verify(1, "I");
-        }
-
-        private void Verify(int number, string expectedResult)
-        {
-            Assert.AreEqual(expectedResult, ToRoman(number));
-        }
-
-        [Test]
-        public void Two()
-        {
-            Verify(2,"II");
-        }
-
-        [Test]
-        public void Three()
-        {
-            Verify(3, "III");
-        }
-
-        [Test]
-        public void Four()
-        {
-            Verify(4, "IV");
-        }
-
-        [Test]
-        public void Five()
-        {
-            Verify(5, "V");
-        }
-
-        [Test]
-        public void Six()
-        {
-            Verify(6, "VI");
-        }
-
-        [Test]
-        public void Seven()
-        {
-            Verify(7, "VII");
-        }
-
-        [Test]
-        public void Nine()
-        {
-            Verify(9, "IX");
-        }
-
-        [Test]
-        public void Ten()
-        {
-            Verify(10, "X");
-        }
-
-        [Test]
-        public void Eleven()
-        {
-            Verify(11, "XI");
-        }
-
-        [Test]
-        public void Fourteen()
-        {
-            Verify(14, "XIV");
-        }
-
-        [Test]
-        public void Fifteen()
-        {
-            Verify(15, "XV");
+            return ToRoman(number);
         }
 
         private string ToRoman(int number)
