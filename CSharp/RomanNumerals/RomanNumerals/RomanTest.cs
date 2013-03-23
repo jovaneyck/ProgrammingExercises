@@ -77,6 +77,9 @@ namespace RomanNumerals
 
         private string ToRoman(int number)
         {
+            if (number == 0)
+                return "";
+
             IDictionary<int, string> romanLiterals =
                 new Dictionary<int, string>()
                 {
@@ -87,18 +90,12 @@ namespace RomanNumerals
                     {10, "X"}
                 };
 
-            if (number >= 10)
-                return romanLiterals[10] + ToRoman(number - 10);
-            if (number == 9)
-                return romanLiterals[9];
-            if (number >= 5)
-                return romanLiterals[5] + ToRoman(number - 5);
-            if (number == 4)
-                return romanLiterals[4];
-            if (number == 0)
-                return "";
+            var specialNumbersFromHighToLow = romanLiterals.Keys.OrderBy(x=>-x);
+            foreach(int specialNumber in specialNumbersFromHighToLow)
+                if(number >= specialNumber)
+                    return romanLiterals[specialNumber] + ToRoman(number - specialNumber);
 
-            return romanLiterals[1] + ToRoman(number - 1);
+            throw new ArgumentException("Could not transform the given number", "number");
         }
     }
 }
