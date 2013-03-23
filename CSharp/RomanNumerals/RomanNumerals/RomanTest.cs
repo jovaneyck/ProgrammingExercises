@@ -81,6 +81,12 @@ namespace RomanNumerals
             Verify(14, "XIV");
         }
 
+        [Test]
+        public void Fifteen()
+        {
+            Verify(15, "XV");
+        }
+
         private string ToRoman(int number)
         {
             if (number == 0)
