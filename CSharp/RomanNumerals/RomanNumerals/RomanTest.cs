@@ -69,12 +69,18 @@ namespace RomanNumerals
             Verify(10, "X");
         }
 
+        [Test]
+        public void Eleven()
+        {
+            Verify(11, "XI");
+        }
+
         private string ToRoman(int number)
         {
             const string oneInRoman = "I";
 
-            if (number == 10)
-                return "X";
+            if (number >= 10)
+                return "X" + ToRoman(number - 10);
             if (number == 9)
                 return "IX";
             if (number >= 5)
