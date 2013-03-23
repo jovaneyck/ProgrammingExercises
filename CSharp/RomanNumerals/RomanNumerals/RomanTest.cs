@@ -23,6 +23,8 @@ namespace RomanNumerals
         [TestCase(14, Result = "XIV")]
         [TestCase(15, Result = "XV")]
         [TestCase(16, Result = "XVI")]
+        [TestCase(19, Result = "XIX")]
+        [TestCase(20, Result = "XX")]
         public string TranslatesCorrectly(int number)
         {
             return ToRoman(number);
