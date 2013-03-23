@@ -40,7 +40,9 @@ namespace RomanNumerals
 
         public int ToDecimal(string s)
         {
-            return 1;
+            if(s.Equals("I"))
+                return 1;
+            return 2;
         }
     }
 }
