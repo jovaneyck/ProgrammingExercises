@@ -38,6 +38,7 @@ namespace RomanNumerals
         [TestCase(500, Result = "D")]
         [TestCase(900, Result = "CM")]
         [TestCase(1000, Result = "M")]
+        [TestCase(2749, Result = "MMDCCXLIX")]
         public string TranslatesCorrectly(int number)
         {
             return ToRoman(number);
