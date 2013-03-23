@@ -27,11 +27,19 @@ namespace RomanNumerals
             Verify(2,"II");
         }
 
+        [Test]
+        public void Three()
+        {
+            Verify(3, "III");
+        }
+
         private string ToRoman(int number)
         {
             if(number == 1)
                 return "I";
-            return "II";
+            if(number == 2)
+                return "II";
+            return "III";
         }
     }
 }
