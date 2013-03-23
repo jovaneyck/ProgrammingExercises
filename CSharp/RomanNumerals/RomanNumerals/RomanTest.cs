@@ -57,10 +57,18 @@ namespace RomanNumerals
             Verify(7, "VII");
         }
 
+        [Test]
+        public void Nine()
+        {
+            Verify(9, "IX");
+        }
+
         private string ToRoman(int number)
         {
             const string oneInRoman = "I";
 
+            if (number == 9)
+                return "IX";
             if (number >= 5)
                 return "V" + ToRoman(number - 5);
             if (number == 4)
