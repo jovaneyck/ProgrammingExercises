@@ -13,18 +13,23 @@ namespace RomanNumerals
         [Test]
         public void One()
         {
-            Assert.AreEqual("I", ToRoman(1));
+            Verify(1, "I");
+        }
+
+        private void Verify(int number, string expectedResult)
+        {
+            Assert.AreEqual(expectedResult, ToRoman(number));
         }
 
         [Test]
         public void Two()
         {
-            Assert.AreEqual("II", ToRoman(2));
+            Verify(2,"II");
         }
 
-        private string ToRoman(int i)
+        private string ToRoman(int number)
         {
-            if(i == 1)
+            if(number == 1)
                 return "I";
             return "II";
         }
