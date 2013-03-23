@@ -39,14 +39,29 @@ namespace RomanNumerals
             Verify(4, "IV");
         }
 
+        [Test]
+        public void Five()
+        {
+            Verify(5, "V");
+        }
+
+        [Test]
+        public void Six()
+        {
+            Verify(6, "VI");
+        }
+
         private string ToRoman(int number)
         {
             const string oneInRoman = "I";
 
+            if (number >= 5)
+                return "V" + ToRoman(number - 5);
             if (number == 4)
                 return "IV";
-            if(number == 1)
-                return oneInRoman;
+            if (number == 0)
+                return "";
+
             return oneInRoman + ToRoman(number - 1);
         }
     }
