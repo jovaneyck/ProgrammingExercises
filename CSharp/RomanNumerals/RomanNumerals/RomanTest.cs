@@ -39,10 +39,10 @@ namespace RomanNumerals
             return (new RomanConverter()).ToRoman(number);
         }
 
-        [Test]
-        public void ConvertsI()
+        [TestCase("I", Result = 1)]
+        public int TranslatesCorrectlyFromRomanToDecimal(string romanNumber)
         {
-            Assert.AreEqual(1, (new RomanConverter()).ToDecimal("I"));
+            return (new RomanConverter()).ToDecimal(romanNumber);
         }
     }
 }
