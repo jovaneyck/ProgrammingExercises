@@ -16,9 +16,17 @@ namespace RomanNumerals
             Assert.AreEqual("I", ToRoman(1));
         }
 
+        [Test]
+        public void Two()
+        {
+            Assert.AreEqual("II", ToRoman(2));
+        }
+
         private string ToRoman(int i)
         {
-            return "I";
+            if(i == 1)
+                return "I";
+            return "II";
         }
     }
 }
