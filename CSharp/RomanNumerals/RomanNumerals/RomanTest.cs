@@ -31,9 +31,9 @@ namespace RomanNumerals
         [TestCase(46, Result = "XLVI")]
         [TestCase(50, Result = "L")]
         [TestCase(60, Result = "LX")]
-        [TestCase(100, Result = "C")]
         [TestCase(90, Result = "XC")]
         [TestCase(99, Result = "XCIX")]
+        [TestCase(100, Result = "C")]
         public string TranslatesCorrectly(int number)
         {
             return ToRoman(number);
