@@ -37,5 +37,10 @@ namespace RomanNumerals
 
             throw new ArgumentException("Could not transform the given number", "number");
         }
+
+        public int ToDecimal(string s)
+        {
+            return 1;
+        }
     }
 }

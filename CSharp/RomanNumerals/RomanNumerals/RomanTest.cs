@@ -34,9 +34,15 @@ namespace RomanNumerals
         [TestCase(900, Result = "CM")]
         [TestCase(1000, Result = "M")]
         [TestCase(2749, Result = "MMDCCXLIX")]
-        public string TranslatesCorrectly(int number)
+        public string TranslatesCorrectlyFromDecimalToRoman(int number)
         {
             return (new RomanConverter()).ToRoman(number);
+        }
+
+        [Test]
+        public void ConvertsI()
+        {
+            Assert.AreEqual(1, (new RomanConverter()).ToDecimal("I"));
         }
     }
 }
