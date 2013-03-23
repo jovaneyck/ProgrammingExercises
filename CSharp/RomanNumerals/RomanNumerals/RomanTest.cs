@@ -31,6 +31,7 @@ namespace RomanNumerals
         [TestCase(46, Result = "XLVI")]
         [TestCase(50, Result = "L")]
         [TestCase(60, Result = "LX")]
+        [TestCase(100, Result = "C")]
         public string TranslatesCorrectly(int number)
         {
             return ToRoman(number);
@@ -50,7 +51,8 @@ namespace RomanNumerals
                     {9, "IX"},
                     {10, "X"},
                     {40, "XL"},
-                    {50, "L"}
+                    {50, "L"},
+                    {100, "C"}
                 };
 
             var specialNumbersFromHighToLow = romanLiterals.Keys.OrderBy(x=>-x);
