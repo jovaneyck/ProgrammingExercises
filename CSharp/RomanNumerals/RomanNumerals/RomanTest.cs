@@ -25,6 +25,8 @@ namespace RomanNumerals
         [TestCase(16, Result = "XVI")]
         [TestCase(19, Result = "XIX")]
         [TestCase(20, Result = "XX")]
+        [TestCase(40, Result = "XL")]
+        [TestCase(41, Result = "XLI")]
         [TestCase(50, Result = "L")]
         public string TranslatesCorrectly(int number)
         {
@@ -44,6 +46,7 @@ namespace RomanNumerals
                     {5, "V"},
                     {9, "IX"},
                     {10, "X"},
+                    {40, "XL"},
                     {50, "L"}
                 };
 
