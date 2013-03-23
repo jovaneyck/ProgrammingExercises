@@ -33,8 +33,16 @@ namespace RomanNumerals
             Verify(3, "III");
         }
 
+        [Test]
+        public void Four()
+        {
+            Verify(4, "IV");
+        }
+
         private string ToRoman(int number)
         {
+            if (number == 4)
+                return "IV";
             if(number == 1)
                 return "I";
             if(number == 2)
