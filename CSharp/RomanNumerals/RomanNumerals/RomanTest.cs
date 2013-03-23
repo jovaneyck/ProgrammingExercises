@@ -34,6 +34,7 @@ namespace RomanNumerals
         [TestCase(90, Result = "XC")]
         [TestCase(99, Result = "XCIX")]
         [TestCase(100, Result = "C")]
+        [TestCase(400, Result = "CD")]
         [TestCase(500, Result = "D")]
         public string TranslatesCorrectly(int number)
         {
@@ -57,6 +58,7 @@ namespace RomanNumerals
                     {50, "L"},
                     {90, "XC"},
                     {100, "C"},
+                    {400, "CD"},
                     {500, "D"}
                 };
 
