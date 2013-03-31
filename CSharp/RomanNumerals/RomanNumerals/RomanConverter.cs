@@ -42,7 +42,9 @@ namespace RomanNumerals
         {
             if(s.Equals("I"))
                 return 1;
-            return 2;
+            if (s.Equals("II"))
+                return 2;
+            return 3;
         }
     }
 }
