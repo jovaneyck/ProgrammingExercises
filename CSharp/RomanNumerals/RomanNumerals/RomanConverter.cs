@@ -44,7 +44,9 @@ namespace RomanNumerals
                 return 1;
             if (s.Equals("II"))
                 return 2;
-            return 3;
+            if (s.Equals("III"))
+                return 3;
+            return 4;
         }
     }
 }
