@@ -46,6 +46,7 @@ namespace RomanNumerals
         [TestCase("V", Result = 5)]
         [TestCase("VI", Result = 6)]
         [TestCase("VII", Result = 7)]
+        [TestCase("IX", Result = 9)]
         public int TranslatesCorrectlyFromRomanToDecimal(string romanNumber)
         {
             return (new RomanConverter()).ToDecimal(romanNumber);
