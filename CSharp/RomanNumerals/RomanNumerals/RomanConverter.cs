@@ -6,7 +6,7 @@ namespace RomanNumerals
 {
     public class RomanConverter
     {
-        private readonly IDictionary<int, string> _literals =
+        private readonly IDictionary<int, string> _decimalToRomanLiterals =
             new Dictionary<int, string>()
                     {
                         {1, "I"},
@@ -24,29 +24,45 @@ namespace RomanNumerals
                         {1000, "M"}
                     };
 
+        private IDictionary<string, int> _romanToDecimalLiterals;
+
+        public RomanConverter()
+        {
+            InitializeReverseLookup();
+        }
+
+        private void InitializeReverseLookup()
+        {
+            _romanToDecimalLiterals = new Dictionary<string, int>();
+            foreach (KeyValuePair<int, string> pair in _decimalToRomanLiterals)
+                _romanToDecimalLiterals.Add(pair.Value, pair.Key);
+        }
 
         public string ToRoman(int number)
         {
             if (number == 0)
                 return "";
 
-            var specialNumbersFromHighToLow = _literals.Keys.OrderBy(x => -x);
+            var specialNumbersFromHighToLow = _decimalToRomanLiterals.Keys.OrderBy(x => -x);
             foreach (int specialNumber in specialNumbersFromHighToLow)
                 if (number >= specialNumber)
-                    return _literals[specialNumber] + ToRoman(number - specialNumber);
+                    return _decimalToRomanLiterals[specialNumber] + ToRoman(number - specialNumber);
 
             throw new ArgumentException("Could not transform the given number", "number");
         }
 
-        public int ToDecimal(string s)
+        public int ToDecimal(string romanNumber)
         {
-            if(s.Equals("I"))
+            if (_romanToDecimalLiterals.ContainsKey(romanNumber))
+                return _romanToDecimalLiterals[romanNumber];
+            if(romanNumber.Equals("I"))
                 return 1;
-            if (s.Equals("II"))
+            if (romanNumber.Equals("II"))
                 return 2;
-            if (s.Equals("III"))
+            if (romanNumber.Equals("III"))
                 return 3;
-            return 4;
+
+            throw new ArgumentException("Could not transform "+romanNumber+" to a decimal.");
         }
     }
 }
