@@ -55,8 +55,6 @@ namespace RomanNumerals
         {
             if (_romanToDecimalLiterals.ContainsKey(romanNumber))
                 return _romanToDecimalLiterals[romanNumber];
-            if(romanNumber.Equals("I"))
-                return 1;
             if (romanNumber.Equals("II"))
                 return 2;
             if (romanNumber.Equals("III"))
