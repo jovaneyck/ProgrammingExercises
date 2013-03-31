@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace RomanNumerals
@@ -55,15 +56,11 @@ namespace RomanNumerals
         {
             if (_romanToDecimalLiterals.ContainsKey(romanNumber))
                 return _romanToDecimalLiterals[romanNumber];
-            if (romanNumber.Equals("II"))
-                return 2;
-            if (romanNumber.Equals("III"))
-                return 3;
-            if (romanNumber.Equals("VI"))
-                return 6;
-            if (romanNumber.Equals("VII"))
-                return 7;
-            throw new ArgumentException("Could not transform "+romanNumber+" to a decimal.");
+
+            string nextLiteral = romanNumber[0].ToString(CultureInfo.InvariantCulture);
+            string remainingLiterals = romanNumber.Substring(1);
+
+            return ToDecimal(nextLiteral) + ToDecimal(remainingLiterals);
         }
     }
 }
