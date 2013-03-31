@@ -63,6 +63,8 @@ namespace RomanNumerals
                 return 3;
             if (romanNumber.Equals("VI"))
                 return 6;
+            if (romanNumber.Equals("VII"))
+                return 7;
             throw new ArgumentException("Could not transform "+romanNumber+" to a decimal.");
         }
     }
