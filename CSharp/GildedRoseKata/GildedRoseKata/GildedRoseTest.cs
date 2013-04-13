@@ -117,6 +117,14 @@ namespace GildedRoseKata
             Assert.AreEqual(quality, item.Quality); 
         }
 
+        [Test]
+        public void BackstagePassesDecreaseInQualityWayAheadOfTheConcert()
+        {
+            const int initialQuality = 50;
+            Item item = CreateAndAdvanceSingleItem("Backstage passes", 100, initialQuality);
 
+            //Again, not according to how I interpreted the specs
+            Assert.AreEqual(initialQuality - QualityFactor, item.Quality); 
+        }
     }
 }
