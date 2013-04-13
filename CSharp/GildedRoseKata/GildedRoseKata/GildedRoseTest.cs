@@ -70,35 +70,51 @@ namespace GildedRoseKata
         [Test]
         public void QualityDoesNotBecomeNegative()
         {
-            Item item = CreateAndAdvanceSingleItem("item", 100, 0);
+            const int lowestQuality = 0;
+            Item item = CreateAndAdvanceSingleItem("item", 100, lowestQuality);
 
-            Assert.AreEqual(0, item.Quality);
+            Assert.AreEqual(lowestQuality, item.Quality);
         }
 
         [Test]
         public void AgedBrieQualityIncreases()
         {
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 100, 0);
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 100, initialQuality);
 
-            Assert.AreEqual(1, item.Quality);
+            Assert.AreEqual(initialQuality + SellInFactor, item.Quality);
         }
 
         [Test]
         public void AgedBrieQualityIncreasesAfterSellIn()
         {
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 0, 0);
+            const int lowestQuality = 0;
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 0, lowestQuality);
 
-            Assert.AreEqual(2, item.Quality); 
+            Assert.AreEqual(lowestQuality + 2, item.Quality); 
             //What's this? I expected a 1... Instead of degrading twice as fast, its quality gets raised by a factor two?
         }        
         
         [Test]
         public void QualityCannotBeMoreThanFifty()
         {
+            const int maximumQuality = 50;
             //Brie is the only item I currently know of that rises in quality, so we'll use that one to test
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 1, 50);
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 1, maximumQuality);
 
-            Assert.AreEqual(50, item.Quality); 
+            Assert.AreEqual(maximumQuality, item.Quality); 
+        }
+
+        [Test]
+        public void LegendaryItemHasNoSellInOrQualityDecrease()
+        {
+            const int sellIn = 100;
+            const int quality = 50;
+            Item item = CreateAndAdvanceSingleItem("Sulfuras, Hand of Ragnaros", sellIn, quality);
+            //Had to go into the source code for the correct name
+
+            Assert.AreEqual(sellIn, item.SellIn);
+            Assert.AreEqual(quality, item.Quality); 
         }
 
 
