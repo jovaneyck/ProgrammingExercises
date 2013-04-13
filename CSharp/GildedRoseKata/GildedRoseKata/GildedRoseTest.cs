@@ -10,48 +10,47 @@ namespace GildedRoseKata
         public void UpdateQualityDoesNotChangeName()
         {
             const string uniqueName = "uniqueName";
-            IList<Item> items = new List<Item> {new Item {Name = uniqueName, SellIn = 0, Quality = 0}};
+            Item item = CreateAndAdvanceSingleItem(uniqueName, 0, 0);
+            Assert.AreEqual(uniqueName, item.Name);
+        }
+
+        private Item CreateAndAdvanceSingleItem(string uniqueName, int sellInValue, int quality)
+        {
+            IList<Item> items = new List<Item> {new Item {Name = uniqueName, SellIn = sellInValue, Quality = quality}};
             GildedRose app = new GildedRose(items);
             app.UpdateQuality();
-            Assert.AreEqual(uniqueName, items[0].Name);
-        } 
-        
+
+            return items[0];
+        }
+
         [Test]
         public void AdvancingADayLowersBothQualityAndSellIn()
         {
             const int initialSellIn = 100;
             const int initialQuality = 100;
-            IList<Item> items = new List<Item> {new Item {Name = "item", SellIn = initialSellIn, Quality = initialQuality}};
 
-            GildedRose app = new GildedRose(items);
-            app.UpdateQuality();
-            
-            Assert.IsTrue(items[0].SellIn < initialSellIn);
-            Assert.IsTrue(items[0].Quality < initialQuality);
+            Item item = CreateAndAdvanceSingleItem("item", initialSellIn, initialQuality);
+
+            Assert.IsTrue(item.SellIn < initialSellIn);
+            Assert.IsTrue(item.Quality < initialQuality);
         }
 
         [Test]
         public void SellInDecreasesByOne()
         {
             const int initialSellIn = 100;
-            IList<Item> items = new List<Item> { new Item { Name = "item", SellIn = initialSellIn, Quality = 100 } };
+            Item item = CreateAndAdvanceSingleItem("item", initialSellIn, 100);
 
-            GildedRose app = new GildedRose(items);
-            app.UpdateQuality();
-
-            Assert.AreEqual(items[0].SellIn, initialSellIn - 1);
+            Assert.AreEqual(item.SellIn, initialSellIn - 1);
         }
 
         [Test]
         public void QualityDecreasesByOne()
         {
             const int initialQuality = 100;
-            IList<Item> items = new List<Item> { new Item { Name = "item", SellIn = 100, Quality = initialQuality } };
+            Item item = CreateAndAdvanceSingleItem("item", 100, initialQuality);
 
-            GildedRose app = new GildedRose(items);
-            app.UpdateQuality();
-
-            Assert.AreEqual(items[0].Quality, initialQuality - 1);
+            Assert.AreEqual(item.Quality, initialQuality - 1);
         }
 
 
