@@ -19,15 +19,7 @@ namespace GildedRoseKata
         {
             foreach (Item item in Items)
             {
-
-                if (item.Name != AgedBrie && item.Name != BackstagePasses && item.Name != Sulfuras)
-                {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
-                else
+                if (item.Name == AgedBrie || item.Name == BackstagePasses || item.Name == Sulfuras)
                 {
                     if (item.Quality < 50)
                     {
@@ -45,6 +37,13 @@ namespace GildedRoseKata
                                 item.Quality = item.Quality + 1;
                             }
                         }
+                    }
+                }
+                else
+                {
+                    if (item.Quality > 0)
+                    {
+                        item.Quality = item.Quality - 1;
                     }
                 }
 
