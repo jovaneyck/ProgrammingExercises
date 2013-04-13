@@ -75,6 +75,22 @@ namespace GildedRoseKata
             Assert.AreEqual(0, item.Quality);
         }
 
+        [Test]
+        public void AgedBrieQualityIncreases()
+        {
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 100, 0);
+
+            Assert.AreEqual(1, item.Quality);
+        }
+
+        [Test]
+        public void AgedBrieQualityIncreasesAfterSellIn()
+        {
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 0, 0);
+
+            Assert.AreEqual(2, item.Quality); 
+            //What's this? I expected a 1... Instead of degrading twice as fast, its quality gets raised by a factor two?
+        }
 
 
     }
