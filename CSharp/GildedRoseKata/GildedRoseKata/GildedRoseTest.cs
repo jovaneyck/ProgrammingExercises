@@ -174,5 +174,14 @@ namespace GildedRoseKata
 
             Assert.AreEqual(0, item.Quality);
         }
+
+        [Test]
+        public void LegendaryItemsCanHaveAHigherThanAllowedQuality()
+        {
+            int sulfurasQuality = 80;
+            Item item = CreateAndAdvanceSingleItem(Sulfuras, 0, sulfurasQuality);
+
+            Assert.AreEqual(sulfurasQuality, item.Quality);
+        }
     }
 }
