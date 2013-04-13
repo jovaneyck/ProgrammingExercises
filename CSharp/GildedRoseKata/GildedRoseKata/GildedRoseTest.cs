@@ -42,6 +42,18 @@ namespace GildedRoseKata
             Assert.AreEqual(items[0].SellIn, initialSellIn - 1);
         }
 
+        [Test]
+        public void QualityDecreasesByOne()
+        {
+            const int initialQuality = 100;
+            IList<Item> items = new List<Item> { new Item { Name = "item", SellIn = 100, Quality = initialQuality } };
+
+            GildedRose app = new GildedRose(items);
+            app.UpdateQuality();
+
+            Assert.AreEqual(items[0].Quality, initialQuality - 1);
+        }
+
 
 
     }
