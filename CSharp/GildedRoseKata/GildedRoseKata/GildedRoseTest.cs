@@ -67,6 +67,14 @@ namespace GildedRoseKata
             Assert.AreEqual(initialQuality - 2*QualityFactor, item.Quality);
         }
 
+        [Test]
+        public void QualityDoesNotBecomeNegative()
+        {
+            Item item = CreateAndAdvanceSingleItem("item", 100, 0);
+
+            Assert.AreEqual(0, item.Quality);
+        }
+
 
 
     }
