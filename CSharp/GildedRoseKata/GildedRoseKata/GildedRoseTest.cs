@@ -137,6 +137,42 @@ namespace GildedRoseKata
             Item item = CreateAndAdvanceSingleItem(BackstagePasses, 10, initialQuality);
 
             Assert.AreEqual(initialQuality + 2*QualityFactor, item.Quality);
+        }        
+        
+        [Test]
+        public void BackstagePassesDoubleIncreaseInQualityInLessThanTenDays()
+        {
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 6, initialQuality);
+
+            Assert.AreEqual(initialQuality + 2*QualityFactor, item.Quality);
+        }
+
+        [Test]
+        public void BackstagePassesDoubleIncreaseInQualityInFiveDays()
+        {
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 5, initialQuality);
+
+            Assert.AreEqual(initialQuality + 3 * QualityFactor, item.Quality);
+        }
+
+        [Test]
+        public void BackstagePassesDoubleIncreaseInQualityInLessThanFiveDays()
+        {
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 1, initialQuality);
+
+            Assert.AreEqual(initialQuality + 3 * QualityFactor, item.Quality);
+        }
+
+        [Test]
+        public void BackstagePassesQualityDropsToZeroAfterTheConcert()
+        {
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 0, initialQuality);
+
+            Assert.AreEqual(0, item.Quality);
         }
     }
 }
