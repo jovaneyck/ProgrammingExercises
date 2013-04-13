@@ -90,6 +90,15 @@ namespace GildedRoseKata
 
             Assert.AreEqual(2, item.Quality); 
             //What's this? I expected a 1... Instead of degrading twice as fast, its quality gets raised by a factor two?
+        }        
+        
+        [Test]
+        public void QualityCannotBeMoreThanFifty()
+        {
+            //Brie is the only item I currently know of that rises in quality, so we'll use that one to test
+            Item item = CreateAndAdvanceSingleItem("Aged Brie", 1, 50);
+
+            Assert.AreEqual(50, item.Quality); 
         }
 
 
