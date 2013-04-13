@@ -9,6 +9,11 @@ namespace GildedRoseKata
         private const int SellInFactor = 1;
         private const int QualityFactor = 1;
 
+        private const string AgedBrie = "Aged Brie";
+        //Had to go into the source code for the correct names
+        private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+        private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+
         [Test]
         public void UpdateQualityDoesNotChangeName()
         {
@@ -80,7 +85,7 @@ namespace GildedRoseKata
         public void AgedBrieQualityIncreases()
         {
             const int initialQuality = 10;
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 100, initialQuality);
+            Item item = CreateAndAdvanceSingleItem(AgedBrie, 100, initialQuality);
 
             Assert.AreEqual(initialQuality + SellInFactor, item.Quality);
         }
@@ -89,7 +94,7 @@ namespace GildedRoseKata
         public void AgedBrieQualityIncreasesAfterSellIn()
         {
             const int lowestQuality = 0;
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 0, lowestQuality);
+            Item item = CreateAndAdvanceSingleItem(AgedBrie, 0, lowestQuality);
 
             Assert.AreEqual(lowestQuality + 2, item.Quality); 
             //What's this? I expected a 1... Instead of degrading twice as fast, its quality gets raised by a factor two?
@@ -100,18 +105,17 @@ namespace GildedRoseKata
         {
             const int maximumQuality = 50;
             //Brie is the only item I currently know of that rises in quality, so we'll use that one to test
-            Item item = CreateAndAdvanceSingleItem("Aged Brie", 1, maximumQuality);
+            Item item = CreateAndAdvanceSingleItem(AgedBrie, 1, maximumQuality);
 
             Assert.AreEqual(maximumQuality, item.Quality); 
         }
 
         [Test]
-        public void LegendaryItemHasNoSellInOrQualityDecrease()
+        public void LegendaryItemHasNoSellInOrQualityChange()
         {
             const int sellIn = 100;
             const int quality = 50;
-            Item item = CreateAndAdvanceSingleItem("Sulfuras, Hand of Ragnaros", sellIn, quality);
-            //Had to go into the source code for the correct name
+            Item item = CreateAndAdvanceSingleItem(Sulfuras, sellIn, quality);
 
             Assert.AreEqual(sellIn, item.SellIn);
             Assert.AreEqual(quality, item.Quality); 
@@ -121,16 +125,16 @@ namespace GildedRoseKata
         public void BackstagePassesDecreaseInQualityWayAheadOfTheConcert()
         {
             const int initialQuality = 10;
-            Item item = CreateAndAdvanceSingleItem("Backstage passes to a TAFKAL80ETC concert", 100, initialQuality);
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 100, initialQuality);
 
             Assert.AreEqual(initialQuality + QualityFactor, item.Quality); 
         }
 
         [Test]
-        public void BackstagePassesIncreasesInQualityInTenDays()
+        public void BackstagePassesDoubleIncreaseInQualityInTenDays()
         {
             const int initialQuality = 10;
-            Item item = CreateAndAdvanceSingleItem("Backstage passes to a TAFKAL80ETC concert", 10, initialQuality);
+            Item item = CreateAndAdvanceSingleItem(BackstagePasses, 10, initialQuality);
 
             Assert.AreEqual(initialQuality + 2*QualityFactor, item.Quality);
         }
