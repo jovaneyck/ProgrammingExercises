@@ -120,11 +120,19 @@ namespace GildedRoseKata
         [Test]
         public void BackstagePassesDecreaseInQualityWayAheadOfTheConcert()
         {
-            const int initialQuality = 50;
-            Item item = CreateAndAdvanceSingleItem("Backstage passes", 100, initialQuality);
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem("Backstage passes to a TAFKAL80ETC concert", 100, initialQuality);
 
-            //Again, not according to how I interpreted the specs
-            Assert.AreEqual(initialQuality - QualityFactor, item.Quality); 
+            Assert.AreEqual(initialQuality + QualityFactor, item.Quality); 
+        }
+
+        [Test]
+        public void BackstagePassesIncreasesInQualityInTenDays()
+        {
+            const int initialQuality = 10;
+            Item item = CreateAndAdvanceSingleItem("Backstage passes to a TAFKAL80ETC concert", 10, initialQuality);
+
+            Assert.AreEqual(initialQuality + 2*QualityFactor, item.Quality);
         }
     }
 }
