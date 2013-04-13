@@ -10,6 +10,8 @@ namespace GildedRoseKata
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
 
+        private const int maximumQuality = 50;
+
         public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
@@ -21,18 +23,18 @@ namespace GildedRoseKata
             {
                 if (item.Name == AgedBrie || item.Name == BackstagePasses || item.Name == Sulfuras)
                 {
-                    if (item.Quality < 50)
+                    if (item.Quality < maximumQuality)
                     {
                         item.Quality = item.Quality + 1;
 
                         if (item.Name == BackstagePasses)
                         {
-                            if (item.SellIn < 11 && item.Quality < 50)
+                            if (item.SellIn < 11 && item.Quality < maximumQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
 
-                            if (item.SellIn < 6 && item.Quality < 50)
+                            if (item.SellIn < 6 && item.Quality < maximumQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
@@ -58,10 +60,10 @@ namespace GildedRoseKata
                     {
                         if (item.Name != BackstagePasses && item.Quality > 0)
                         {
-                                if (item.Name != Sulfuras)
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
+                            if (item.Name != Sulfuras)
+                            {
+                                item.Quality = item.Quality - 1;
+                            }
                         }
                         else
                         {
@@ -70,7 +72,7 @@ namespace GildedRoseKata
                     }
                     else
                     {
-                        if (item.Quality < 50)
+                        if (item.Quality < maximumQuality)
                         {
                             item.Quality = item.Quality + 1;
                         }
