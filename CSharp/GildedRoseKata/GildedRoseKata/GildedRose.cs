@@ -20,14 +20,11 @@ namespace GildedRoseKata
             foreach (Item item in Items)
             {
 
-                if (item.Name != AgedBrie && item.Name != BackstagePasses)
+                if (item.Name != AgedBrie && item.Name != BackstagePasses && item.Name != Sulfuras)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != Sulfuras)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
+                        item.Quality = item.Quality - 1;
                     }
                 }
                 else
@@ -38,20 +35,14 @@ namespace GildedRoseKata
 
                         if (item.Name == BackstagePasses)
                         {
-                            if (item.SellIn < 11)
+                            if (item.SellIn < 11 && item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
 
-                            if (item.SellIn < 6)
+                            if (item.SellIn < 6 && item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
                         }
                     }
@@ -66,15 +57,12 @@ namespace GildedRoseKata
                 {
                     if (item.Name != AgedBrie)
                     {
-                        if (item.Name != BackstagePasses)
+                        if (item.Name != BackstagePasses && item.Quality > 0)
                         {
-                            if (item.Quality > 0)
-                            {
                                 if (item.Name != Sulfuras)
                                 {
                                     item.Quality = item.Quality - 1;
                                 }
-                            }
                         }
                         else
                         {
