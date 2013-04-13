@@ -13,6 +13,8 @@ namespace GildedRoseKata
         //Had to go into the source code for the correct names
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+        
+        private const string ConjuredItem = "Conjured";
 
         [Test]
         public void UpdateQualityDoesNotChangeName()
@@ -182,6 +184,16 @@ namespace GildedRoseKata
             Item item = CreateAndAdvanceSingleItem(Sulfuras, 0, sulfurasQuality);
 
             Assert.AreEqual(sulfurasQuality, item.Quality);
+        }
+
+        [Test]
+        [Ignore]
+        public void ConjuredItemsDegradeInQualityTwiceAsFast()
+        {
+            const int quality = 50;
+            Item item = CreateAndAdvanceSingleItem(ConjuredItem, 100, quality);
+
+            Assert.AreEqual(quality - 2*QualityFactor, item.Quality);
         }
     }
 }
