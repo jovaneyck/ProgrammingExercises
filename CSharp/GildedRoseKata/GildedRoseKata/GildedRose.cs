@@ -27,26 +27,23 @@ namespace GildedRoseKata
                     {
                         item.Quality = item.Quality + 1;
 
-                        if (item.Name == BackstagePasses)
+                        if (item.Name == BackstagePasses && item.Quality < maximumQuality)
                         {
-                            if (item.SellIn < 11 && item.Quality < maximumQuality)
+                            if (item.SellIn < 11 )
                             {
                                 item.Quality = item.Quality + 1;
                             }
 
-                            if (item.SellIn < 6 && item.Quality < maximumQuality)
+                            if (item.SellIn < 6)
                             {
                                 item.Quality = item.Quality + 1;
                             }
                         }
                     }
                 }
-                else
+                else if (item.Quality > 0)
                 {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
+                    item.Quality = item.Quality - 1;
                 }
 
                 if (item.Name != Sulfuras)
@@ -56,7 +53,14 @@ namespace GildedRoseKata
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Name != AgedBrie)
+                    if (item.Name == AgedBrie)
+                    {
+                        if (item.Quality < maximumQuality)
+                        {
+                            item.Quality = item.Quality + 1;
+                        }
+                    }
+                    else
                     {
                         if (item.Name != BackstagePasses && item.Quality > 0)
                         {
@@ -67,14 +71,7 @@ namespace GildedRoseKata
                         }
                         else
                         {
-                            item.Quality = item.Quality - item.Quality;
-                        }
-                    }
-                    else
-                    {
-                        if (item.Quality < maximumQuality)
-                        {
-                            item.Quality = item.Quality + 1;
+                            item.Quality = 0;
                         }
                     }
                 }
