@@ -21,13 +21,25 @@ namespace GildedRoseKata
         {
             const int initialSellIn = 100;
             const int initialQuality = 100;
-            IList<Item> items = new List<Item> {new Item {Name = "item1", SellIn = initialSellIn, Quality = initialQuality}};
+            IList<Item> items = new List<Item> {new Item {Name = "item", SellIn = initialSellIn, Quality = initialQuality}};
 
             GildedRose app = new GildedRose(items);
             app.UpdateQuality();
             
             Assert.IsTrue(items[0].SellIn < initialSellIn);
             Assert.IsTrue(items[0].Quality < initialQuality);
+        }
+
+        [Test]
+        public void SellInDecreasesByOne()
+        {
+            const int initialSellIn = 100;
+            IList<Item> items = new List<Item> { new Item { Name = "item", SellIn = initialSellIn, Quality = 100 } };
+
+            GildedRose app = new GildedRose(items);
+            app.UpdateQuality();
+
+            Assert.AreEqual(items[0].SellIn, initialSellIn - 1);
         }
 
 
