@@ -3,11 +3,15 @@ using GildedRoseKata.Rules;
 
 namespace GildedRoseKata
 {
+    /// <summary>
+    /// Kata description can be found at: https://github.com/emilybache/Refactoring-Katas/tree/master/GildedRose
+    /// </summary>
     internal class GildedRose
     {
         private const string AgedBrie = "Aged Brie";
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+        private const string Conjured = "Conjured";
 
         public const int MaximumQuality = 50;
         private readonly IList<Item> Items;
@@ -35,6 +39,8 @@ namespace GildedRoseKata
                 return new BrieRules();
             if (item.Name == Sulfuras)
                 return new SulfurasRules();
+            if (item.Name == Conjured)
+                return new ConjuredRules();
             return new NormalItemRules();
         }
 

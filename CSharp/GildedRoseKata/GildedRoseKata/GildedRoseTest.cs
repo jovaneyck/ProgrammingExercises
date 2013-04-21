@@ -187,7 +187,6 @@ namespace GildedRoseKata
         }
 
         [Test]
-        [Ignore]
         public void ConjuredItemsDegradeInQualityTwiceAsFast()
         {
             const int quality = 50;
