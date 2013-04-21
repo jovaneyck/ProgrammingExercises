@@ -13,30 +13,29 @@ namespace GildedRoseKata.Rules
         public void UpdateSellInOf(Item item)
         {
             DecreaseSellInOf(item);
+            HandleNegativeSellinValue(item);
+        }
 
+        private void HandleNegativeSellinValue(Item item)
+        {
             if (item.SellIn < 0)
             {
-                if (item.Name == GildedRose.AgedBrie)
+                UpdateQualityAfterSellInChange(item);
+            }
+        }
+
+        protected virtual void UpdateQualityAfterSellInChange(Item item)
+        {
+            if (item.Name != GildedRose.BackstagePasses && item.Quality > 0)
+            {
+                if (item.Name != GildedRose.Sulfuras)
                 {
-                    if (item.Quality < GildedRose.MaximumQuality)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
+                    item.Quality = item.Quality - 1;
                 }
-                else
-                {
-                    if (item.Name != GildedRose.BackstagePasses && item.Quality > 0)
-                    {
-                        if (item.Name != GildedRose.Sulfuras)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                    else
-                    {
-                        item.Quality = 0;
-                    }
-                }
+            }
+            else
+            {
+                item.Quality = 0;
             }
         }
 
