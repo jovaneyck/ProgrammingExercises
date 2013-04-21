@@ -20,41 +20,12 @@ namespace GildedRoseKata
         {
             foreach (Item item in Items)
             {
-                UpdateQuality(item);
-
-                if (item.Name != Sulfuras)
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Name == AgedBrie)
-                    {
-                        if (item.Quality < MaximumQuality)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (item.Name != BackstagePasses && item.Quality > 0)
-                        {
-                            if (item.Name != Sulfuras)
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
-                        }
-                        else
-                        {
-                            item.Quality = 0;
-                        }
-                    }
-                }
+                UpdateQualityOf(item);
+                UpdateSellInOf(item);
             }
         }
 
-        private void UpdateQuality(Item item)
+        private void UpdateQualityOf(Item item)
         {
             if (item.Name == BackstagePasses)
             {
@@ -73,6 +44,40 @@ namespace GildedRoseKata
                 (new NormalItemRules()).UpdateQuality(item, MaximumQuality);
             }
         }
+
+        private void UpdateSellInOf(Item item)
+        {
+            if (item.Name != Sulfuras)
+            {
+                item.SellIn = item.SellIn - 1;
+            }
+
+            if (item.SellIn < 0)
+            {
+                if (item.Name == AgedBrie)
+                {
+                    if (item.Quality < MaximumQuality)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
+                }
+                else
+                {
+                    if (item.Name != BackstagePasses && item.Quality > 0)
+                    {
+                        if (item.Name != Sulfuras)
+                        {
+                            item.Quality = item.Quality - 1;
+                        }
+                    }
+                    else
+                    {
+                        item.Quality = 0;
+                    }
+                }
+            }
+        }
+
     }
 }
 
