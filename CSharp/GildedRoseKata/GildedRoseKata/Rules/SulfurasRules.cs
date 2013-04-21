@@ -1,6 +1,6 @@
 namespace GildedRoseKata.Rules
 {
-    public class SulfurasRules : ItemWithIncreasingQualityRules
+    public class SulfurasRules : NormalItemRules
     {
         protected override void DecreaseSellInOf(Item item)
         {
