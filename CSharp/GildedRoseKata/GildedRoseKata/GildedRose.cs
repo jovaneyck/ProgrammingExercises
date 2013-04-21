@@ -4,13 +4,12 @@ namespace GildedRoseKata
 {
     internal class GildedRose
     {
-        private readonly IList<Item> Items;
-
-        const string AgedBrie = "Aged Brie";
+        private const string AgedBrie = "Aged Brie";
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
 
-        private const int maximumQuality = 50;
+        public const int MaximumQuality = 50;
+        private readonly IList<Item> Items;
 
         public GildedRose(IList<Item> Items)
         {
@@ -21,30 +20,7 @@ namespace GildedRoseKata
         {
             foreach (Item item in Items)
             {
-                if (item.Name == AgedBrie || item.Name == BackstagePasses || item.Name == Sulfuras)
-                {
-                    if (item.Quality < maximumQuality)
-                    {
-                        item.Quality = item.Quality + 1;
-
-                        if (item.Name == BackstagePasses && item.Quality < maximumQuality)
-                        {
-                            if (item.SellIn < 11 )
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-
-                            if (item.SellIn < 6)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-                    }
-                }
-                else if (item.Quality > 0)
-                {
-                    item.Quality = item.Quality - 1;
-                }
+                UpdateQuality(item);
 
                 if (item.Name != Sulfuras)
                 {
@@ -55,7 +31,7 @@ namespace GildedRoseKata
                 {
                     if (item.Name == AgedBrie)
                     {
-                        if (item.Quality < maximumQuality)
+                        if (item.Quality < MaximumQuality)
                         {
                             item.Quality = item.Quality + 1;
                         }
@@ -77,14 +53,88 @@ namespace GildedRoseKata
                 }
             }
         }
+
+        private void UpdateQuality(Item item)
+        {
+            if (item.Name == BackstagePasses)
+            {
+                (new BackstagePassesRules()).UpdateQuality(item, MaximumQuality);
+            }
+            else if (item.Name == AgedBrie)
+            {
+                (new BrieRules()).UpdateQuality(item, MaximumQuality);
+            }
+            else if (item.Name == Sulfuras)
+            {
+                (new SulfurasRules()).UpdateQuality(item, MaximumQuality);
+            }
+            else
+            {
+                (new NormalItemRules()).UpdateQuality(item, MaximumQuality);
+            }
+        }
     }
+}
 
-    public class Item
+public class Item
+{
+    public string Name { get; set; }
+
+    public int SellIn { get; set; }
+
+    public int Quality { get; set; }
+}
+
+public class BackstagePassesRules
+{
+    public void UpdateQuality(Item item, int maximumQuality)
     {
-        public string Name { get; set; }
+        if (item.Quality < maximumQuality)
+        {
+            item.Quality++;
 
-        public int SellIn { get; set; }
+            if (item.Quality < maximumQuality)
+            {
+                if (item.SellIn < 11)
+                {
+                    item.Quality++;
+                }
 
-        public int Quality { get; set; }
+                if (item.SellIn < 6)
+                {
+                    item.Quality++;
+                }
+            }
+        }
+    }
+}
+
+public class ItemWithIncreasingQuality
+{
+    public void UpdateQuality(Item item, int maximumQuality)
+    {
+        if (item.Quality < maximumQuality)
+        {
+            item.Quality = item.Quality + 1;
+        }
+    }
+}
+
+public class BrieRules : ItemWithIncreasingQuality
+{
+}
+
+public class SulfurasRules : ItemWithIncreasingQuality
+{
+}
+
+public class NormalItemRules
+{
+    public void UpdateQuality(Item item, int maximumQuality)
+    {
+        if (item.Quality > 0)
+        {
+            item.Quality = item.Quality - 1;
+        }
     }
 }
