@@ -13,8 +13,8 @@ namespace GildedRoseKata
         //Had to go into the source code for the correct names
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
-        
-        private const string ConjuredItem = "Conjured";
+
+        private const string ConjuredItem = "Conjured Mana Cake";
 
         [Test]
         public void UpdateQualityDoesNotChangeName()
