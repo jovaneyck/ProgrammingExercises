@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using GildedRoseKata;
+using GildedRoseKata.Rules;
 
 namespace GildedRoseKata
 {
@@ -21,13 +21,13 @@ namespace GildedRoseKata
         {
             foreach (Item item in Items)
             {
-                Rules rulesToApply = GetRulesFor(item);
+                Rules.Rules rulesToApply = RulesFor(item);
                 rulesToApply.UpdateQuality(item, MaximumQuality);
                 UpdateSellInOf(item);
             }
         }
 
-        private Rules GetRulesFor(Item item)
+        private Rules.Rules RulesFor(Item item)
         {
             if (item.Name == BackstagePasses)
                 return new BackstagePassesRules();
@@ -72,11 +72,6 @@ namespace GildedRoseKata
         }
 
     }
-
-    interface Rules
-    {
-        void UpdateQuality(Item item, int maximumQuality);
-    }
 }
 
 public class Item
@@ -86,58 +81,4 @@ public class Item
     public int SellIn { get; set; }
 
     public int Quality { get; set; }
-}
-
-public class BackstagePassesRules : Rules
-{
-    public void UpdateQuality(Item item, int maximumQuality)
-    {
-        if (item.Quality < maximumQuality)
-        {
-            item.Quality++;
-
-            if (item.Quality < maximumQuality)
-            {
-                if (item.SellIn < 11)
-                {
-                    item.Quality++;
-                }
-
-                if (item.SellIn < 6)
-                {
-                    item.Quality++;
-                }
-            }
-        }
-    }
-}
-
-public class ItemWithIncreasingQuality
-{
-    public void UpdateQuality(Item item, int maximumQuality)
-    {
-        if (item.Quality < maximumQuality)
-        {
-            item.Quality = item.Quality + 1;
-        }
-    }
-}
-
-public class BrieRules : ItemWithIncreasingQuality, Rules
-{
-}
-
-public class SulfurasRules : ItemWithIncreasingQuality, Rules
-{
-}
-
-public class NormalItemRules : Rules
-{
-    public void UpdateQuality(Item item, int maximumQuality)
-    {
-        if (item.Quality > 0)
-        {
-            item.Quality = item.Quality - 1;
-        }
-    }
 }
