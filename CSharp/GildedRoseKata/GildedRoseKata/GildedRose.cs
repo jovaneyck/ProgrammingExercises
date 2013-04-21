@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GildedRoseKata;
 
 namespace GildedRoseKata
 {
@@ -20,29 +21,21 @@ namespace GildedRoseKata
         {
             foreach (Item item in Items)
             {
-                UpdateQualityOf(item);
+                Rules rulesToApply = GetRulesFor(item);
+                rulesToApply.UpdateQuality(item, MaximumQuality);
                 UpdateSellInOf(item);
             }
         }
 
-        private void UpdateQualityOf(Item item)
+        private Rules GetRulesFor(Item item)
         {
             if (item.Name == BackstagePasses)
-            {
-                (new BackstagePassesRules()).UpdateQuality(item, MaximumQuality);
-            }
-            else if (item.Name == AgedBrie)
-            {
-                (new BrieRules()).UpdateQuality(item, MaximumQuality);
-            }
-            else if (item.Name == Sulfuras)
-            {
-                (new SulfurasRules()).UpdateQuality(item, MaximumQuality);
-            }
-            else
-            {
-                (new NormalItemRules()).UpdateQuality(item, MaximumQuality);
-            }
+                return new BackstagePassesRules();
+            if (item.Name == AgedBrie)
+                return new BrieRules();
+            if (item.Name == Sulfuras)
+                return new SulfurasRules();
+            return new NormalItemRules();
         }
 
         private void UpdateSellInOf(Item item)
@@ -79,6 +72,11 @@ namespace GildedRoseKata
         }
 
     }
+
+    interface Rules
+    {
+        void UpdateQuality(Item item, int maximumQuality);
+    }
 }
 
 public class Item
@@ -90,7 +88,7 @@ public class Item
     public int Quality { get; set; }
 }
 
-public class BackstagePassesRules
+public class BackstagePassesRules : Rules
 {
     public void UpdateQuality(Item item, int maximumQuality)
     {
@@ -125,15 +123,15 @@ public class ItemWithIncreasingQuality
     }
 }
 
-public class BrieRules : ItemWithIncreasingQuality
+public class BrieRules : ItemWithIncreasingQuality, Rules
 {
 }
 
-public class SulfurasRules : ItemWithIncreasingQuality
+public class SulfurasRules : ItemWithIncreasingQuality, Rules
 {
 }
 
-public class NormalItemRules
+public class NormalItemRules : Rules
 {
     public void UpdateQuality(Item item, int maximumQuality)
     {
