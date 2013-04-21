@@ -8,10 +8,10 @@ namespace GildedRoseKata
     /// </summary>
     internal class GildedRose
     {
-        private const string AgedBrie = "Aged Brie";
-        private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
-        private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
-        private const string Conjured = "Conjured";
+        public const string AgedBrie = "Aged Brie";
+        public const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+        public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+        public const string Conjured = "Conjured";
 
         public const int MaximumQuality = 50;
         private readonly IList<Item> Items;
@@ -27,7 +27,7 @@ namespace GildedRoseKata
             {
                 Rules.Rules rulesToApply = RulesFor(item);
                 rulesToApply.UpdateQuality(item, MaximumQuality);
-                UpdateSellInOf(item);
+                rulesToApply.UpdateSellInOf(item);
             }
         }
 
@@ -40,43 +40,9 @@ namespace GildedRoseKata
             if (item.Name == Sulfuras)
                 return new SulfurasRules();
             if (item.Name == Conjured)
-                return new ConjuredRules();
+                return new ConjuredItemRules();
             return new NormalItemRules();
         }
-
-        private void UpdateSellInOf(Item item)
-        {
-            if (item.Name != Sulfuras)
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name == AgedBrie)
-                {
-                    if (item.Quality < MaximumQuality)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-                else
-                {
-                    if (item.Name != BackstagePasses && item.Quality > 0)
-                    {
-                        if (item.Name != Sulfuras)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                    else
-                    {
-                        item.Quality = 0;
-                    }
-                }
-            }
-        }
-
     }
 }
 

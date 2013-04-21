@@ -1,8 +1,8 @@
 namespace GildedRoseKata.Rules
 {
-    public class BackstagePassesRules : Rules
+    public class BackstagePassesRules : NormalItemRules
     {
-        public void UpdateQuality(Item item, int maximumQuality)
+        public override void UpdateQuality(Item item, int maximumQuality)
         {
             if (item.Quality < maximumQuality)
             {

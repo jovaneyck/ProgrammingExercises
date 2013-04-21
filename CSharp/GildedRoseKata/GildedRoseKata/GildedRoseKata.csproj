@@ -57,7 +57,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Rules\BackstagePassesRules.cs" />
     <Compile Include="Rules\BrieRules.cs" />
-    <Compile Include="Rules\ConjuredRules.cs" />
+    <Compile Include="Rules\ConjuredItemRules.cs" />
     <Compile Include="Rules\ItemWithIncreasingQualityRules.cs" />
     <Compile Include="Rules\NormalItemRules.cs" />
     <Compile Include="Rules\Rules.cs" />
