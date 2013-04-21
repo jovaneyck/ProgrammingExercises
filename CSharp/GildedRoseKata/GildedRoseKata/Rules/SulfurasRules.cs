@@ -6,5 +6,10 @@ namespace GildedRoseKata.Rules
         {
             //SellIn value does not decrease
         }
+
+        public override void UpdateQualityOf(Item item)
+        {
+            //Quality cannot change
+        }
     }
 }

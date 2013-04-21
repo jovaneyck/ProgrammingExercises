@@ -26,7 +26,7 @@ namespace GildedRoseKata
             foreach (Item item in Items)
             {
                 Rules.Rules rulesToApply = RulesFor(item);
-                rulesToApply.UpdateQuality(item, MaximumQuality);
+                rulesToApply.UpdateQualityOf(item);
                 rulesToApply.UpdateSellInOf(item);
             }
         }

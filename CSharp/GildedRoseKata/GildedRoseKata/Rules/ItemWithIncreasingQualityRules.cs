@@ -2,9 +2,9 @@ namespace GildedRoseKata.Rules
 {
     public class ItemWithIncreasingQualityRules : NormalItemRules
     {
-        public override void UpdateQuality(Item item, int maximumQuality)
+        public override void UpdateQualityOf(Item item)
         {
-            if (item.Quality < maximumQuality)
+            if (item.Quality < GildedRose.MaximumQuality)
             {
                 item.Quality = item.Quality + 1;
             }

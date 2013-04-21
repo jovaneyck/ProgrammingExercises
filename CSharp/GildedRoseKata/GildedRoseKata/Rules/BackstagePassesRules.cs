@@ -2,13 +2,13 @@ namespace GildedRoseKata.Rules
 {
     public class BackstagePassesRules : NormalItemRules
     {
-        public override void UpdateQuality(Item item, int maximumQuality)
+        public override void UpdateQualityOf(Item item)
         {
-            if (item.Quality < maximumQuality)
+            if (item.Quality < GildedRose.MaximumQuality)
             {
                 item.Quality++;
 
-                if (item.Quality < maximumQuality)
+                if (item.Quality < GildedRose.MaximumQuality)
                 {
                     if (item.SellIn < 11)
                     {
@@ -21,6 +21,11 @@ namespace GildedRoseKata.Rules
                     }
                 }
             }
+        }
+
+        protected override void UpdateQualityUponPastSellIn(Item item)
+        {
+            item.Quality = 0;
         }
     }
 }
