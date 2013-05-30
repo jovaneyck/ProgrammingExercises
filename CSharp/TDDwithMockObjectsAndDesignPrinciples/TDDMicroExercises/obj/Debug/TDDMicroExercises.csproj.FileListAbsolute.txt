@@ -1,6 +1,0 @@
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\bin\Debug\TDDMicroExercises.dll
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\bin\Debug\TDDMicroExercises.pdb
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\bin\Debug\nunit.framework.dll
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\obj\Debug\TDDMicroExercises.csprojResolveAssemblyReference.cache
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\obj\Debug\TDDMicroExercises.dll
-C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\CSharp\TDDwithMockObjectsAndDesignPrinciples\TDDMicroExercises\obj\Debug\TDDMicroExercises.pdb
