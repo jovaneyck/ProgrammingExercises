@@ -25,10 +25,21 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Test
         [Test]
         public void TriggersWhenBelowTreshold()
         {
-            _sensorImpl.Stub(s => s.PopNextPressurePsiValue()).Return(1d);
+            AssertAlertTriggersFor(1d);
+        }
+
+        private void AssertAlertTriggersFor(double sensorValue)
+        {
+            _sensorImpl.Stub(s => s.PopNextPressurePsiValue()).Return(sensorValue);
 
             alarm.Check();
             Assert.IsTrue(alarm.AlarmOn);
+        }
+        
+        [Test]
+        public void TriggersWhenAboveTreshold()
+        {
+            AssertAlertTriggersFor(22d);
         }
     }
 }
