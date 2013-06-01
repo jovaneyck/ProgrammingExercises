@@ -1,12 +1,12 @@
-﻿using NUnit.Framework;
-using Rhino.Mocks;
+﻿using Moq;
+using NUnit.Framework;
 
 namespace TDDMicroExercises.TirePressureMonitoringSystem.Test
 {
     [TestFixture]
     class AlarmTest
     {
-        private Sensor _sensorImpl;
+        private Mock<Sensor> _sensorImpl;
         private Alarm alarm;
         private const double _underLowerTreshold = 1d;
         private const double _betweenTresholds = 20d;
@@ -15,8 +15,8 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Test
         [SetUp]
         public void SetUp()
         {
-            _sensorImpl = MockRepository.GenerateMock<Sensor>();
-            alarm = new Alarm(_sensorImpl);
+            _sensorImpl = new Mock<Sensor>();
+            alarm = new Alarm(_sensorImpl.Object);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Test
 
         private void SetupSensorAndCheckAlarm(double sensorValue)
         {
-            _sensorImpl.Stub(s => s.PopNextPressurePsiValue()).Return(sensorValue);
+            _sensorImpl.Setup(s => s.PopNextPressurePsiValue()).Returns(sensorValue);
             alarm.Check();
         }
 

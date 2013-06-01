@@ -3,7 +3,6 @@ using System.Text;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace TDDMicroExercises.TirePressureMonitoringSystem.Test
 {
