@@ -1,0 +1,1 @@
+﻿I am a test file that needs to be &#39;encoded&#39; #in &lt;html&gt;<br />containing two lines!<br />
