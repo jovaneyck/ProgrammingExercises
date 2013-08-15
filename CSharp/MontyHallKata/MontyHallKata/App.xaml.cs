@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -13,5 +12,10 @@ namespace MontyHallKata
     /// </summary>
     public partial class App : Application
     {
+        private void StartApplication(object sender, StartupEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(new Runner());
+            mainWindow.Show();   
+        }
     }
 }

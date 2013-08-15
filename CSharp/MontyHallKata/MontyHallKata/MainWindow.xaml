@@ -5,7 +5,7 @@
     <Grid>
         <TextBox x:Name="numberOfExperiments" HorizontalAlignment="Left" Height="23" Margin="270,10,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120"/>
         <Label Content="Number of experiments to run:" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="startSimulation" Content="Start simulations!" HorizontalAlignment="Left" Margin="395,10,0,0" VerticalAlignment="Top" Width="112" Click="startSimulation_Click"/>
+        <Button x:Name="startSimulation" Content="Start simulations!" HorizontalAlignment="Left" Margin="395,10,0,0" VerticalAlignment="Top" Width="112" Click="startSimulations_Click"/>
         <Label x:Name="numberOfSuccesses" Content="" HorizontalAlignment="Left" Margin="220,128,0,0" VerticalAlignment="Top"/>
         <Label Content="Number of successes:" HorizontalAlignment="Left" Margin="91,128,0,0" VerticalAlignment="Top"/>
 

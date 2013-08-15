@@ -35,10 +35,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NMock3">
+      <HintPath>..\packages\NMock3.3.5.44\lib\net40\NMock3.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
@@ -48,8 +52,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acceptance.cs" />
+    <Compile Include="C_AcceptanceTests\Acceptance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="A_Templates\Template.cs" />
+    <Compile Include="B_UnitTests\MainWindowTest.cs" />
+    <Compile Include="B_UnitTests\RunnerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

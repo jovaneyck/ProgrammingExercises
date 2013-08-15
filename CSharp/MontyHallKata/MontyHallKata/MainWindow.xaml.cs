@@ -18,16 +18,24 @@ namespace MontyHallKata
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : SimulationResultListener
     {
-        public MainWindow()
+        private readonly SimulationRunner runner;
+
+        public MainWindow(SimulationRunner runner)
         {
             InitializeComponent();
+            this.runner = runner;
         }
 
-        private void startSimulation_Click(object sender, RoutedEventArgs e)
+        public void startSimulations_Click(object sender, RoutedEventArgs e)
         {
-            this.numberOfSuccesses.Content = 1;
+            runner.RunSimulations(this);
+        }
+
+        public void ReceiveSimulationResults(int numberOfSuccesses)
+        {
+            this.numberOfSuccesses.Content = numberOfSuccesses;
         }
     }
 }
