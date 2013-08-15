@@ -30,7 +30,7 @@ namespace MontyHallKata
 
         public void startSimulations_Click(object sender, RoutedEventArgs e)
         {
-            runner.RunSimulations(this);
+            runner.RunSimulations(this, int.Parse(this.numberOfSimulations.Text));
         }
 
         public void ReceiveSimulationResults(int numberOfSuccesses)

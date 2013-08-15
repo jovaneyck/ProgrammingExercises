@@ -28,7 +28,7 @@ namespace Test.B_UnitTests
             listener.Expects.AtLeastOne.Method(l => l.ReceiveSimulationResults(0)).WithAnyArguments();
 
             var runner = new Runner();
-            runner.RunSimulations(listener.MockObject);
+            runner.RunSimulations(listener.MockObject, 0);
         }
     }
 }

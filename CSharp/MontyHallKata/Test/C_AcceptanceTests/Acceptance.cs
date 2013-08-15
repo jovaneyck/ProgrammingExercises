@@ -14,6 +14,14 @@ namespace Test.C_AcceptanceTests
         private Application application;
         private Window mainWindow;
 
+        [SetUp]
+        public void StartApplication()
+        {
+            var startInfo = new ProcessStartInfo("MontyHallKata.exe");
+            application = Application.Launch(startInfo);
+            mainWindow = application.GetWindow("MainWindow", InitializeOption.NoCache);
+        }
+
         [TearDown]
         public void TearDown()
         {
@@ -24,27 +32,19 @@ namespace Test.C_AcceptanceTests
         [Test]
         public void RendersResultsOfASingleSimulation()
         {
-            StartApplication();
-            StartASingleSimulation();
-            AssertSingleExperimentHasASuccessfullOutcome();
+            StartSimulations(1);
+            Assert.AreEqual(1, GetNumberOfSuccesses() + GetNumberOfFailures());
         }
 
-        public void StartApplication()
+        private void StartSimulations(int numberOfSimulations)
         {
-            var startInfo = new ProcessStartInfo("MontyHallKata.exe");
-            application = Application.Launch(startInfo);
-            mainWindow = application.GetWindow("MainWindow", InitializeOption.NoCache);
-        }
-
-        private void StartASingleSimulation()
-        {
-            SetNumberOfExperiments(1);
+            SetNumberOfExperiments(numberOfSimulations);
             RunSimulations();
         }
 
         private void SetNumberOfExperiments(int numberOfExperiments)
         {
-            var numberOfExperimentsInput = mainWindow.Get<TextBox>("numberOfExperiments");
+            var numberOfExperimentsInput = mainWindow.Get<TextBox>("numberOfSimulations");
             numberOfExperimentsInput.Text = numberOfExperiments.ToString(CultureInfo.InvariantCulture);
         }
 
@@ -54,15 +54,37 @@ namespace Test.C_AcceptanceTests
             startSimulationButton.Click();
         }
 
-        private void AssertSingleExperimentHasASuccessfullOutcome()
+        private int GetNumberOfSuccesses()
         {
-            AssertLabelContainsValue("numberOfSuccesses", "1");
+            return ValueOf("numberOfSuccesses");
         }
 
-        private void AssertLabelContainsValue(string labelName, string value)
+        private int ValueOf(string labelName)
         {
             var label = mainWindow.Get<Label>(labelName);
-            Assert.AreEqual(value, label.Text);
+            if (label.Text.Equals(string.Empty))
+                return 0;
+            return int.Parse(label.Text);
+        }
+
+        private int GetNumberOfFailures()
+        {
+            return ValueOf("numberOfFailures");
+        }
+
+        [Test]
+        public void RendersResultsOfMultipleSimulations()
+        {
+            const int totalNumberOfSimulations = 100;
+
+            StartSimulations(totalNumberOfSimulations);
+
+            var numberOfSuccesses = GetNumberOfSuccesses();
+            var numberOfFailures = GetNumberOfFailures();
+
+            Assert.IsTrue(numberOfSuccesses > 0, "At least one succesful simulation");
+            Assert.IsTrue(numberOfFailures > 0, "At least one unsuccessful simulation");
+            Assert.AreEqual(totalNumberOfSimulations + numberOfFailures, numberOfSuccesses);
         }
     }
 }
