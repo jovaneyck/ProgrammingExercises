@@ -6,7 +6,7 @@ namespace Test.A_Templates
     [TestFixture]
     internal class Template
     {
-        #region Setup/Teardown
+        private MockFactory context;
 
         [SetUp]
         public void SetUp()
@@ -19,10 +19,6 @@ namespace Test.A_Templates
         {
             context.VerifyAllExpectationsHaveBeenMet();
         }
-
-        #endregion
-
-        private MockFactory context;
 
         [Test]
         public void TestName()

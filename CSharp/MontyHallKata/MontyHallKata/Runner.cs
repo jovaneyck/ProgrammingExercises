@@ -1,5 +1,3 @@
-using System;
-
 namespace MontyHallKata
 {
     public class Runner : SimulationRunner

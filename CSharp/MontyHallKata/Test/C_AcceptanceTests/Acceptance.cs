@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using NUnit.Framework;
 using TestStack.White;
 using TestStack.White.Factory;
@@ -10,7 +11,8 @@ namespace Test.C_AcceptanceTests
     [TestFixture]
     public class Acceptance
     {
-        #region Setup/Teardown
+        private Application application;
+        private Window mainWindow;
 
         [TearDown]
         public void TearDown()
@@ -19,12 +21,15 @@ namespace Test.C_AcceptanceTests
             application.Close();
         }
 
-        #endregion
+        [Test]
+        public void RendersResultsOfASingleSimulation()
+        {
+            StartApplication();
+            StartASingleSimulation();
+            AssertSingleExperimentHasASuccessfullOutcome();
+        }
 
-        private Application application;
-        private Window mainWindow;
-
-        public void StartApplicationWithRandomNumbers()
+        public void StartApplication()
         {
             var startInfo = new ProcessStartInfo("MontyHallKata.exe");
             application = Application.Launch(startInfo);
@@ -40,7 +45,7 @@ namespace Test.C_AcceptanceTests
         private void SetNumberOfExperiments(int numberOfExperiments)
         {
             var numberOfExperimentsInput = mainWindow.Get<TextBox>("numberOfExperiments");
-            numberOfExperimentsInput.Text = numberOfExperiments.ToString();
+            numberOfExperimentsInput.Text = numberOfExperiments.ToString(CultureInfo.InvariantCulture);
         }
 
         private void RunSimulations()
@@ -58,14 +63,6 @@ namespace Test.C_AcceptanceTests
         {
             var label = mainWindow.Get<Label>(labelName);
             Assert.AreEqual(value, label.Text);
-        }
-
-        [Test]
-        public void RendersResultsOfASingleSimulation()
-        {
-            StartApplicationWithRandomNumbers();
-            StartASingleSimulation();
-            AssertSingleExperimentHasASuccessfullOutcome();
         }
     }
 }

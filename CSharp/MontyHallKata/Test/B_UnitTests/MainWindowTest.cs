@@ -8,7 +8,7 @@ namespace Test.B_UnitTests
     [TestFixture]
     internal class MainWindowTest
     {
-        #region Setup/Teardown
+        private MockFactory context;
 
         [SetUp]
         public void SetUp()
@@ -21,10 +21,6 @@ namespace Test.B_UnitTests
         {
             context.VerifyAllExpectationsHaveBeenMet();
         }
-
-        #endregion
-
-        private MockFactory context;
 
         [Test]
         [STAThread]
