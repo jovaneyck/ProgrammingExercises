@@ -4,7 +4,10 @@ class StringCalculator {
 	  else asListOfNumbers(input) sum
 	  
 	private def asListOfNumbers(list : String) : List[Int] = 
-	  ((list.split("\n") toList) flatMap (el => el.split(",") toList)) map (el => Integer.parseInt(el))
+	  toListOfNumbers(list) map (el => Integer.parseInt(el))
+	  
+	private def toListOfNumbers(input : String): List[String] =
+  		((input.split("\n") toList) flatMap (el => el.split(",") toList))
 }
 
 
