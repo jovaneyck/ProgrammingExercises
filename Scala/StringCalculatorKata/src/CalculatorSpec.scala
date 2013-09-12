@@ -12,4 +12,8 @@ class CalculatorSpec extends FlatSpec with ShouldMatchers{
 	it should "return 0 for an empty input" in {
 	  calculator.add("") should be(0)
 	}
+	
+	it should "return the value for a single inpu" in {
+	  calculator.add("1") should be(1)
+	}
 }

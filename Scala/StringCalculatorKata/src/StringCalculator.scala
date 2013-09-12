@@ -1,3 +1,5 @@
 class StringCalculator {
-	def add(input : String) : Int = 0
+	def add(input : String) : Int = 
+	  if (input isEmpty) 0
+	  else 1
 }
