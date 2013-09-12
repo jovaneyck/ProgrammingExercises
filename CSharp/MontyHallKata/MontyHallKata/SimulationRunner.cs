@@ -2,6 +2,6 @@ namespace MontyHallKata
 {
     public interface SimulationRunner
     {
-        void RunSimulations(SimulationResultListener listener, int numberOfSimulations);
+        void RunSimulations(SimulationResultListener listener, int numberOfSimulations, bool switchesDoors);
     }
 }

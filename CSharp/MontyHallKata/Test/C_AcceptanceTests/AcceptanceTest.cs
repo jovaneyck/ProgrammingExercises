@@ -9,7 +9,7 @@ using TestStack.White.UIItems.WindowItems;
 namespace Test.C_AcceptanceTests
 {
     [TestFixture]
-    public class Acceptance
+    public class AcceptanceTest
     {
         private Application application;
         private Window mainWindow;
@@ -84,7 +84,7 @@ namespace Test.C_AcceptanceTests
 
             Assert.IsTrue(numberOfSuccesses > 0, "At least one succesful simulation");
             Assert.IsTrue(numberOfFailures > 0, "At least one unsuccessful simulation");
-            Assert.AreEqual(totalNumberOfSimulations + numberOfFailures, numberOfSuccesses);
+            Assert.AreEqual(totalNumberOfSimulations, numberOfSuccesses + numberOfFailures);
         }
     }
 }

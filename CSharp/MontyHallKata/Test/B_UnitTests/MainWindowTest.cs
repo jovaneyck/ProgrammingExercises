@@ -27,7 +27,7 @@ namespace Test.B_UnitTests
         public void CanStartASimulation()
         {
             Mock<SimulationRunner> runner = context.CreateMock<SimulationRunner>();
-            runner.Expects.AtLeastOne.Method(r => r.RunSimulations(null, 0)).WithAnyArguments();
+            runner.Expects.AtLeastOne.Method(r => r.RunSimulations(null, 0, false)).WithAnyArguments();
 
             var window = new MainWindow(runner.MockObject);
             window.startSimulations_Click(null, null);

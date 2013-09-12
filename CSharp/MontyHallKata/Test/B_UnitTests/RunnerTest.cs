@@ -24,11 +24,26 @@ namespace Test.B_UnitTests
         [Test]
         public void NotifiesListenersOfResults()
         {
-            Mock<SimulationResultListener> listener = context.CreateMock<SimulationResultListener>();
-            listener.Expects.AtLeastOne.Method(l => l.ReceiveSimulationResults(0)).WithAnyArguments();
+            var listener = context.CreateMock<SimulationResultListener>();
+            listener.Expects.AtLeastOne.Method(l => l.ReceiveSimulationResults(0,0)).WithAnyArguments();
 
-            var runner = new Runner();
-            runner.RunSimulations(listener.MockObject, 0);
+            var simulationFactory = context.CreateInstance<ResultChecker>();
+            var simulationParameterFactory = context.CreateInstance<SimulationParameterFactory>();
+            Runner runner = new Runner(simulationFactory, simulationParameterFactory);
+            runner.RunSimulations(listener.MockObject, 0, false);
+        }
+
+        [Test]
+        public void StartsTheCorrectNumberOfSimulations()
+        {
+            var factory = context.CreateMock<ResultChecker>();
+            factory.Expects.Exactly(5).Method(f => f.WinsTheGameWhen(null)).WithAnyArguments().WillReturn(false);
+            var parameterFactory = context.CreateInstance<SimulationParameterFactory>(MockStyle.Stub);
+
+            Runner runner = new Runner(factory.MockObject, parameterFactory);
+            var listener = context.CreateInstance<SimulationResultListener>(MockStyle.Stub);
+            
+            runner.RunSimulations(listener, 5, false);
         }
     }
 }

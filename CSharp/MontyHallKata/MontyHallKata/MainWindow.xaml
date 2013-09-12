@@ -10,6 +10,7 @@
         <Label Content="Number of successes:" HorizontalAlignment="Left" Margin="91,128,0,0" VerticalAlignment="Top"/>
         <Label Content="Number of failures:" HorizontalAlignment="Left" Margin="91,159,0,0" VerticalAlignment="Top"/>
         <Label x:Name="numberOfFailures" Content="" HorizontalAlignment="Left" Margin="220,159,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkboxSwitchDoors" Content="Switch doors" HorizontalAlignment="Left" Margin="91,41,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

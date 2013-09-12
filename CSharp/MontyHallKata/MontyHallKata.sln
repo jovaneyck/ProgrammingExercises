@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MontyHallKata", "MontyHallKata\MontyHallKata.csproj", "{650634F8-A1AF-4543-91B2-C1E92693C2A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MontyHallCLI", "MontyHallCLI\MontyHallCLI.csproj", "{5D6A7958-E797-4DD0-8ACD-A3CD3D832516}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{650634F8-A1AF-4543-91B2-C1E92693C2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{650634F8-A1AF-4543-91B2-C1E92693C2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{650634F8-A1AF-4543-91B2-C1E92693C2A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D6A7958-E797-4DD0-8ACD-A3CD3D832516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D6A7958-E797-4DD0-8ACD-A3CD3D832516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D6A7958-E797-4DD0-8ACD-A3CD3D832516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D6A7958-E797-4DD0-8ACD-A3CD3D832516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

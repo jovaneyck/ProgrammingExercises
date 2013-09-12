@@ -30,12 +30,13 @@ namespace MontyHallKata
 
         public void startSimulations_Click(object sender, RoutedEventArgs e)
         {
-            runner.RunSimulations(this, int.Parse(this.numberOfSimulations.Text));
+            runner.RunSimulations(this, int.Parse(this.numberOfSimulations.Text), checkboxSwitchDoors.IsChecked.GetValueOrDefault());
         }
 
-        public void ReceiveSimulationResults(int numberOfSuccesses)
+        public void ReceiveSimulationResults(int numberOfSuccesses, int numberOfFailures)
         {
             this.numberOfSuccesses.Content = numberOfSuccesses;
+            this.numberOfFailures.Content = numberOfFailures;
         }
     }
 }

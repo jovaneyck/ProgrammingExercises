@@ -6,7 +6,7 @@ namespace MontyHallKata
     {
         private void StartApplication(object sender, StartupEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow(new Runner());
+            MainWindow mainWindow = new MainWindow(new Runner(new ConcreteResultChecker(), new RandomSimulationParametersFactory(new RandomRoomNumberGenerator())));
             mainWindow.Show();   
         }
     }
