@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ValVarDef" project="LanguageFeatures" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ValVarDef" time="0.065">
+    <testcase name="var should be mutable" classname="test.ValVarDef" time="0.053"/>
+    <testcase name="val should be immutable" classname="test.ValVarDef" time="0.001"/>
+    <testcase name="val should be immediately evaluated" classname="test.ValVarDef" time="0.007"/>
+    <testcase name="def should be lazily evaluated" classname="test.ValVarDef" time="0.004"/>
+  </testsuite>
+</testrun>

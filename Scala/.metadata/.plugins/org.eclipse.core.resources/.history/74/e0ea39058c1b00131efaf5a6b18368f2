@@ -1,0 +1,6 @@
+package test
+
+class Lists {
+	//head-tail concept
+	//map, filter, reduce, fold
+}

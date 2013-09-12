@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ClassesAndObjectsTest" project="LanguageFeatures" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ClassesAndObjectsTest" time="0.064">
+    <testcase name="classes should have properties" classname="test.ClassesAndObjectsTest" time="0.045"/>
+    <testcase name="classes should have read-only attributes" classname="test.ClassesAndObjectsTest" time="0.001"/>
+    <testcase name="classes should can have mutable state" classname="test.ClassesAndObjectsTest" time="0.018"/>
+  </testsuite>
+</testrun>

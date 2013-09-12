@@ -1,0 +1,17 @@
+package test
+
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class ClassesAndObjectsTest extends FlatSpec with ShouldMatchers{
+	behavior of "classes"
+	
+	it should "can define properties" in {
+	  class Person(val name : String, val age : Int)
+	  
+	  val example = NonEmpty(1337, Empty, Empty)
+	}
+}

@@ -1,0 +1,38 @@
+package test
+
+class ForComprehensions extends TestBase{
+  behavior of "for comprehensions" 
+  
+  it should "iterate over sequentials" in {
+    val result = for(
+			        i <- (1 to 3) //generator!
+			    ) yield (2 * i)
+    
+    result should be(List(2,4,6))
+  }
+  
+  it should "iterate faster over later generators" in {
+    val result = for {
+    				i <- 1 to 3
+    				j <- 1 to i //multiple generators!
+    			} yield (i,j)
+    			
+    result should be(List(
+        (1,1),
+        (2,1),
+        (2,2),
+        (3,1),
+        (3,2),
+        (3,3)
+    ))
+  }
+  
+  it should "allow for easy filtering" in {
+    val result = for {
+			      i <- 1 to 3
+			      if i % 2 == 0 //filter!
+			    } yield i
+			    
+	result should be(List(2))
+  }
+}

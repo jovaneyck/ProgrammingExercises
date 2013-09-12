@@ -1,0 +1,13 @@
+package test
+
+class Recursion extends TestBase{
+	//tail recursion!
+  
+  behavior of "recursion" 
+  
+  it should "end" in{
+    def factorial(n:Int) : Int = n * factorial(n-1)
+    
+    factorial(4) should be(24)
+  }
+}

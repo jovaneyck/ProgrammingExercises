@@ -1,0 +1,53 @@
+package test
+
+class ClassesAndObjectsTest extends TestBase{
+	behavior of "classes"
+	
+	class Person(val name : String, val age : Int)
+	val me = new Person("Jo", 23)
+	
+	it should "have properties" in {
+	  me.age should be(23)
+	}
+	
+	it should "support read-only attributes" in {
+	  //me.age = 45 //compiler does not allow reassignment to val's
+	}
+	
+	it should "support mutable state" in {
+	  class Mutable(var mutableProperty : Int = 3) //var means mutable
+	  
+	  val mutableObject = new Mutable();
+	  mutableObject.mutableProperty += 1
+	  
+	  mutableObject.mutableProperty should be(4)
+	}
+	
+	it should "support private methods" in {
+	  object Superman {
+	    def whenDrunk = identity
+	    
+	    private def identity = "Clark Kent"
+	  }
+	  
+	  Superman.whenDrunk //no problem here
+	}
+	
+	behavior of "case classes"
+	
+	it should "not require the new keyword, handy for pattern matching!" in {
+  	  case class Room(number : Int)
+	  val myRoom = Room(4) //notice the lack of "new" here!
+	}
+	
+	behavior of "objects"
+	
+	it should "act as a singleton" in {
+	  object Superman{
+	    def identity = "Clark Kent"
+	  }
+	  
+	  Superman.identity should be("Clark Kent") //again, notice the lack of new
+	}
+	
+}

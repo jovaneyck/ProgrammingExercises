@@ -1,0 +1,10 @@
+package test
+
+class Implicits extends TestBase{
+	//similar to c# extension methods
+  behavior of "patterns" 
+  
+  it should "do stuff" in{
+    fail("implement")
+  }
+}

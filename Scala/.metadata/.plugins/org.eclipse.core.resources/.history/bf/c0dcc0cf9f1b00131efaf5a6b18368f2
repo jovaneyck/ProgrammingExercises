@@ -1,0 +1,11 @@
+package test
+
+class ForComprehensions extends TestBase{
+  behavior of "for comprehensions" 
+  
+  it should "iterate over sequentials" in{
+    for(
+        i <- (1 to 3)
+    ) yield (2 * i)
+  }
+}

@@ -1,0 +1,13 @@
+package test
+
+class ForComprehensions extends TestBase{
+  behavior of "for comprehensions" 
+  
+  it should "iterate over sequentials" in{
+    val result = for(
+			        i <- (1 to 3)
+			    ) yield (2 * i)
+    
+    result should be(List(2,4,6))
+  }
+}

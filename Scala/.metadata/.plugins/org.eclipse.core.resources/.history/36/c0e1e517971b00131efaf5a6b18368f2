@@ -1,0 +1,9 @@
+object Sandbox {
+      def factorial(n:Int) : Int = {              //> Welcome to the Scala worksheet
+      def factorialTailRecursive(accumulator: Int, n: Int) : Int =
+        if (n == 1) accumulator
+        else factorialTailRecursive(accumulator * n, n -1)
+        
+      factorialTailRecursive(1, n) //tail-recursive call: can re-use its stack-frame!
+    }
+}

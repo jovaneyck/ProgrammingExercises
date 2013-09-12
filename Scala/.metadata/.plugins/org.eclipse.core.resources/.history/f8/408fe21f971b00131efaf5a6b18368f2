@@ -1,0 +1,11 @@
+object Sandbox {
+      def factorial(n:Int) : Int = {
+      def factorialTailRecursive(accumulator: Int, n: Int) : Int =
+        if (n == 1) accumulator
+        else factorialTailRecursive(accumulator * n, n -1)
+        
+      factorialTailRecursive(1, n)
+    }                                             //> factorial: (n: Int)Int
+    
+    factorial(4)                                  //> res0: Int = 24
+}

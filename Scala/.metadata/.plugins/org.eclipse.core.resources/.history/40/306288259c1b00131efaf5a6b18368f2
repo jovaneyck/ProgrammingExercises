@@ -1,0 +1,13 @@
+package test
+
+class DesignPatterns extends TestBase{
+	//visitor => pattern matching
+    //singleton => object
+    //factory method => companion objects
+    //template method => just pass in function, no inheritance needed!
+  behavior of "patterns" 
+  
+  it should "do stuff" in{
+    fail("implement")
+  }
+}

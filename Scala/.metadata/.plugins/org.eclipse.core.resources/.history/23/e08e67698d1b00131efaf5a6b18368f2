@@ -1,0 +1,16 @@
+package test
+
+class Implicits extends TestBase{
+	//similar to c# extension methods
+  behavior of "implicits" 
+  
+  it should "act as extension methods in c#, for when a class needs that one extra method" in{
+    class IntegerExtensions{
+    	def plusOne(implicit v : Int) = v + 1
+    }
+    
+    
+    
+    4 plusOne should be(5)
+  }
+}

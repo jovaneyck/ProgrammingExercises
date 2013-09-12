@@ -1,0 +1,10 @@
+package test
+
+import org.scalatest.FunSuite
+
+@RunWith(ClassOf[JUnitRunner])
+class TestSuite extends FunSuite {
+	test("something"){
+	  assert(true === false)
+	}
+}

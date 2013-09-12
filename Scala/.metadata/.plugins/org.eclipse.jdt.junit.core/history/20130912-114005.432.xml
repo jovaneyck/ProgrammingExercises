@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Lists" project="LanguageFeatures" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="test.Lists" time="0.069">
+    <testcase name="lists should have an empty list concept" classname="test.Lists" time="0.045"/>
+    <testcase name="lists should have a cons concept" classname="test.Lists" time="0.001"/>
+    <testcase name="lists should have a friendly notation" classname="test.Lists" time="0.001"/>
+    <testcase name="lists should support the map function" classname="test.Lists" time="0.006"/>
+    <testcase name="lists should support filtering" classname="test.Lists" time="0.016"/>
+  </testsuite>
+</testrun>

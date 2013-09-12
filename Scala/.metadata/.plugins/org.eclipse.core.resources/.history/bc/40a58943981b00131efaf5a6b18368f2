@@ -1,0 +1,25 @@
+package test
+
+class Options extends TestBase{
+	behavior of "Options" 
+  
+	class Person(val name:String)
+	object PersonRepository {
+	  def findBy(name : String) : Option[Person] = //hello, Option!
+	    if(name == "Jo") Some(new Person("Jo"))
+	    else None
+	}
+	
+	it should "act like 'Null Objects'" in{	
+		PersonRepository.findBy("Jo").get.name should be("Jo")
+		
+		PersonRepository.findBy("Paul").getOrElse("Not found") should be("Not found")
+	}
+	
+	it should "play nicely with aggregate operations" in {
+	  List(
+	      PersonRepository.findBy("Jo"),
+	      PersonRepository.findBy("Unknown")
+	  ) filter(true) should be(List()) //leaves out the None's
+	}
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Lists" project="LanguageFeatures" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="test.Lists" time="0.056">
+    <testcase name="lists should have an empty list concept" classname="test.Lists" time="0.045"/>
+    <testcase name="lists should have a cons concept" classname="test.Lists" time="0.011"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,26 @@
+package test
+
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class ClassesAndObjectsTest extends FlatSpec with ShouldMatchers{
+	behavior of "classes"
+	
+	class Person(val name : String, val age : Int)
+	val me = new Person("Jo", 23)
+	
+	it should "have properties" in {
+	  me.age should be(23)
+	}
+	
+	it should "have read-only attributes" in {
+	  //me.age = 45 //compiler does not allow reassignment to val's
+	}
+	
+	it should "can have mutable state" in {
+	  class Mutable(var mutable : Int = 3)
+	}
+}

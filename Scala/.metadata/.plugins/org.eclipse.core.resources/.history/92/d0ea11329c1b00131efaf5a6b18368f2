@@ -1,0 +1,17 @@
+package test
+
+class DesignPatterns extends TestBase{
+	//visitor => pattern matching
+    //singleton => object
+    //factory method => companion objects
+    //template method => just pass in function, no inheritance needed!
+  behavior of "the visitor pattern" 
+  
+  it should "be easily implemented using pattern matching" in{
+    trait Tree
+    object Empty extends Tree
+    class NonEmpty(value : Int, left : Tree, right : Tree) extends Tree
+    
+    val tre = NonEmpty(1,Empty,NonEmpty(2,Empty,Empty))
+  }
+}

@@ -1,0 +1,5 @@
+package test
+
+class Implicits {
+	//similar to c# extension methods
+}

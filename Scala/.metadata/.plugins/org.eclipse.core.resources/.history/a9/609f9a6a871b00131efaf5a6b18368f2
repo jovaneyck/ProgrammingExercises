@@ -1,0 +1,25 @@
+package test
+
+
+class PatternMatchingTest extends TestBase{
+	behavior of "pattern matching"
+	
+	  trait Tree
+	  object Empty extends Tree
+	  case class NonEmpty(el:Int, left: Tree, right: Tree) extends Tree
+	  
+	  val tree = NonEmpty(1337, Empty, Empty)
+	  
+	it should "work on case classes" in {
+	  def visit(t : Tree) = t match {
+	    case Empty => "Empty tree"
+	    case _ => "Nonempty tree"
+	  }
+	  
+	  visit(tree) should be("Nonempty tree")
+	}
+	
+	it should "be possible to use matching to unpack data structures" in {
+	  List(tree) map {case Tree(el,l,r) => el}
+	}
+} 

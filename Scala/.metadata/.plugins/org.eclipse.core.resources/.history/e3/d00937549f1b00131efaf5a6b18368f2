@@ -1,0 +1,31 @@
+package test
+
+class ValVarDef extends TestBase{
+	//lazy val!
+  behavior of "var" 
+  
+  it should "be mutable" in{
+    var x = 1
+    x = 2
+    
+    x should be(2)
+  }
+  
+  behavior of "val"
+  
+  it should "be immutable" in {
+    val x = 1
+    
+    //x = 2 //nope
+  }
+  
+  it should "be lazily evaluated" in {
+    var whatsGoingOn = ""
+    
+    val x = {whatsGoingOn + "x"; 1}
+    whatsGoingOn + "start"
+    whatsGoingOn + x
+    
+    whatsGoingOn should be("wut")
+  }
+}

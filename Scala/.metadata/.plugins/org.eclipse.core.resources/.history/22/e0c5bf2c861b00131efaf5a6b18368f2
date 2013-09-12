@@ -1,0 +1,28 @@
+package test
+
+class Traits extends TestBase{
+  behavior of "traits"
+  
+  it should "act as an interface that can have an implementation" in {
+    trait Adder {
+      def add(n : Int) = n + 1
+    }
+    
+    object WithAdder extends Adder
+    
+    WithAdder.add(4) should be(5)
+  }
+  
+  it should "support multiple inheritance" in {
+    trait A{
+      def a = "a"
+    }
+    
+    trait B {
+     def b = "b"
+    }
+    
+    object Child with A,B
+  }
+  
+}

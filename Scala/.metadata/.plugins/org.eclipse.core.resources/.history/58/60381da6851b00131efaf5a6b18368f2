@@ -1,0 +1,10 @@
+package test
+
+class Traits extends TestBase{
+  behavior of "traits"
+  
+  it should "hehe" in {
+    true should be false
+  }
+  
+}

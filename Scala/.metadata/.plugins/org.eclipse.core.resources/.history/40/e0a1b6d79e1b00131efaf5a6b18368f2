@@ -1,0 +1,9 @@
+package test
+
+class Generics extends TestBase{
+  behavior of "patterns" 
+  
+  it should "do stuff" in{
+    fail("implement")
+  }
+}

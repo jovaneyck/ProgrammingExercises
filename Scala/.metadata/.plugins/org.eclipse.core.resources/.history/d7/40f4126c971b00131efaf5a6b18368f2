@@ -1,0 +1,14 @@
+package test
+
+class Options extends TestBase{
+	behavior of "Options" 
+  
+	it should "act like 'Null Objects'" in{
+		class Person(val name:String)
+		object PersonRepository {
+		  def findBy(name : String) : Option[Person] = 
+		    if(name == "Jo") Some(Person("Jo"))
+		    else None
+		}
+	}
+}

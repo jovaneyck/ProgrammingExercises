@@ -1,0 +1,13 @@
+package test
+
+class ValVarDef extends TestBase{
+	//lazy val!
+  behavior of "var" 
+  
+  it should "be mutable" in{
+    var x = 1
+    x = 2
+    
+    x should be(2)
+  }
+}

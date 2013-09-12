@@ -1,0 +1,23 @@
+package test
+
+class Functions extends TestBase{
+	behavior of "functions" 
+  
+	it should "accept functions as argument" in{
+		def increment(n:Int) = n + 1
+		
+		def perform(number : Int, something: Int=>Int) : Int = //takes a function as argument
+		  something(number)
+		  
+		perform(1, increment) should be(2) //pass in a function argument
+	}
+	
+	it should "return functions" in {
+	  def adder : Int=>Int =
+	    (el : Int) => el + 1
+	}
+	
+	//higher order functions
+	//partially applied functions (Curying)
+	//shorthand lambda notation (_+_)
+}

@@ -1,0 +1,14 @@
+package test
+
+class Functions extends TestBase{
+	//inner functions
+	//higher order functions
+	//partially applied functions (Curying)
+	//shorthand lambda notation (_+_)
+  
+	behavior of "patterns" 
+  
+	it should "do stuff" in{
+		fail("implement")
+	}
+}

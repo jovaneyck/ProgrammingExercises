@@ -1,0 +1,37 @@
+package test
+
+class Lists extends TestBase{
+	//head-tail concept
+	//zip, forall, flatMap, groupBy, sorted, sortWith, reversed, updated...
+  behavior of "lists" 
+  
+  it should "have an empty list concept" in{
+    Nil.length should be(0)
+  }
+  
+  it should "have a cons concept" in {
+    ("an element" :: Nil).length should be(1)
+  }
+  
+  it should "have a friendly notation" in {
+    List(1,2).length should be(2)
+  }
+  
+  it should "support the map function" in {
+    List(1,2) map (_+1) should be(List(2,3)) //note the _ wildcard in lambda's!
+  }
+  
+  it should "support filtering" in {
+    List(1,2,3) filter (_ != 2) should be(List(1,3))
+  } 
+  
+  it should "support a fold" in {
+    //fold requires a "zero-element"
+    List(1,2,3).foldLeft("The list contains ")(_+_) should be("The list contains 123")
+  }
+  
+  it should "support a reduce" in {
+    //reduce takes the first element as "zero"
+    List(1,2,3).reduceLeft(_+_) should be(6)
+  }
+}

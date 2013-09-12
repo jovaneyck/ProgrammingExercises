@@ -1,0 +1,10 @@
+package test
+
+class ValVarDef extends TestBase{
+	//lazy val!
+    behavior of "patterns" 
+  
+  it should "do stuff" in{
+    fail("implement")
+  }
+}

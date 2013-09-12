@@ -1,0 +1,19 @@
+package test
+
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class PatternMatchingTest extends FlatSpec with ShouldMatchers{
+	behavior of "pattern matching"
+	
+	it should "work on case classes" in {
+	  trait Tree
+	  case class Empty extends Tree
+	  case class NonEmpty(el:Int, left: Tree, right: Tree) extends Tree
+	  
+	  val example = NonEmpty(1337, Empty, Empty)
+	}
+}

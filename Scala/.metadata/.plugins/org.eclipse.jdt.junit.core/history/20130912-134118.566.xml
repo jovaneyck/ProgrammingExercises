@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ForComprehensions" project="LanguageFeatures" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ForComprehensions" time="0.074">
+    <testcase name="for comprehensions should iterate over sequentials" classname="test.ForComprehensions" time="0.051"/>
+    <testcase name="for comprehensions should iterate faster over later generators" classname="test.ForComprehensions" time="0.009"/>
+    <testcase name="for comprehensions should allow for easy filtering" classname="test.ForComprehensions" time="0.014"/>
+  </testsuite>
+</testrun>

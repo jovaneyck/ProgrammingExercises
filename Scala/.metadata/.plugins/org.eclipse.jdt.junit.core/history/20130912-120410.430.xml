@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Lists" project="LanguageFeatures" tests="14" started="14" failures="0" errors="0" ignored="0">
+  <testsuite name="test.Lists" time="0.141">
+    <testcase name="lists should have an empty list concept" classname="test.Lists" time="0.057"/>
+    <testcase name="lists should have a cons concept" classname="test.Lists" time="0.001"/>
+    <testcase name="lists should have a friendly notation" classname="test.Lists" time="0.001"/>
+    <testcase name="lists should support the map function" classname="test.Lists" time="0.003"/>
+    <testcase name="lists should support the flatMap function" classname="test.Lists" time="0.003"/>
+    <testcase name="lists should support filtering" classname="test.Lists" time="0.004"/>
+    <testcase name="lists should support a fold" classname="test.Lists" time="0.007"/>
+    <testcase name="lists should support a reduce" classname="test.Lists" time="0.003"/>
+    <testcase name="lists should be easy to combine lists" classname="test.Lists" time="0.003"/>
+    <testcase name="lists should support an easy for all check" classname="test.Lists" time="0.005"/>
+    <testcase name="lists should support easy grouping" classname="test.Lists" time="0.005"/>
+    <testcase name="lists should support easy sorting" classname="test.Lists" time="0.005"/>
+    <testcase name="lists should support arbitrary sorting" classname="test.Lists" time="0.004"/>
+    <testcase name="lists should allow easy updates" classname="test.Lists" time="0.04"/>
+  </testsuite>
+</testrun>

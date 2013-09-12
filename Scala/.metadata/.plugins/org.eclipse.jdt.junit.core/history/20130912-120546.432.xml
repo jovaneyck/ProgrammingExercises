@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Streams" project="LanguageFeatures" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="test.Streams" time="0.058">
+    <testcase name="streams should represent an infinite list" classname="test.Streams" time="0.058"/>
+  </testsuite>
+</testrun>

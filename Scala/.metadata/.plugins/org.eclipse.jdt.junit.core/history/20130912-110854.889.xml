@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="New_configuration" project="LanguageFeatures" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ClassesAndObjects" time="0.087">
+    <testcase name="classes should have properties" classname="test.ClassesAndObjects" time="0.043"/>
+    <testcase name="classes should support read-only attributes" classname="test.ClassesAndObjects" time="0.001"/>
+    <testcase name="classes should support mutable state" classname="test.ClassesAndObjects" time="0.004"/>
+    <testcase name="classes should support private methods" classname="test.ClassesAndObjects" time="0.002"/>
+    <testcase name="classes should support invariants and preconditions" classname="test.ClassesAndObjects" time="0.005"/>
+    <testcase name="classes should support post-condition checking" classname="test.ClassesAndObjects" time="0.018"/>
+    <testcase name="case classes should not require the new keyword, handy for pattern matching!" classname="test.ClassesAndObjects" time="0.004"/>
+    <testcase name="objects should act as a singleton" classname="test.ClassesAndObjects" time="0.01"/>
+  </testsuite>
+  <testsuite name="test.Traits" time="0.015">
+    <testcase name="traits should act as an interface that can have an implementation" classname="test.Traits" time="0.003"/>
+    <testcase name="traits should support multiple inheritance" classname="test.Traits" time="0.005"/>
+    <testcase name="traits should have no problems with the 'diamond problem'" classname="test.Traits" time="0.006"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ValVarDef" project="LanguageFeatures" tests="3" started="3" failures="0" errors="1" ignored="0">
+  <testsuite name="test.ValVarDef" time="0.093">
+    <testcase name="var should be mutable" classname="test.ValVarDef" time="0.055"/>
+    <testcase name="val should be immutable" classname="test.ValVarDef" time="0.001"/>
+    <testcase name="val should be lazily evaluated" classname="test.ValVarDef" time="0.036">
+      <error>org.scalatest.exceptions.TestFailedException: "[xstart1]" was not equal to "[wut]"&#13;
+	at org.scalatest.MatchersHelper$.newTestFailedException(MatchersHelper.scala:160)&#13;
+	at org.scalatest.Matchers$ShouldMethodHelper$.shouldMatcher(Matchers.scala:5627)&#13;
+	at org.scalatest.Matchers$AnyShouldWrapper.should(Matchers.scala:5661)&#13;
+	at test.ValVarDef$$anonfun$3.apply$mcV$sp(ValVarDef.scala:29)&#13;
+	at test.ValVarDef$$anonfun$3.apply(ValVarDef.scala:22)&#13;
+	at test.ValVarDef$$anonfun$3.apply(ValVarDef.scala:22)&#13;
+	at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)&#13;
+	at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)&#13;
+	at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)&#13;
+	at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)&#13;
+	at org.scalatest.Transformer.apply(Transformer.scala:22)&#13;
+	at org.scalatest.Transformer.apply(Transformer.scala:20)&#13;
+	at org.scalatest.FlatSpecLike$$anon$1.apply(FlatSpecLike.scala:1617)&#13;
+	at org.scalatest.Suite$class.withFixture(Suite.scala:1106)&#13;
+	at org.scalatest.FlatSpec.withFixture(FlatSpec.scala:1497)&#13;
+	at org.scalatest.FlatSpecLike$class.invokeWithFixture$1(FlatSpecLike.scala:1614)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$runTest$1.apply(FlatSpecLike.scala:1626)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$runTest$1.apply(FlatSpecLike.scala:1626)&#13;
+	at org.scalatest.SuperEngine.runTestImpl(Engine.scala:306)&#13;
+	at org.scalatest.FlatSpecLike$class.runTest(FlatSpecLike.scala:1626)&#13;
+	at org.scalatest.FlatSpec.runTest(FlatSpec.scala:1497)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$runTests$1.apply(FlatSpecLike.scala:1684)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$runTests$1.apply(FlatSpecLike.scala:1684)&#13;
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:413)&#13;
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:401)&#13;
+	at scala.collection.immutable.List.foreach(List.scala:318)&#13;
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)&#13;
+	at org.scalatest.SuperEngine.org$scalatest$SuperEngine$$runTestsInBranch(Engine.scala:390)&#13;
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:427)&#13;
+	at org.scalatest.SuperEngine$$anonfun$traverseSubNodes$1$1.apply(Engine.scala:401)&#13;
+	at scala.collection.immutable.List.foreach(List.scala:318)&#13;
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)&#13;
+	at org.scalatest.SuperEngine.org$scalatest$SuperEngine$$runTestsInBranch(Engine.scala:396)&#13;
+	at org.scalatest.SuperEngine.runTestsImpl(Engine.scala:483)&#13;
+	at org.scalatest.FlatSpecLike$class.runTests(FlatSpecLike.scala:1684)&#13;
+	at org.scalatest.FlatSpec.runTests(FlatSpec.scala:1497)&#13;
+	at org.scalatest.Suite$class.run(Suite.scala:1423)&#13;
+	at org.scalatest.FlatSpec.org$scalatest$FlatSpecLike$$super$run(FlatSpec.scala:1497)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$run$1.apply(FlatSpecLike.scala:1730)&#13;
+	at org.scalatest.FlatSpecLike$$anonfun$run$1.apply(FlatSpecLike.scala:1730)&#13;
+	at org.scalatest.SuperEngine.runImpl(Engine.scala:545)&#13;
+	at org.scalatest.FlatSpecLike$class.run(FlatSpecLike.scala:1730)&#13;
+	at org.scalatest.FlatSpec.run(FlatSpec.scala:1497)&#13;
+	at org.scalatest.junit.JUnitRunner.run(JUnitRunner.scala:97)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

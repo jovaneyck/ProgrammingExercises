@@ -1,0 +1,9 @@
+package test
+
+import org.scalatest.FunSuite
+
+class TestSuite extends FunSuite {
+	test("something"){
+	  assert(true === false)
+	}
+}

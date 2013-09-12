@@ -1,0 +1,13 @@
+package test
+
+class Functions extends TestBase{
+	behavior of "functions" 
+  
+	it should "accept functions as argument" in{
+		def increment = _ + 1
+	}
+	
+	//higher order functions
+	//partially applied functions (Curying)
+	//shorthand lambda notation (_+_)
+}

@@ -1,0 +1,39 @@
+package test
+
+
+class PatternMatchingTest extends TestBase{
+	behavior of "pattern matching, you could see this as 'unpacking' objects"
+	
+	  trait Tree
+	  object Empty extends Tree
+	  case class NonEmpty(el:Int, left: Tree, right: Tree) extends Tree
+	  
+	  val tree = NonEmpty(1337, Empty, Empty)
+	  
+	it should "work on case classes" in {
+	  def visit(t : Tree) = t match {
+	    case Empty => "Empty tree"
+	    case _ => "Nonempty tree"
+	  }
+	  
+	  visit(tree) should be("Nonempty tree")
+	}
+	
+	it should "be possible to use matching to unpack data structures" in {
+	  val listOfTuples = List( (1,2), (3,4) )
+	  
+	  val onlySeconds = listOfTuples map {case (first, second) => second} 
+	  	//you can 'unapply' stuff using a pattern match inline!
+	  
+	  onlySeconds should be(List(2,4))
+	}
+	
+	it should "support wildcards" in {
+	  def valueOf(t: Tree) = t match {
+	    case Tree(value, _,_) => value
+	    case _ => throw new Exeption("value of an empty node")
+	  }
+	  
+	  valueOf(tree) should be(1337)
+	}
+} 

@@ -1,0 +1,16 @@
+package test
+
+class Traits extends TestBase{
+  behavior of "traits"
+  
+  it should "act as an interface that can have an implementation" in {
+    trait Adder {
+      def add(n : Int) = n + 1
+    }
+    
+    object WithAdder extends Adder
+    
+    WithAdder.add(4) should be(5)
+  }
+  
+}

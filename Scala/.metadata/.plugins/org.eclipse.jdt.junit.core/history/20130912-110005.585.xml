@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ClassesAndObjectsTest" project="LanguageFeatures" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="test.ClassesAndObjectsTest" time="0.111">
+    <testcase name="classes should have properties" classname="test.ClassesAndObjectsTest" time="0.047"/>
+    <testcase name="classes should support read-only attributes" classname="test.ClassesAndObjectsTest" time="0.001"/>
+    <testcase name="classes should support mutable state" classname="test.ClassesAndObjectsTest" time="0.008"/>
+    <testcase name="classes should support private methods" classname="test.ClassesAndObjectsTest" time="0.005"/>
+    <testcase name="classes should support invariants and preconditions" classname="test.ClassesAndObjectsTest" time="0.009"/>
+    <testcase name="classes should support post-condition checking" classname="test.ClassesAndObjectsTest" time="0.02"/>
+    <testcase name="case classes should not require the new keyword, handy for pattern matching!" classname="test.ClassesAndObjectsTest" time="0.009"/>
+    <testcase name="objects should act as a singleton" classname="test.ClassesAndObjectsTest" time="0.011"/>
+  </testsuite>
+</testrun>
