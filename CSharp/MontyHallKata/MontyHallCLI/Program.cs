@@ -9,7 +9,7 @@ namespace MontyHallCLI
         {
             const int numberOfSimulations = 1000000;
 
-            SimulationRunner runner = new Runner(new ConcreteResultChecker(), new RandomSimulationParametersFactory(new RandomRoomNumberGenerator()));
+            SimulationRunner runner = new Runner(new ConcreteResultChecker(), new RandomSimulationParametersFactory(new RandomDoorNumberGenerator()));
             
             runner.RunSimulations(new PrintToConsoleListener(true), numberOfSimulations, true);
             runner.RunSimulations(new PrintToConsoleListener(false), numberOfSimulations, false);

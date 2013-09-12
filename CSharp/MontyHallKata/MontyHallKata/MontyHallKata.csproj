@@ -62,7 +62,7 @@
     <Compile Include="ConcreteResultChecker.cs" />
     <Compile Include="RandomSimulationParametersFactory.cs" />
     <Compile Include="DoorNumberGenerator.cs" />
-    <Compile Include="RandomRoomNumberGenerator.cs" />
+    <Compile Include="RandomDoorNumberGenerator.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="ResultChecker.cs" />
     <Compile Include="SimulationParameterFactory.cs" />
