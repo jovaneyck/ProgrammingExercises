@@ -1,19 +1,5 @@
 INDEX VERSION 1.126+C:\Users\jo.van.eyck\Documents\workspace\ProgrammingExercises\Scala\.metadata\.plugins\org.eclipse.jdt.core
-305854171.index
-1375590734.index
-1115467115.index
 1688306446.index
-30765161.index
-2468990559.index
-163172794.index
-1498219845.index
-3065916431.index
-3133528496.index
-4155206848.index
-1697886153.index
-446631276.index
-2004585256.index
-297826905.index
-3974580528.index
-1995173708.index
+2788495479.index
+2533135804.index
 2069355809.index
