@@ -18,4 +18,10 @@ class CalculatorSpec extends FlatSpec with ShouldMatchers{
 	it should "return the value for another input" in {
 		calculator.add("2") should be(2)
 	}
+	it should "return the sum of multiple numbers" in {
+	  calculator.add("1,2") should be(3)
+	}
+	it should "handle an arbitrary amount of numbers" in {
+	  calculator.add("1,2,3,1") should be(7)
+	}
 }
