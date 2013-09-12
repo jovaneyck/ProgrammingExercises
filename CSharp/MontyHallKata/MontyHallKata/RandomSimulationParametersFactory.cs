@@ -9,9 +9,9 @@ namespace MontyHallKata
             generator = numberGenerator;
         }
 
-        public SimulationParameters GenerateParameters(bool switchesDoors)
+        public SimulationInstance GenerateParameters(bool switchesDoors)
         {
-            return new SimulationParameters()
+            return new SimulationInstance()
                        {
                            CorrectDoor = generator.RoomNumber(),
                            InitiallyChosenDoor = generator.RoomNumber(),

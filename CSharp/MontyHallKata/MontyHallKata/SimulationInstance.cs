@@ -1,6 +1,6 @@
 namespace MontyHallKata
 {
-    public class SimulationParameters
+    public class SimulationInstance
     {
         public bool SwitchesDoors { get; set; }
         public int CorrectDoor { get; set; }

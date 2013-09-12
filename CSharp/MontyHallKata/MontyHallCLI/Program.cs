@@ -9,7 +9,7 @@ namespace MontyHallCLI
         {
             const int numberOfSimulations = 1000000;
 
-            SimulationRunner runner = new Runner(new ConcreteResultChecker(), new RandomSimulationParametersFactory(new RandomDoorNumberGenerator()));
+            SimulationRunner runner = new Runner(new RandomSimulationParametersFactory(new RandomDoorNumberGenerator()));
             
             runner.RunSimulations(new PrintToConsoleListener(true), numberOfSimulations, true);
             runner.RunSimulations(new PrintToConsoleListener(false), numberOfSimulations, false);
@@ -27,9 +27,9 @@ namespace MontyHallCLI
             _switchesDoors = switchesDoors;
         }
 
-        public void ReceiveSimulationResults(int numberOfSuccesses, int numberOfFailures)
+        public void ReceiveSimulationResults(int nbSuccesses, int nbFailures)
         {
-            double percentage = (double) numberOfSuccesses / (numberOfSuccesses + numberOfFailures) * 100;
+            double percentage = (double) nbSuccesses / (nbSuccesses + nbFailures) * 100;
 
             Console.WriteLine("Won in {0}% of cases when {1}switching doors!", 
                 percentage,

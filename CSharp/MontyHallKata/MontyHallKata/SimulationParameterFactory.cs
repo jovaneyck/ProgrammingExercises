@@ -2,6 +2,6 @@ namespace MontyHallKata
 {
     public interface SimulationParameterFactory
     {
-        SimulationParameters GenerateParameters(bool switchesDoors);
+        SimulationInstance GenerateParameters(bool switchesDoors);
     }
 }

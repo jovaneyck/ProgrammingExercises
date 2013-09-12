@@ -27,20 +27,19 @@ namespace Test.B_UnitTests
             var listener = context.CreateMock<SimulationResultListener>();
             listener.Expects.AtLeastOne.Method(l => l.ReceiveSimulationResults(0,0)).WithAnyArguments();
 
-            var simulationFactory = context.CreateInstance<ResultChecker>();
             var simulationParameterFactory = context.CreateInstance<SimulationParameterFactory>();
-            Runner runner = new Runner(simulationFactory, simulationParameterFactory);
+            Runner runner = new Runner(simulationParameterFactory);
             runner.RunSimulations(listener.MockObject, 0, false);
         }
 
         [Test]
         public void StartsTheCorrectNumberOfSimulations()
         {
-            var factory = context.CreateMock<ResultChecker>();
-            factory.Expects.Exactly(5).Method(f => f.WinsTheGameWhen(null)).WithAnyArguments().WillReturn(false);
-            var parameterFactory = context.CreateInstance<SimulationParameterFactory>(MockStyle.Stub);
+            var parameterFactory = context.CreateMock<SimulationParameterFactory>();
+            var simulationInstance = context.CreateInstance<SimulationInstance>();
+            parameterFactory.Expects.Exactly(5).Method(f => f.GenerateParameters(false)).WithAnyArguments().WillReturn(simulationInstance);
 
-            Runner runner = new Runner(factory.MockObject, parameterFactory);
+            Runner runner = new Runner(parameterFactory.MockObject);
             var listener = context.CreateInstance<SimulationResultListener>(MockStyle.Stub);
             
             runner.RunSimulations(listener, 5, false);

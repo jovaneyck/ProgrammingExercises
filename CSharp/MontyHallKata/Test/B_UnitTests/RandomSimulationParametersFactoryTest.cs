@@ -30,11 +30,11 @@ namespace Test.B_UnitTests
             RandomSimulationParametersFactory factory = new RandomSimulationParametersFactory(numberGenerator.MockObject);
 
             const bool switchesDoors = true;
-            SimulationParameters parameters = factory.GenerateParameters(switchesDoors);
+            SimulationInstance instance = factory.GenerateParameters(switchesDoors);
 
-            Assert.AreEqual(parameters.SwitchesDoors, switchesDoors);
-            Assert.AreEqual(parameters.InitiallyChosenDoor, 1);
-            Assert.AreEqual(parameters.CorrectDoor, 1);
+            Assert.AreEqual(instance.SwitchesDoors, switchesDoors);
+            Assert.AreEqual(instance.InitiallyChosenDoor, 1);
+            Assert.AreEqual(instance.CorrectDoor, 1);
         }
     }
 }

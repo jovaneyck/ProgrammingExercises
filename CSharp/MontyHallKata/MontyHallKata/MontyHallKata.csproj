@@ -59,14 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConcreteResultChecker.cs" />
     <Compile Include="RandomSimulationParametersFactory.cs" />
     <Compile Include="DoorNumberGenerator.cs" />
     <Compile Include="RandomDoorNumberGenerator.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="ResultChecker.cs" />
     <Compile Include="SimulationParameterFactory.cs" />
-    <Compile Include="SimulationParameters.cs" />
+    <Compile Include="SimulationInstance.cs" />
     <Compile Include="SimulationResultListener.cs" />
     <Compile Include="SimulationRunner.cs" />
     <Page Include="MainWindow.xaml">

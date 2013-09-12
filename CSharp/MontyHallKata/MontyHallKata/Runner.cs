@@ -2,12 +2,10 @@ namespace MontyHallKata
 {
     public class Runner : SimulationRunner
     {
-        private readonly ResultChecker checker;
         private readonly SimulationParameterFactory parameterFactory;
 
-        public Runner(ResultChecker checker, SimulationParameterFactory parameterFactory)
+        public Runner(SimulationParameterFactory parameterFactory)
         {
-            this.checker = checker;
             this.parameterFactory = parameterFactory;
         }
 
@@ -16,7 +14,7 @@ namespace MontyHallKata
             int numberOfSuccesses = 0;
             for (int simulationNumber = 1; simulationNumber <= numberOfSimulations; simulationNumber++ )
             {
-                if (checker.WinsTheGameWhen(parameterFactory.GenerateParameters(switchesDoors)))
+                if (parameterFactory.GenerateParameters(switchesDoors).ResultsInAWin())
                     numberOfSuccesses++;
             }
 

@@ -2,6 +2,6 @@ namespace MontyHallKata
 {
     public interface SimulationResultListener
     {
-        void ReceiveSimulationResults(int numberOfSuccesses, int numberOfFailures);
+        void ReceiveSimulationResults(int nbSuccesses, int nbFailures);
     }
 }

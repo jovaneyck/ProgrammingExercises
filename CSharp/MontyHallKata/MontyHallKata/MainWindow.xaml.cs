@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace MontyHallKata
 {
@@ -33,10 +20,10 @@ namespace MontyHallKata
             runner.RunSimulations(this, int.Parse(this.numberOfSimulations.Text), checkboxSwitchDoors.IsChecked.GetValueOrDefault());
         }
 
-        public void ReceiveSimulationResults(int numberOfSuccesses, int numberOfFailures)
+        public void ReceiveSimulationResults(int nbSuccesses, int nbFailures)
         {
-            this.numberOfSuccesses.Content = numberOfSuccesses;
-            this.numberOfFailures.Content = numberOfFailures;
+            this.numberOfSuccesses.Content = nbSuccesses;
+            this.numberOfFailures.Content = nbFailures;
         }
     }
 }
