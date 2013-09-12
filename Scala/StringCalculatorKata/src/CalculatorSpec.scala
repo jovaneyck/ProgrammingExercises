@@ -24,4 +24,10 @@ class CalculatorSpec extends FlatSpec with ShouldMatchers{
 	it should "handle an arbitrary amount of numbers" in {
 	  calculator.add("1,2,3,1") should be(7)
 	}
+	it should "handle newlines" in {
+	  calculator.add("1\n2") should be(3)
+	}
+	it should "handle newlines and commas simultaneously" in {
+		calculator.add("1\n2,3") should be(6)
+	}
 }
