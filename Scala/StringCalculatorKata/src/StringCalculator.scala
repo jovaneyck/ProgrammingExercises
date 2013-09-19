@@ -1,7 +1,9 @@
 class StringCalculator {
-	def add(input : String) : Int = 
+	def add(input : String) : Int = {
+	  if (input startsWith("//"))
 	  if (input isEmpty) 0
 	  else asListOfNumbers(input) sum
+	}
 	  
 	private def asListOfNumbers(list : String) : List[Int] = 
 	  toListOfNumbers(list) map (el => Integer.parseInt(el))

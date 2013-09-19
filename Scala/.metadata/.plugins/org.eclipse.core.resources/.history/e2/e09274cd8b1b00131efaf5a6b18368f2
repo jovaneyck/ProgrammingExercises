@@ -1,8 +1,0 @@
-package test
-
-class DesignPatterns {
-	//visitor => pattern matching
-    //singleton => object
-    //factory method => companion objects
-    //template method => just pass in function, no inheritance needed!
-}

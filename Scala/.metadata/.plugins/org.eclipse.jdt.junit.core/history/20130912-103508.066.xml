@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="Traits" project="LanguageFeatures" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="test.Traits" time="0.069">
-    <testcase name="traits should act as an interface that can have an implementation" classname="test.Traits" time="0.048"/>
-    <testcase name="traits should support multiple inheritance" classname="test.Traits" time="0.021"/>
-  </testsuite>
-</testrun>

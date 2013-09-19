@@ -1,7 +1,0 @@
-package test
-
-class Functions {
-	//inner functions
-	//higher order functions
-	//partially applied functions
-}

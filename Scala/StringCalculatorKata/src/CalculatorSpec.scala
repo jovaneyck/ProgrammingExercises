@@ -30,4 +30,7 @@ class CalculatorSpec extends FlatSpec with ShouldMatchers{
 	it should "handle newlines and commas simultaneously" in {
 		calculator.add("1\n2,3") should be(6)
 	}
+	it should "deal with custom delimiters" in {
+	  calculator.add("//;\n") should be(0)
+	}
 }

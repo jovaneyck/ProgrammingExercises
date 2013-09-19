@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="ValVarDef" project="LanguageFeatures" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="test.ValVarDef" time="0.067">
-    <testcase name="var should be mutable" classname="test.ValVarDef" time="0.061"/>
-    <testcase name="val should be immutable" classname="test.ValVarDef" time="0.006"/>
-  </testsuite>
-</testrun>
