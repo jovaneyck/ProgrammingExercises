@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms</title>
+	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<form action="#" method="post">
+		<fieldset>
+			<legend>Some form</legend>
+			<label>Name:</label>
+			<input id="name" type="text" placeholder="John Doe">
+			<br><br>
+			<label>Gender:</label>
+			<select id="gender">
+				<option>M</option>
+				<option>F</option>
+			</select>
+			<label class="checkbox">
+		    	<input type="checkbox"> Send me heaps of spam!
+		    </label>
+		    <div class="input-prepend">
+		    	<span class="add-on">@<span>
+		    	<input id="twitterHandle" type="text" placeholder="jvaneyck"/>
+		    </div>
+		    <br>
+		    <button type="button" class="btn btn-primary">Submit</button>
+	   </fieldset>
+	</form>
+	<br>
+	<form class="form-search">
+		<legend>Search</legend>
+	  <input type="text" class="input-medium search-query">
+	  <button type="submit" class="btn">Search</button>
+	</form>
+</div>
+</body>
+</html>
