@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<input type="text" placeholder="cookie value" ng-model="value">
+		<button ng-click="save(value)">Save to cookie</button>
+		<button ng-click="get()">Get cookie</button>
+		<button ng-click="delete()">Delete cookie</button>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+
+	<!--requires a separate module!-->
+	<script type="text/javascript" src="lib/angular-cookies-1.0.1.min.js"></script>
+	
+	
+	<script>
+		var myApp = angular.module('myApp', ['ngCookies']);
+
+		function myCtrl($scope, $cookieStore){
+			$scope.save = function(valueToSave) {
+				$cookieStore.put('key', valueToSave);
+			}
+
+			$scope.get = function() {
+				console.log($cookieStore.get('key'));
+			}
+
+			$scope.delete = function(){
+				$cookieStore.remove('key');
+			}
+
+		}
+	</script>
+</body>
+</html>	

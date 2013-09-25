@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="">
+	<div ng-controller="myCtrl">
+		<input type="text" ng-model="myModel">
+		<p style="color: red;" >{{myModel}}</p>
+
+		<button type="submit" ng-click="save('extra parameter')">Submit</button>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script>
+		function myCtrl($scope){
+			$scope.save = function(arg) {
+				//note: $scope has access to $scope.model!
+				//Perhaps passing in the object is handy within an ng-repeat scope?
+				console.log("Scope in controller: ");
+				console.log($scope.myModel);
+				console.log("Controller received: "+arg);
+			};
+		}
+	</script>
+</body>
+</html>

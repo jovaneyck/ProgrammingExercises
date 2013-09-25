@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		{{now | date}} <!--set a datatype on a field using a filter-->
+		<br/>
+		{{now | date:myFormat}} <!--you can even select from different formats-->
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	
+	<!--Include the correct locale file (as cQ does)-->
+	<script type="text/javascript" src="lib/angular-locale_nl-nl.js"></script>
+	<script>
+		var myApp = angular.module('myApp', []);
+
+		function myCtrl($scope, $locale){
+			$scope.now = Date.now();
+			$scope.myFormat = $locale.DATETIME_FORMATS.longDate;
+			console.log($locale);
+		}
+	</script>
+</body>
+</html>

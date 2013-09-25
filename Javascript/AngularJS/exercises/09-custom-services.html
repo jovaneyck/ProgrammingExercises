@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<p>Accessing data from a service:</p>
+		<ul>
+			<li ng-repeat="p in persons">{{p.name}}</li>
+		</ul>
+		<p>Calling an API:</p>
+		{{ proxyCallToService('hello world') }}
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.factory('dataService',function(){
+			return { persons: [	{
+									name: 'Jo',
+									age: 25	
+								},
+								{
+									name: 'Paul',
+									age: 22
+								}
+							]
+					};
+		});
+
+		myApp.factory('myAPI', function(){
+			return {
+				call : function(data){
+					return "*processed* "+data+" *processed*";
+				}
+			}
+		});
+
+		function myCtrl($scope, dataService, myAPI){
+			$scope.proxyCallToService = myAPI.call;
+			$scope.persons = dataService.persons;
+		}
+	</script>
+</body>
+</html>

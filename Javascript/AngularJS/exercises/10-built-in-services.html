@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		{{'hello'}}
+		<p ng-repeat="p in persons">
+			{{p.name}}
+		</p>
+		<button ng-click="httpCallWithCallback()">perform http GET!</button>
+
+		<p>
+			With promises
+			<p ng-repeat="p in promises">
+				{{p.name}}
+			</p>
+			<button ng-click="doCallWithPromise()">perform GET with a promise!</button>
+		</p>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script>
+		var myApp = angular.module('myApp', []);
+
+		function myCtrl($scope, $http, $log, $q){
+			$scope.httpCallWithCallback = function() {
+				$http({
+					method: 'GET',
+					url: '/randomData.json'
+				})
+				.success(function(data){
+					$log.info(data)
+					$scope.persons = data
+				})
+				.error(function(data, status, headers, config){
+					$log.warn(data, status, headers, config);
+				});
+			}
+
+			function httpCallWithPromise(){
+				//1 create deferred
+				var deferred = $q.defer();
+
+				$http({
+					method: 'GET',
+					url: '/randomData.json'
+				})
+				.success(function(data){
+					//2 set actions
+					deferred.resolve(data);
+				})
+				.error(function(data, status, headers, config){
+					deferred.reject(status);
+				});
+
+				//promise is synchronously returned!
+				//3 return a promise
+				return deferred.promise;
+			}
+
+			$scope.doCallWithPromise = function(){
+				var promise = httpCallWithPromise();
+				//then() defines what should be done when the promise is fulfilled!
+				promise.then(function(data){
+					$log.info(data);
+					$scope.promises = data;
+				})
+			}
+
+		}
+	</script>
+</body>
+</html>

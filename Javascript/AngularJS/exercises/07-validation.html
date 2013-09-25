@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validation</title>
+
+	<style>
+		/*Easy styling of invalid elements!*/
+		input.ng-invalid {
+			background-color: pink;
+		}
+	</style>
+</head>
+<body ng-app="">
+	<div ng-controller="myCtrl">
+		<form name="regularForm">
+			<legend>Enter your details</legend>
+			<fieldset>
+				<label>Regular</label>
+				<input id="name" type="text" placeholder="Regular input field">
+			</fieldset>
+			<button type="submit">Submit</button>
+		</form>
+
+		<form name="requiredForm">
+			<fieldset>
+				<label>Required html5</label>
+				<input required id="name" type="text" placeholder="Required name" ng-model="person.name">
+				<label>Age with pattern validation</label>
+				<input type="text" required placeholder="dd" ng-model="person.age" ng-pattern="/^\d*$/">
+			</fieldset>
+			<button type="submit" ng-click="save(requiredForm, person)" ng-disabled="requiredForm.$invalid">Submit</button> <!--duplication of form name :(-->
+		</form>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script>
+		'use strict;'
+		function myCtrl($scope){
+			$scope.save = function(requiredForm, person){
+				console.log('form: ');
+				console.log(requiredForm);
+				console.log("person:");
+				console.log(person);
+				if(requiredForm.$valid){ //check form validity, i.e. controller is always called, even on invalid fields!!
+					console.log("valid")
+				} else {
+					console.log("invalid")
+				}
+			}
+		}
+	</script>
+</body>
+</html>

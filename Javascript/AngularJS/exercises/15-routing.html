@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div> <!--No controller reference in HTML!-->
+		<div>
+			<a href="#page">Open a view</a>
+			<br/>
+			<a href="#page2/133">Open a view with an argument in the URL</a>
+		</div>
+		<br/>
+		<ng-view></ng-view>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	
+	<script>
+		var myApp = angular.module('myApp', [])
+			.config(function($routeProvider, $locationProvider){
+				$routeProvider.when('/page',
+				{
+					templateUrl: 'templates/template.html',
+					controller: myCtrl
+				});
+
+				//route variables
+				$routeProvider.when('/page2/:id',
+				{
+					templateUrl: 'templates/template2.html',
+					controller: myCtrl
+				});
+
+				//catch invalid URL's: 
+				$routeProvider.otherwise(
+					{redirectTo: "notFound"}
+				);
+			});
+
+
+		function myCtrl($scope, $routeParams){ //inject $routeParams to query URL
+
+			$scope.id = $routeParams.id;
+			$scope.data = "data from the controller";
+		}
+	</script>
+</body>
+</html>	

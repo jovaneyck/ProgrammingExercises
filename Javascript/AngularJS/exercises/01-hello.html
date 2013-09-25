@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="">
+	<h1 ng-controller='HelloCtrl'>{{helloMessage}}</h1>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+
+	<script type="text/javascript">
+		console.log('init');
+		function HelloCtrl($scope){
+			console.log("initialized controller")
+			$scope.helloMessage = "hello world!";
+		}
+	</script>
+</body>
+</html>

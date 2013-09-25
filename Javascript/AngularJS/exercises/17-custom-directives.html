@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom directives</title>
+</head>
+<style>
+	.parent {
+		background-color: grey;
+	}
+
+	.nested {
+		background-color: pink;
+	}
+</style>
+<body ng-app="myApp">
+	<div>
+		<div ng-controller="myCtrl">
+			<custom-directive my-custom-data="custom"></custom-directive>
+
+			<custom-directive my-custom-data="custom2"></custom-directive>
+
+			<label>Only dates: </label>
+			<input type="text" only-sixes placeholder="only sixes are allowed">
+			<br/>
+			<label>Listening to changes:</label>
+			<input type="text" ng-model="value" placeholder="Listening to this field...">
+			<my-listener listen-to="{{value}}"> </my-listener>
+
+			<br/>
+			<label>With built-in directive:</label>
+			<greeting></greeting>
+
+			<br/>
+			<label>Communicating directives</label>
+			<greeting communicates-with-greeting></greeting>
+
+			<br/>
+			<label>Nested directives</label>
+			<parent title="The parent element">
+				<div>
+					Some other element that could as well be a directive
+				</div>
+			</parent>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	
+	<script>
+		var myApp = angular.module('myApp', []);
+
+		//html
+		myApp.directive('customDirective', function(){
+			return {
+				template :"<div><input type='text' ng-model='sampleData'/>{{sampleData}} with custom {{customData}}</div>",
+				restrict: 'E', //custom html tags
+				replace: true, //don't leave the invalid html, replace with native elements
+				scope : {
+					//isolate scope from multiple directive instances, otherwise the parent scope will be shared between directive instances!
+					customData : '@myCustomData' //or just '@' if the names match, you can also use = and & for parent scope values and functions respectively.
+
+				}
+			};
+		});
+
+		//event
+		myApp.directive('onlySixes', function(){
+			return {
+				restrict: 'A',
+				link : function(scope, element, attrs, ctrl){
+					//jQuery.on
+					$(element).on('keydown', function(event){
+						return event.keyCode === 102; //6
+					})
+				}
+			}
+		});
+
+		//observer
+		myApp.directive('myListener', function(){
+			return {
+				restrict: 'E',
+				link: function(scope, element, attrs, ctrl){
+					//observer!
+					attrs.$observe('listenTo', function(newVal, oldVal){
+						if(newVal != oldVal){
+							element.html('<span>Value: '+newVal+'</span>');
+						}
+					});
+				}
+			};
+		});
+
+		//directive with its own controller
+		myApp.directive('greeting', function(){
+			return {
+				restrict: 'E',
+				template: '<button ng-click="hello()">Say hello</button>',
+				controller: 'greetingCtrl'
+			};
+		})
+
+		//communicating with other directives through shared controllers
+		myApp.directive('communicatesWithGreeting', function(){
+			return {
+				require: 'greeting', //name of a DIRECTIVE with the shared controller
+				restrict: 'A',
+				link: function(scope, element, attrs, ctrl){
+					ctrl.addGreeting('hey');
+				}
+			};
+		});
+
+		myApp.directive('parent', function(){
+			return {
+				restrict: 'E',
+				replace: true,
+				template: '<div class="parent" ng-click="toggle()">{{title}} <div class="nested" ng-transclude ng-show="visible"></div></div>', //define where the inner element should be displayed
+				transclude: true, //support inner elements!
+				scope: {
+					title: "@"
+				},
+				controller: function($scope){
+					$scope.visible = true;
+					$scope.toggle = function(){
+						console.log('clicky');
+						$scope.visible = !$scope.visible;
+					};
+				}
+			};
+		});
+
+		function myCtrl($scope, $location){ 
+
+		}
+
+		myApp.controller('greetingCtrl', function($scope){
+			var greetings = ['hello'];
+
+			$scope.hello = function(){
+				console.log(greetings.join());
+			}
+
+			//function on the controller object itself
+			this.addGreeting = function(greeting){
+				greetings.push(greeting);
+			}
+
+		});
+	</script>
+</body>
+</html>	

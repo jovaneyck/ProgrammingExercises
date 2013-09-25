@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="">
+	<div ng-controller="filterCtrl">
+		{{"whaaaat" | uppercase}} <br/>
+		{{"WHAAAAT" | lowercase}} <br/>
+		{{3.1414 | number:2}} <br/>
+		{{99 | number:2}} <br/>
+		{{100 | currency}} <br/>
+		{{date | date:'mediumDate'}} <br/>
+		{{ someJSON }}
+
+		<div>
+			<p>Filters in combination with ng-repeat</p>
+			<div>
+				Order by:
+				<select ng-model="sortOrder">
+					<option selected value="name">name</option>
+					<option value="age">age</option>
+				</select>
+				Only show:
+				<select ng-model="query.age">
+					<option value="22">22</option>
+					<option value="25">25</option>
+				</select>
+			</div>
+			<span ng-repeat="person in persons | filter:query | orderBy:query | limitTo: 3">
+				{{person.name}}
+			</span>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript">
+		function filterCtrl($scope){
+			$scope.date = new Date()
+			$scope.someJSON = {
+				myValue : 12,
+				complexValue : {
+					a: 'a',
+					b: 'b'
+				},
+				someFunction : function(){
+					var x = 3 + 4;
+					console.log(x);
+				}
+			}
+
+			$scope.sortOrder = 'name';
+			$scope.persons = [
+				{
+					name: "Jo",
+					age: 25
+				},
+				{	
+					name: "Paul",
+					age: 22
+				},
+				{
+					name: "Dexter",
+					age: 7
+				},
+				{
+					name: "Third wheel",
+					age: 999
+				}
+			];
+		}
+	</script>
+</body>
+</html>

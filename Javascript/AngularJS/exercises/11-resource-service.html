@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		Regular: {{message.value}} <br/>
+
+		With promise:  {{promisedMessage.value}} <br/>
+
+		POST something:
+		<button ng-click="save(promisedMessage)">POST</button>
+
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<!--separate module, js file!-->
+	<script type="text/javascript" src="lib/angular-resource-1.0.1.min.js"></script>
+	<script>
+		var myApp = angular.module('myApp', ['ngResource']); //must include the resource module!
+
+		myApp.factory('restAPI', function($resource){
+			return {
+				synch : function(msgId){
+					return $resource('data/:id.json', {id:'@id'}).get({id:msgId});
+				}
+			}
+		});
+
+		myApp.factory('restAPIWithPromises', function($resource, $q){
+			var resource = $resource('data/:id.json', {id:'@id'});
+			return {
+				get : function(msgId) {
+					var deferred = $q.defer();
+
+					resource.get(
+						{id:msgId}, 
+						function(data) { deferred.resolve(data)},
+						function(response) { deferred.reject(response)}
+					);
+
+					return deferred.promise;
+				},
+				save : function(message){
+					var deferred = $q.defer();
+
+					resource.save(
+						message, 
+						function(data) { deferred.resolve(data)},
+						function(response) { deferred.reject(response)}
+					);
+
+					return deferred.promise;
+				}
+			}
+		});
+
+		function myCtrl($scope, restAPI, restAPIWithPromises){
+			$scope.message = restAPI.synch(1337); //SYNCHRONOUS
+
+			$scope.promisedMessage = restAPIWithPromises.get(1337);
+			$scope.promisedMessage.then(function(onReceive){
+				console.log("promise fulfilled: ");
+				console.log(onReceive);
+			});
+
+			$scope.save = function(element){
+				element.value = "updated message to disk OMG";
+				element.id = 999;
+				
+				restAPIWithPromises.save(element).then(function(response){
+					console.log('save succeeded!');
+				});
+			}
+		}
+	</script>
+</body>
+</html>

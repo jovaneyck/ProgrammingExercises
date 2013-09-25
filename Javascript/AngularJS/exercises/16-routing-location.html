@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div>
+		<div ng-controller="myCtrl">
+			<button ng-click="navigate()">Navigate</button>
+		</div>
+		<br/>
+		<ng-view></ng-view>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	
+	<script>
+		var myApp = angular.module('myApp', [])
+			.config(function($routeProvider, $locationProvider){
+				$routeProvider.when('/page',
+				{
+					templateUrl: 'templates/template.html',
+					controller: myCtrl
+				});
+			});
+
+
+		function myCtrl($scope, $location){ 
+			$scope.navigate = function(){
+				$scope.data = "data from the controller";
+				console.log($location);
+				$location.url('/page'); //matches the route defined
+			};
+		}
+	</script>
+</body>
+</html>	

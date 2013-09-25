@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		Name: <span>{{name}}</span>
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	
+
+	<script>
+		var myApp = angular.module('myApp', []);
+
+		function myCtrl($scope, $timeout){
+			var promise = $timeout(
+				function() {
+					$scope.name = "John Doe"
+				}, 
+				3000);
+		}
+	</script>
+</body>
+</html>	
