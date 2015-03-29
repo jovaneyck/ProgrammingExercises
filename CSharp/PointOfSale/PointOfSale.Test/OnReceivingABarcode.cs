@@ -16,6 +16,15 @@ namespace PointOfSale.Test
         }
 
         [Test]
+        public void DisplaysAWarningWhenTheBarcodeIsNotFound()
+        {
+            var pointOfSale = new PointOfSale(new PriceRegistry());
+            pointOfSale.OnBarcode("555");
+
+            Assert.AreEqual("no price found for barcode <555>", pointOfSale.LastTextDisplayed.ToLower());
+        }
+
+        [Test]
         public void DisplaysThePriceOfAValidBarcode()
         {
             var pointOfSale = new PointOfSale(new PriceRegistry().Register("12345", 9.95m));

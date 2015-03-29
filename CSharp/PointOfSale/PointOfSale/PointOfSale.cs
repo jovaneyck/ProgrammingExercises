@@ -24,6 +24,10 @@ namespace PointOfSale
             {
                 LastTextDisplayed = "Invalid barcode";
             }
+            else if (! _priceRegistry.HasPriceFor(barcode))
+            {
+                LastTextDisplayed = string.Format("No price found for barcode <{0}>", barcode);
+            }
             else
             {
                 var price = _priceRegistry.PriceOf(barcode);

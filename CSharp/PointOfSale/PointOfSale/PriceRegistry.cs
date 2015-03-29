@@ -16,5 +16,10 @@ namespace PointOfSale
             _priceForBarcode.Add(barcode, price);
             return this;
         }
+
+        public bool HasPriceFor(string barcode)
+        {
+            return _priceForBarcode.ContainsKey(barcode);
+        }
     }
 }
