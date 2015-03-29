@@ -19,7 +19,7 @@ namespace PointOfSale.Test
         [Test]
         public void DisplaysThePriceOfAValidBarcode()
         {
-            var pointOfSale = new PointOfSale(new Dictionary<string, decimal> { { "12345", 9.95m } });
+            var pointOfSale = new PointOfSale(new Dictionary<string, Price> { { "12345", 9.95m } });
             pointOfSale.OnBarcode("12345");
             Assert.AreEqual("9.95$", pointOfSale.LastTextDisplayed);
         }
@@ -27,7 +27,7 @@ namespace PointOfSale.Test
         [Test]
         public void DisplaysThePriceOfAValidBarcodeOfAnotherProduct()
         {
-            var pointOfSale = new PointOfSale(new Dictionary<string, decimal> {{"678910", 0.5m}});
+            var pointOfSale = new PointOfSale(new Dictionary<string, Price> { { "678910", 0.5m } });
             pointOfSale.OnBarcode("678910");
             Assert.AreEqual("0.50$", pointOfSale.LastTextDisplayed);
         }

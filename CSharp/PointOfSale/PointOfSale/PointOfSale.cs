@@ -1,14 +1,13 @@
 ﻿
 using System.Collections.Generic;
-using System.Globalization;
 
 namespace PointOfSale
 {
     public class PointOfSale
     {
-        private readonly Dictionary<string, decimal> _priceRegistry;
+        private readonly Dictionary<string, Price> _priceRegistry;
 
-        public PointOfSale(Dictionary<string, decimal> priceRegistry)
+        public PointOfSale(Dictionary<string, Price> priceRegistry)
         {
             _priceRegistry = priceRegistry;
         }
@@ -22,13 +21,8 @@ namespace PointOfSale
             else
             {
                 var price = _priceRegistry[barcode];
-                LastTextDisplayed = ToPrettyPrintedPrice(price);
+                LastTextDisplayed = price.ToString();
             }
-        }
-
-        private static string ToPrettyPrintedPrice(decimal price)
-        {
-            return price.ToString("0.00$", new NumberFormatInfo{NumberDecimalSeparator = "."});
         }
 
         public string LastTextDisplayed { get; private set; }
