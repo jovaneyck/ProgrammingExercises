@@ -6,12 +6,14 @@ namespace PointOfSale.Test
     public class OnReceivingABarcode
     {
         [Test]
-        public void DisplaysHelpfulMessageWhenScanningAnInvalidBarcode()
+        [TestCase("", TestName = "An empty string is invalid input")]
+        [TestCase(null, TestName = "Null is invalid input")]
+        public void DisplaysHelpfulMessageWhenScanningAnInvalidBarcode(string input)
         {
             var pointOfSale = (new PointOfSale());
-            pointOfSale.OnBarcode("");
+            pointOfSale.OnBarcode(input);
             var message = pointOfSale.LastTextDisplayed;
-            Assert.IsTrue(message.ToLower().Contains("invalid"));
+            Assert.IsTrue(message.ToLower().Contains("invalid barcode"));
         }
     }
 }
