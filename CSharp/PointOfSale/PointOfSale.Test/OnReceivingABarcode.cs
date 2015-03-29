@@ -15,5 +15,14 @@ namespace PointOfSale.Test
             var message = pointOfSale.LastTextDisplayed;
             Assert.IsTrue(message.ToLower().Contains("invalid barcode"));
         }
+
+        [Test]
+        public void DisplaysThePriceOfAValidBarcode()
+        {
+            var pointOfSale = (new PointOfSale());
+            pointOfSale.OnBarcode("12345");
+            Assert.AreEqual("9.95$", pointOfSale.LastTextDisplayed);
+
+        }
     }
 }

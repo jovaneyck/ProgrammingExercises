@@ -5,14 +5,16 @@ namespace PointOfSale
     {
         public void OnBarcode(string empty)
         {
-            
-        }
-
-        public string LastTextDisplayed {
-            get
+            if (string.IsNullOrWhiteSpace(empty))
             {
-                return "Invalid barcode";
+                LastTextDisplayed = "Invalid barcode";
+            }
+            else
+            {
+                LastTextDisplayed = "9.95$";
             }
         }
+
+        public string LastTextDisplayed { get; private set; }
     }
 }
