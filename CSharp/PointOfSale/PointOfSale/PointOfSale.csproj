@@ -44,6 +44,7 @@
     <Compile Include="Barcode.cs" />
     <Compile Include="PointOfSale.cs" />
     <Compile Include="Price.cs" />
+    <Compile Include="PriceRegistry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

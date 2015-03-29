@@ -1,14 +1,20 @@
 ﻿
-using System.Collections.Generic;
+
+using System;
 
 namespace PointOfSale
 {
     public class PointOfSale
     {
-        private readonly Dictionary<Barcode, Price> _priceRegistry;
+        private readonly PriceRegistry _priceRegistry;
 
-        public PointOfSale(Dictionary<Barcode, Price> priceRegistry)
+        public PointOfSale(PriceRegistry priceRegistry)
         {
+            if (priceRegistry == null)
+            {
+                throw new ArgumentNullException("priceRegistry");
+            }
+
             _priceRegistry = priceRegistry;
         }
 
@@ -20,7 +26,7 @@ namespace PointOfSale
             }
             else
             {
-                var price = _priceRegistry[barcode];
+                var price = _priceRegistry.PriceOf(barcode);
                 LastTextDisplayed = price.ToString();
             }
         }

@@ -1,8 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using NUnit.Framework;
 
 namespace PointOfSale.Test
 {
+    [TestFixture]
+    public class PointOfSaleTest
+    {
+        [Test]
+        public void RejectsAnInvalidPriceRegistry()
+        {
+            Assert.Throws<ArgumentNullException>(() => new PointOfSale(null));
+        }
+    }
+
     [TestFixture]
     public class OnReceivingABarcode
     {
@@ -11,7 +21,7 @@ namespace PointOfSale.Test
         [TestCase(null, TestName = "Null is invalid input")]
         public void DisplaysHelpfulMessageWhenScanningAnInvalidBarcode(string input)
         {
-            var pointOfSale = (new PointOfSale(null));
+            var pointOfSale = (new PointOfSale(new PriceRegistry()));
             pointOfSale.OnBarcode(input);
             Assert.IsTrue(pointOfSale.LastTextDisplayed.ToLower().Contains("invalid barcode"));
         }
@@ -19,7 +29,7 @@ namespace PointOfSale.Test
         [Test]
         public void DisplaysThePriceOfAValidBarcode()
         {
-            var pointOfSale = new PointOfSale(new Dictionary<Barcode, Price> { { "12345", 9.95m } });
+            var pointOfSale = new PointOfSale(new PriceRegistry().Register("12345", 9.95m));
             pointOfSale.OnBarcode("12345");
             Assert.AreEqual("9.95$", pointOfSale.LastTextDisplayed);
         }
@@ -27,7 +37,7 @@ namespace PointOfSale.Test
         [Test]
         public void DisplaysThePriceOfAValidBarcodeOfAnotherProduct()
         {
-            var pointOfSale = new PointOfSale(new Dictionary<Barcode, Price> { { "678910", 0.5m } });
+            var pointOfSale = new PointOfSale(new PriceRegistry().Register("678910", 0.5m));
             pointOfSale.OnBarcode("678910");
             Assert.AreEqual("0.50$", pointOfSale.LastTextDisplayed);
         }
