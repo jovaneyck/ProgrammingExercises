@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barcode.cs" />
     <Compile Include="PointOfSale.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="Program.cs" />

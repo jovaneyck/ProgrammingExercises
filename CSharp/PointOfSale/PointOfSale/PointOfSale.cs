@@ -5,9 +5,9 @@ namespace PointOfSale
 {
     public class PointOfSale
     {
-        private readonly Dictionary<string, Price> _priceRegistry;
+        private readonly Dictionary<Barcode, Price> _priceRegistry;
 
-        public PointOfSale(Dictionary<string, Price> priceRegistry)
+        public PointOfSale(Dictionary<Barcode, Price> priceRegistry)
         {
             _priceRegistry = priceRegistry;
         }
