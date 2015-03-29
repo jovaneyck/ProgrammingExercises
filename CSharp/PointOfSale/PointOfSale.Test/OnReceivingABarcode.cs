@@ -35,9 +35,8 @@ namespace PointOfSale.Test
         public void DisplaysThePriceOfMultipleProductsInARow()
         {
             var pointOfSale = new PointOfSale(new PriceRegistry().Register("12345", 0.3m).Register("678910", 0.5m));
-            pointOfSale.OnBarcode("12345");
-            Assert.AreEqual("0.30$", pointOfSale.LastTextDisplayed);
             
+            pointOfSale.OnBarcode("12345");            
             pointOfSale.OnBarcode("678910");
             Assert.AreEqual("0.50$", pointOfSale.LastTextDisplayed);
         }
