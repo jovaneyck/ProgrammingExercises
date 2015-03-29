@@ -1,18 +1,34 @@
 ﻿
+using System.Collections.Generic;
+using System.Globalization;
+
 namespace PointOfSale
 {
     public class PointOfSale
     {
-        public void OnBarcode(string empty)
+        private readonly Dictionary<string, decimal> _priceRegistry;
+
+        public PointOfSale(Dictionary<string, decimal> priceRegistry)
         {
-            if (string.IsNullOrWhiteSpace(empty))
+            _priceRegistry = priceRegistry;
+        }
+
+        public void OnBarcode(string barcode)
+        {
+            if (string.IsNullOrWhiteSpace(barcode))
             {
                 LastTextDisplayed = "Invalid barcode";
             }
             else
             {
-                LastTextDisplayed = "9.95$";
+                var price = _priceRegistry[barcode];
+                LastTextDisplayed = ToPrettyPrintedPrice(price);
             }
+        }
+
+        private static string ToPrettyPrintedPrice(decimal price)
+        {
+            return price.ToString("0.00$", new NumberFormatInfo{NumberDecimalSeparator = "."});
         }
 
         public string LastTextDisplayed { get; private set; }
