@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barcode.cs" />
+    <Compile Include="Display.cs" />
     <Compile Include="PointOfSale.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="PriceRegistry.cs" />

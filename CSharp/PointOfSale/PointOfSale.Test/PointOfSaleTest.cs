@@ -7,9 +7,10 @@ namespace PointOfSale.Test
     public class PointOfSaleTest
     {
         [Test]
-        public void RejectsAnInvalidPriceRegistry()
+        public void RejectsInvalidCollaborators()
         {
-            Assert.Throws<ArgumentNullException>(() => new PointOfSale(null));
+            Assert.Throws<ArgumentNullException>(() => new PointOfSale(null, new Display()));
+            Assert.Throws<ArgumentNullException>(() => new PointOfSale(new PriceRegistry(), null));
         }
     }
 }

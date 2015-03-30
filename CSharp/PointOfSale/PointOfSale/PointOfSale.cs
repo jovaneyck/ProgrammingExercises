@@ -6,9 +6,10 @@ namespace PointOfSale
 {
     public class PointOfSale
     {
+        private readonly Display _display;
         private readonly PriceRegistry _priceRegistry;
 
-        public PointOfSale(PriceRegistry priceRegistry)
+        public PointOfSale(PriceRegistry priceRegistry, Display display)
         {
             if (priceRegistry == null)
             {
@@ -16,25 +17,30 @@ namespace PointOfSale
             }
 
             _priceRegistry = priceRegistry;
+
+            if (display == null)
+            {
+                throw new ArgumentNullException("display");
+            }
+
+            _display = display;
         }
 
         public void OnBarcode(string barcode)
         {
             if (string.IsNullOrWhiteSpace(barcode))
             {
-                LastTextDisplayed = "Invalid barcode";
+                _display.DisplayInvalidBarcodeMessage();
             }
             else if (! _priceRegistry.HasPriceFor(barcode))
             {
-                LastTextDisplayed = string.Format("No price found for barcode <{0}>", barcode);
+                _display.DisplayPriceNotFoundFor(barcode);
             }
             else
             {
                 var price = _priceRegistry.PriceOf(barcode);
-                LastTextDisplayed = price.ToString();
+                _display.DisplayPrice(price);
             }
         }
-
-        public string LastTextDisplayed { get; private set; }
     }
 }
