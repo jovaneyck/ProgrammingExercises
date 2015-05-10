@@ -1,34 +1,27 @@
 ﻿using System.Diagnostics;
-using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace AutoFixture
 {
-    [TestFixture]
     public class FixtureShould
     {
-        private Fixture _fixture;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _fixture = new Fixture();
-        }
-
-        [Test]
+        [Fact]
         public void GenerateAnonymousDataForBasicTypes()
         {
-          
-            Assert.IsTrue(_fixture.Create<int>() > 0);
-            Assert.IsNotNull(_fixture.Create<string>());
+            var fixture = new Fixture();
+
+            Assert.True(fixture.Create<int>() > 0);
+            Assert.NotNull(fixture.Create<string>());
         }
 
-        [Test]
+        [Fact]
         public void GenerateRandomDataBasedOnASeed()
         {
-            Assert.IsTrue(_fixture.Create("start").StartsWith("start"));
+            var fixture = new Fixture();
+            Assert.True(fixture.Create("start").StartsWith("start"));
         }
 
         public class Bar
@@ -36,10 +29,11 @@ namespace AutoFixture
             public string String { get; set; }
         }
 
-        [Test]
+        [Fact]
         public void CreateAnonymousValuesForCustomTypes()
         {
-            Assert.IsNotNull(_fixture.Create<Bar>().String);
+            var fixture = new Fixture();
+            Assert.NotNull(fixture.Create<Bar>().String);
         }
 
         public class Foo
@@ -48,46 +42,51 @@ namespace AutoFixture
             public Bar Bar { get; set; }
         }
 
-        [Test]
+        [Fact]
         public void GenerateObjectGraphs()
         {
-            var anonymousFoo = _fixture.Create<Foo>();
+            var fixture = new Fixture();
+            var anonymousFoo = fixture.Create<Foo>();
 
-            Assert.IsNotNull(anonymousFoo.Bar);
-            Assert.IsNotNull(anonymousFoo.Bar.String);
+            Assert.NotNull(anonymousFoo.Bar);
+            Assert.NotNull(anonymousFoo.Bar.String);
         }
 
-        [Test]
+        [Fact]
         public void GenerateSequences()
         {
-            var numbers = _fixture.CreateMany<int>();
-            Assert.IsTrue(numbers.Any());
+            var fixture = new Fixture();
+            var numbers = fixture.CreateMany<int>();
+            Assert.True(numbers.Any());
         }
 
-        [Test]
+        [Fact]
         public void GenerateSequencesOfASpecifiedLength()
         {
-            var numbers = _fixture.CreateMany<int>(666);
-            Assert.AreEqual(666, numbers.Count());
+            var fixture = new Fixture();
+            var numbers = fixture.CreateMany<int>(666);
+            Assert.Equal(666, numbers.Count());
         }
 
-        [Test]
+        [Fact]
         public void AddGeneratedSequencesToAnExistingSequence()
         {
+            var fixture = new Fixture();
             var numbers = new List<int>();
 
-            _fixture.AddManyTo(numbers); //beware, don't break encapsulation for this!
+            fixture.AddManyTo(numbers); //beware, don't break encapsulation for this!
 
-            Assert.IsTrue(numbers.Any());
+            Assert.True(numbers.Any());
         }
 
-        [Test]
+        [Fact]
         public void MakeUseOfSuppliedCreatorFunctions()
         {
+            var fixture = new Fixture();
             var numbers = new List<int>();
-            _fixture.AddManyTo(numbers, () => 42);
+            fixture.AddManyTo(numbers, () => 42);
 
-            Assert.IsTrue(numbers.All(n => n == 42));
+            Assert.True(numbers.All(n => n == 42));
         }
 
         public class IntegerCollection
@@ -95,10 +94,11 @@ namespace AutoFixture
             public List<int> Integers { get; set; }
         }
 
-        [Test]
+        [Fact]
         public void PopulateListsOfComplexTypes()
         {
-            Assert.IsTrue(_fixture.Create<IntegerCollection>().Integers.Any());
+            var fixture = new Fixture();
+            Assert.True(fixture.Create<IntegerCollection>().Integers.Any());
         }
 
         public class Qux
@@ -112,12 +112,13 @@ namespace AutoFixture
             }
         }
 
-        [Test]
+        [Fact]
         public void GenerateCustomTypesWithoutBreakingEncapsulation()
         {
-            var anonymousQux = _fixture.Create<Qux>();
-            Assert.IsNotNull(anonymousQux.Message);
-            Assert.IsNull(anonymousQux.PrivateFieldNotSetThroughConstructor); //AutoFixture does not initialize private fields that are not initialized through ctor :(
+            var fixture = new Fixture();
+            var anonymousQux = fixture.Create<Qux>();
+            Assert.NotNull(anonymousQux.Message);
+            Assert.Null(anonymousQux.PrivateFieldNotSetThroughConstructor); //AutoFixture does not initialize private fields that are not initialized through ctor :(
         }
     }
 }
