@@ -12,7 +12,7 @@ namespace AutoFixture
             Assert.Equal(input + 1, expected);
         }
 
-        class Adder
+        public class Adder
         {
             public int Add(int a, int b)
             {
@@ -25,6 +25,13 @@ namespace AutoFixture
         public void ProvideDataAutomatically(int first, int second) //autofixture provides randomly created instances of input arguments
         {
             Assert.Equal(first+second, new Adder().Add(first, second));
+        }
+
+        [Theory]
+        [AutoData]
+        public void ProvideTheSUT(Adder adder, int first, int second) //the SUT can also be automagically instantiated using default fixture creation.
+        {
+            Assert.Equal(first + second, adder.Add(first, second));
         }
     }
 }
