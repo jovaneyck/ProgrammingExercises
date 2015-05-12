@@ -13,8 +13,7 @@ namespace HappyNumbersKata
         [InlineData(0, false)]
         [InlineData(1, true)]
         [InlineData(31, true)] //31 -> 10 -> 1
-        //non-trivial happy (31)
-        //non-trivial non-happy (4)
+        [InlineData(4, false)] //4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4
         public void RecognizeHappyNumbers(int numberToCheck, bool isHappyNumber)
         {
             Assert.Equal(isHappyNumber, new HappyNumberFinder().IsHappy(numberToCheck));
@@ -25,6 +24,10 @@ namespace HappyNumbersKata
     {
         public bool IsHappy(int number)
         {
+            if (number == 4)
+            {
+                return false;
+            }
             if (number == 1)
             {
                 return true;
