@@ -24,24 +24,33 @@ namespace HappyNumbersKata
     {
         public bool IsHappy(int number)
         {
-            if (number == 4)
-            {
-                return false;
-            }
+            return IsHappyWithKnownUnhappyNumbers(number, new List<int>());
+        }
+
+        private bool IsHappyWithKnownUnhappyNumbers(int number, ICollection<int> knownUnhappyNumbers)
+        {
             if (number == 1)
             {
                 return true;
             }
+
             if (number == 0)
             {
                 return false;
             }
 
+            if (knownUnhappyNumbers.Contains(number))
+            {
+                return false;
+            }
+
+            knownUnhappyNumbers.Add(number);
+
             var digits = ToDigits(number);
-            var squaredDigits = digits.Select(d=> (int)Math.Pow(d, 2));
+            var squaredDigits = digits.Select(d => (int) Math.Pow(d, 2));
             var nextCandidate = squaredDigits.Sum();
 
-            return IsHappy(nextCandidate);
+            return IsHappyWithKnownUnhappyNumbers(nextCandidate, knownUnhappyNumbers);
         }
 
         private IEnumerable<int> ToDigits(int number)
