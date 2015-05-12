@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Schema;
 using Xunit;
 
 namespace HappyNumbersKata
@@ -29,28 +27,31 @@ namespace HappyNumbersKata
 
         private bool IsHappyWithKnownUnhappyNumbers(int number, ICollection<int> knownUnhappyNumbers)
         {
-            if (number == 1)
+            while (true)
             {
-                return true;
+                if (number == 1)
+                {
+                    return true;
+                }
+
+                if (number == 0)
+                {
+                    return false;
+                }
+
+                if (knownUnhappyNumbers.Contains(number))
+                {
+                    return false;
+                }
+
+                knownUnhappyNumbers.Add(number);
+
+                var digits = ToDigits(number);
+                var squaredDigits = digits.Select(d => (int) Math.Pow(d, 2));
+                var nextCandidate = squaredDigits.Sum();
+
+                number = nextCandidate;
             }
-
-            if (number == 0)
-            {
-                return false;
-            }
-
-            if (knownUnhappyNumbers.Contains(number))
-            {
-                return false;
-            }
-
-            knownUnhappyNumbers.Add(number);
-
-            var digits = ToDigits(number);
-            var squaredDigits = digits.Select(d => (int) Math.Pow(d, 2));
-            var nextCandidate = squaredDigits.Sum();
-
-            return IsHappyWithKnownUnhappyNumbers(nextCandidate, knownUnhappyNumbers);
         }
 
         private IEnumerable<int> ToDigits(int number)
