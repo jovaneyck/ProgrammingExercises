@@ -119,5 +119,22 @@ namespace AutoFixture
             Assert.NotNull(anonymousQux.Message);
             Assert.Null(anonymousQux.PrivateFieldNotSetThroughConstructor); //AutoFixture does not initialize private fields that are not initialized through ctor :(
         }
+
+        class SomeGatewayImplementation : EmailGateway
+        {
+            public void Send(EmailMessage msg)
+            {
+            }
+        }
+
+        [Fact]
+        public void ProvideConcreteImplementationsOfAbstractTypes()
+        {
+            var fixture = new Fixture();
+            fixture.Register<EmailGateway>(()=>new SomeGatewayImplementation());
+
+            Assert.NotNull(fixture.Create<EmailGateway>());
+            Assert.Equal(typeof (SomeGatewayImplementation), fixture.Create<EmailGateway>().GetType());
+        }
     }
 }

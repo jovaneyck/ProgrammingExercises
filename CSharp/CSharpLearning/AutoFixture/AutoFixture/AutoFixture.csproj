@@ -51,6 +51,9 @@
     <Reference Include="Ploeh.AutoFixture.Xunit2">
       <HintPath>..\packages\AutoFixture.Xunit2.3.30.4\lib\net45\Ploeh.AutoFixture.Xunit2.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.SemanticComparison">
+      <HintPath>..\packages\SemanticComparison.3.30.4\lib\net40\Ploeh.SemanticComparison.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="xunit.abstractions">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
@@ -78,6 +81,7 @@
     <Compile Include="AutoMockingShould.cs" />
     <Compile Include="CustomObjectCreationShould.cs" />
     <Compile Include="FixtureShould.cs" />
+    <Compile Include="LikenessShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
