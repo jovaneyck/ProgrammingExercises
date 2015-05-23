@@ -23,7 +23,7 @@ namespace AutoFixture
 
             var likenessThatActuallyIsEqualWithoutExtraWork =
                 identicalButNotSame
-                    .AsSource()
+                    .AsSource() //using Ploeh.SemanticComparison Nuget package!
                     .OfLikeness<EmailMessage>()
                     .CreateProxy();
 
