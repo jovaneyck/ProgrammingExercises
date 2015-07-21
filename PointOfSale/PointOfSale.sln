@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{C9D4AEC5-A849-41B8-A51D-7C3B86EDF30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.PointOfSale", "Test.PointOfSale\Test.PointOfSale.csproj", "{2B60A9EF-A574-4E0A-9DD2-66D2D7FD4BFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9D4AEC5-A849-41B8-A51D-7C3B86EDF30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D4AEC5-A849-41B8-A51D-7C3B86EDF30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D4AEC5-A849-41B8-A51D-7C3B86EDF30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D4AEC5-A849-41B8-A51D-7C3B86EDF30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B60A9EF-A574-4E0A-9DD2-66D2D7FD4BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B60A9EF-A574-4E0A-9DD2-66D2D7FD4BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B60A9EF-A574-4E0A-9DD2-66D2D7FD4BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B60A9EF-A574-4E0A-9DD2-66D2D7FD4BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
