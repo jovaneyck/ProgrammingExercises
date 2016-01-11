@@ -1,4 +1,4 @@
-﻿module FSharpLearning
+﻿module PatternMatching
 
 open Xunit
 open Swensen.Unquote
