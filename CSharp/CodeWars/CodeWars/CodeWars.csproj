@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaOfACircle\Kata.cs" />
+    <Compile Include="AreaOfACircle\Tests.cs" />
     <Compile Include="CountConsonants\Kata.cs" />
     <Compile Include="CountConsonants\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
