@@ -59,6 +59,7 @@
     <Compile Include="FirstClassFunctionFactory\Test.cs" />
     <Compile Include="HowManyLicks\Kata.cs" />
     <Compile Include="HowManyLicks\Tests.cs" />
+    <Compile Include="IsThisATriangle\TriangleTests.cs" />
     <Compile Include="Maximum Length Difference\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheOldSwitcheroo\Kata.cs" />
