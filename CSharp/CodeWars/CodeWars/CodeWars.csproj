@@ -55,6 +55,8 @@
     <Compile Include="CountConsonants\Kata.cs" />
     <Compile Include="CountConsonants\Tests.cs" />
     <Compile Include="CountTheDigit\NbDigTests.cs" />
+    <Compile Include="FirstClassFunctionFactory\FunctionFactory.cs" />
+    <Compile Include="FirstClassFunctionFactory\Test.cs" />
     <Compile Include="HowManyLicks\Kata.cs" />
     <Compile Include="HowManyLicks\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
