@@ -57,6 +57,7 @@
     <Compile Include="CountTheDigit\NbDigTests.cs" />
     <Compile Include="FirstClassFunctionFactory\FunctionFactory.cs" />
     <Compile Include="FirstClassFunctionFactory\Test.cs" />
+    <Compile Include="GoodVsEvil\GoodVsEvil.cs" />
     <Compile Include="HowManyLicks\Kata.cs" />
     <Compile Include="HowManyLicks\Tests.cs" />
     <Compile Include="IsThisATriangle\TriangleTests.cs" />
