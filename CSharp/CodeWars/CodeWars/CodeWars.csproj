@@ -68,6 +68,8 @@
   <ItemGroup>
     <Compile Include="AreaOfACircle\Kata.cs" />
     <Compile Include="AreaOfACircle\Tests.cs" />
+    <Compile Include="CanYouGetTheLoop\Kata.cs" />
+    <Compile Include="CanYouGetTheLoop\Tests.cs" />
     <Compile Include="CountConsonants\Kata.cs" />
     <Compile Include="CountConsonants\Tests.cs" />
     <Compile Include="CountTheDigit\NbDigTests.cs" />
