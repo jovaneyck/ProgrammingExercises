@@ -41,9 +41,9 @@ namespace CodeWars.PrimesInNumbers
 
         [TestCase(2, new[] {2})]
         [TestCase(3, new[] {3})]
-        [TestCase(6, new[] {3,2})]
-        [TestCase(10, new[] {5,2})]
-        [TestCase(12, new[] {3,2,2})]
+        [TestCase(6, new[] {2,3})]
+        [TestCase(10, new[] {2,5})]
+        [TestCase(12, new[] {2,2,3})]
         public void DecomposesANumberInPrimeFactors(int number, int[] expected)
         {
             Assert.AreEqual(expected, PrimeDecomp.FactorDecomposition(number));
@@ -81,26 +81,27 @@ namespace CodeWars.PrimesInNumbers
 
         }
 
+
         public static IList<int> FactorDecomposition(int number)
         {
-            if (IsPrime(number))
-            {
-                return new List<int> {number};
-            }
+            var result = new List<int>();
 
-            var possibleFactors = PrimesSmallerOrEqualThan(number);
-
-            foreach (var f in possibleFactors)
+            while (!IsPrime(number))
             {
-                if (number % f == 0)
+                foreach (var f in PrimesSmallerOrEqualThan(number))
                 {
-                    var result = FactorDecomposition(number / f);
-                    result.Add(f);
-                    return result;
+                    if (number%f == 0)
+                    {
+                        result.Add(f);
+                        number = number/f;
+                        break;
+                    }
                 }
             }
 
-            return new List<int>();
+            result.Add(number);
+
+            return result;
         }
 
         public static bool IsPrime(int number)
@@ -124,18 +125,15 @@ namespace CodeWars.PrimesInNumbers
         */
         public static IEnumerable<int> PrimesSmallerOrEqualThan(int number)
         {
-            var possiblePrimes =
-                Enumerable
-                    .Range(2, number - 1)
-                    .ToList();
+            var possiblePrimes = Enumerable.Range(2, number - 1);
 
             var smallestPrime = 2;
             
             while (smallestPrime != default(int))
             {
                 yield return smallestPrime;
-
-                possiblePrimes = possiblePrimes.Where(pp => pp % smallestPrime != 0).ToList();
+                var sp = smallestPrime;
+                possiblePrimes = possiblePrimes.Where(pp => pp % sp != 0);
                 smallestPrime = possiblePrimes.FirstOrDefault();
             }
         }
