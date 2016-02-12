@@ -80,6 +80,7 @@
     <Compile Include="HowManyLicks\Tests.cs" />
     <Compile Include="IsThisATriangle\TriangleTests.cs" />
     <Compile Include="Maximum Length Difference\Tests.cs" />
+    <Compile Include="PrimesInNumbers\PrimeDecompTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticsForAnAthleticAssociation\Stat.cs" />
     <Compile Include="StatisticsForAnAthleticAssociation\StatTests.cs" />
