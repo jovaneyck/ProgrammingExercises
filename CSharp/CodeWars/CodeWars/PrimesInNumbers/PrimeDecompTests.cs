@@ -32,6 +32,7 @@ namespace CodeWars.PrimesInNumbers
         [TestCase(2,"(2)")]
         [TestCase(4,"(2**2)")]
         [TestCase(12,"(2**2)(3)")]
+        [TestCase(86240, "(2**5)(5)(7**2)(11)")] //Acceptance test
         [TestCase(7775460, "(2**2)(3**3)(5)(7)(11**2)(17)")] //Acceptance test
         public void DecomposesANumberInPrimeFactors(int number, string expectedDecomposition)
         {
