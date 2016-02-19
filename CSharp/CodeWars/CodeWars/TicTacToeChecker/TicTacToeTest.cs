@@ -29,6 +29,13 @@ namespace CodeWars.TicTacToeChecker
             var board = new [,] { { 1, 1, 1 }, { 0, 2, 2 }, { 0, 0, 0 } };
             Assert.AreEqual(1, _tictactoe.IsSolved(board));
         }
+
+        [Test]
+        public void AcceptanceTest2()
+        {
+            var board = new [,] { { 2, 1, 2 }, { 2, 1, 1 }, { 1, 2, 1 } };
+            Assert.AreEqual(0, _tictactoe.IsSolved(board));
+        }
     }
 
     internal class TicTacToe
@@ -39,29 +46,31 @@ namespace CodeWars.TicTacToeChecker
 
             var xWins = grid.ExistsCombinationWithAll(CellValue.X);
             var oWins = grid.ExistsCombinationWithAll(CellValue.O);
-
-            if (!xWins && !oWins)
-                return -1;
+            
             if (xWins && oWins)
                 return 0;
-            return xWins ? 1 : 2;
+            if (xWins)
+                return 1;
+            if (oWins)
+                return 2;
+            if (grid.BoardFull())
+                return 0;
+            return -1;
         }
 
         private Grid GridFrom(int[,] board)
         {
-            var grid = new List<GridElement>();
-
-            for (var r = 0; r < board.GetLength(0); r++)
-            {
-                for (var c = 0; c < board.GetLength(1); c++)
-                {
-                    grid.Add(new GridElement
-                    {
-                        Coordinate = new Coordinate { Row = r, Column = c },
-                        Value = (CellValue)board[r, c]
-                    });
-                }
-            }
+            var grid = 
+                Enumerable.Range(0, board.GetLength(0))
+                    .SelectMany(r =>
+                        Enumerable.Range(0, board.GetLength(1))
+                            .Select(c => 
+                                new GridElement
+                                {
+                                    Coordinate = new Coordinate {Row = r, Column = c},
+                                    Value = (CellValue) board[r, c]
+                                }))
+                    .ToList();
 
             return new Grid(grid);
         }
@@ -164,6 +173,11 @@ namespace CodeWars.TicTacToeChecker
         private IEnumerable<GridElement> GetElementsAt(Coordinate[] coordinates)
         {
             return _elements.Where(val => coordinates.Any(v => v.Equals(val.Coordinate)));
+        }
+
+        public bool BoardFull()
+        {
+            return _elements.All(el => el.Value != CellValue.Empty);
         }
     }
 }
