@@ -87,6 +87,7 @@
     <Compile Include="SumOfOddNumbers\Tests.cs" />
     <Compile Include="TheOldSwitcheroo\Kata.cs" />
     <Compile Include="TheOldSwitcheroo\Test.cs" />
+    <Compile Include="TicTacToeChecker\TicTacToeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
