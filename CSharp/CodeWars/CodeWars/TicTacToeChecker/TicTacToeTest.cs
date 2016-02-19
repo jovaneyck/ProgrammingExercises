@@ -62,9 +62,9 @@ namespace CodeWars.TicTacToeChecker
         {
             var grid = 
                 Enumerable.Range(0, board.GetLength(0))
-                    .Zip(
-                        Enumerable.Range(0, board.GetLength(1)), 
-                        (r, c) => new Coordinate { Row = r, Column = c})
+                    .SelectMany( r =>
+                        Enumerable.Range(0, board.GetLength(1))
+                            .Select(c => new Coordinate { Row = r, Column = c }))
                     .Select(coordinate => 
                         new GridElement
                         {
