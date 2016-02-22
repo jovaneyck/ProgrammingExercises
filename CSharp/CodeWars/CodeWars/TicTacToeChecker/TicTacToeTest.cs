@@ -60,11 +60,12 @@ namespace CodeWars.TicTacToeChecker
 
         private Grid GridFrom(int[,] board)
         {
-            var grid = 
+            var allCoordinates = 
                 Enumerable.Range(0, board.GetLength(0))
-                    .SelectMany( r =>
-                        Enumerable.Range(0, board.GetLength(1))
-                            .Select(c => new Coordinate { Row = r, Column = c }))
+                    .SelectMany( r => Enumerable.Range(0, board.GetLength(1))
+                            .Select(c => new Coordinate { Row = r, Column = c }));
+            var grid = 
+                allCoordinates
                     .Select(coordinate => 
                         new GridElement
                         {
