@@ -26,7 +26,7 @@ namespace CodeWars.NextBiggestNumber
         }
 
         [Test]
-        [MaxTime(6000)]
+        [MaxTime(4000)]
         public void CalculatesNextBiggerNumberFastEnough()
         {
             Kata.NextBiggerNumber(1234567809);
@@ -44,7 +44,15 @@ namespace CodeWars.NextBiggestNumber
 
         private static long ToNumber(IList<long> nextBigger)
         {
-            return long.Parse(string.Join("", nextBigger));
+            var multiplier = 1;
+            var digitsFromLeastToMostSignificant = nextBigger.Reverse().ToList();
+            var result = 0L;
+            foreach (long d in digitsFromLeastToMostSignificant)
+            {
+                result += d*multiplier;
+                multiplier *= 10;
+            }
+            return result;
         }
 
         private static long? NextBigger(long startingNumber, IEnumerable<long> allNumbers)
