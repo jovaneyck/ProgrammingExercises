@@ -24,6 +24,13 @@ namespace CodeWars.NextBiggestNumber
         {
             Assert.AreEqual(-1, Kata.NextBiggerNumber(input));
         }
+
+        [Test]
+        [MaxTime(6000)]
+        public void CalculatesNextBiggerNumberFastEnough()
+        {
+            Kata.NextBiggerNumber(1234567809);
+        }
     }
 
     public class Kata
