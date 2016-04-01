@@ -21,19 +21,20 @@ let calculator =
                     | Result(replyChannel) -> 
                         replyChannel.Reply(total)
                         total
-
                 return! processCommand(newTotal)
             }
-        
         processCommand 0.0)
 
 let printResult() =
     calculator.PostAndReply(fun replyChannel -> Result(replyChannel)) |> printfn "Result: %A" //Awaits reply!
 
 printResult()
-calculator.Post(Add(2.0))
-calculator.Post(Add(3.0))
-calculator.Post(Subtract(4.0))
+[ 
+    Add 2.0
+    Add 3.0
+    Subtract 4.0 
+]
+|> List.iter calculator.Post
 printResult()
 calculator.Post(Clear)
 printResult()
