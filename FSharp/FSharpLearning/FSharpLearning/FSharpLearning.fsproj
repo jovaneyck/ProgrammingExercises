@@ -58,6 +58,7 @@
     <Compile Include="CsvTypeProvider.fs" />
     <Compile Include="RegexTypeProvider.fs" />
     <Compile Include="AsyncAndParallel.fs" />
+    <Compile Include="ComputationExpressions.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
     <Content Include="app.config" />
