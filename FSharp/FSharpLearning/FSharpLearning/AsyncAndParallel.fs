@@ -18,14 +18,14 @@ let canUseTPLTaskParallellism() =
     //basic scenario, advanced TPL stuff is certainly possible
     let buffer = new StringBuilder()
     let appendOperations = 
-        [1..10000]
+        [1..1000]
         |> List.map(fun el -> (fun () -> buffer.Append(el.ToString()) |> ignore))
         |> List.map(fun operation -> new System.Action(operation))
         |> Array.ofList
 
     Parallel.Invoke(appendOperations)
 
-    test <@ buffer.ToString().Contains("1337") @>
+    test <@ buffer.ToString().Contains("137") @>
 
 //.Net Tasks also work like a charm:
 [<Fact>]
