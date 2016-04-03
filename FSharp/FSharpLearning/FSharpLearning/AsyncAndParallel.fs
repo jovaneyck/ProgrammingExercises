@@ -124,3 +124,5 @@ let canElegantlySearchThroughMultipleMapsUsingOrElse() =
         }
 
     test <@ multilookup "B" = Some "Bob" @>
+
+//https://fsharpforfunandprofit.com/posts/computation-expressions-continuations/

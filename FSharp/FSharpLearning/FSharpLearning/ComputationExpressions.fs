@@ -109,7 +109,7 @@ let safeDivide bottom top = //divisor first to allow easier chaining
 
 type MaybeBuilder() =
 
-    member this.Bind(x, f) = 
+    member this.Bind(x, f) =  //Or simply <Option.bind f x>
         match x with
         | None -> None
         | Some a -> f a
@@ -138,3 +138,33 @@ let canSafelyDivideByZeroUsingTheMaybeMonad() =
         }
 
     test <@ divideByZeroSomewhereInBetween = None @>
+
+[<Fact>]
+let canUseInfixBindOperatorInsteadOfComputationExpressions() =
+    let toInt (text : string) =
+        match System.Int32.TryParse(text) with
+        | (true,parsedNumber) -> Some parsedNumber
+        | _ -> None
+
+    //adding strings with maybe computation expression:
+    let stringAdd x y z =
+        maybe {
+            ////computation expressions "Wrap" and "Unwrap" behind the scenes:
+            let! a (*: int!*) = toInt x (*: int option!*) 
+            let! b = toInt y
+            let! c = toInt z
+            return a+b+c 
+            (*a+b+c: int but return type of stringAdd = int Option!*)
+        }
+
+    test <@ stringAdd "12" "3" "2" = Some 17 @>
+    test <@ stringAdd "12" "xyz" "2" = None @>
+
+    //Or with an infix bind operator:
+    let strAdd str i = toInt str |> Option.map ((+) i)
+    let (>>=) m f = Option.bind f m
+
+    let goodSum = toInt "1" >>=  strAdd "2" >>= strAdd "3"
+    test <@ goodSum = Some 6 @>
+    let badSum = toInt "1" >>=  strAdd "xyz" >>= strAdd "3"
+    test <@ badSum = None @>
