@@ -108,12 +108,14 @@ let safeDivide bottom top = //divisor first to allow easier chaining
     else Some (top / bottom)
 
 type MaybeBuilder() =
+    //"Wrapper type" (Monadic type): 'T option
 
     member this.Bind(x, f) =  //Or simply <Option.bind f x>
         match x with
         | None -> None
         | Some a -> f a
 
+    //Wrap result in wrapper type
     member this.Return(x) = 
         Some x
    
@@ -168,3 +170,32 @@ let canUseInfixBindOperatorInsteadOfComputationExpressions() =
     test <@ goodSum = Some 6 @>
     let badSum = toInt "1" >>=  strAdd "xyz" >>= strAdd "3"
     test <@ badSum = None @>
+
+//Bind signature: M<'T> * ('T -> M<'U>) -> M<'U>
+//Types T and U are generic and don't have to be the same:
+
+//Different types:
+type Customer = 
+    | Customer of string
+type OrderId = 
+    |OrderId of string
+//wrapper type
+type DbResult<'T> =
+    | Success of 'T
+    | Error of string
+
+//Some query stubs
+let getCustomer =
+    | "Alice" ->
+
+type DbResultBuilder() =
+    member x.ToString() = "DbResultBuilder"
+
+//Currently working through: https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types/
+//let dbresult = DbResultBuilder()
+//[<Fact>]
+//let wrappedTypeDoesNotHaveToBeTheSameInEachStep()=
+//    let result =
+//        
+
+//Aaaaaaand after that perhaps look into monoids: https://fsharpforfunandprofit.com/posts/monoids-without-tears/

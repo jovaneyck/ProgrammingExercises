@@ -1,30 +1,64 @@
-﻿let toInt (text : string) =
-    match System.Int32.TryParse(text) with
-    | (true,parsedNumber) -> Some parsedNumber
-    | _ -> None
+﻿let substitute = function
+    | 'A' -> 'N'
+    | 'a' -> 'n'
+    | 'B' -> 'O'
+    | 'b' -> 'o'
+    | 'C' -> 'P'
+    | 'c' -> 'p'
+    | 'D' -> 'Q'
+    | 'd' -> 'q'
+    | 'E' -> 'R'
+    | 'e' -> 'r'
+    | 'F' -> 'S'
+    | 'f' -> 's'
+    | 'G' -> 'T'
+    | 'g' -> 't'
+    | 'H' -> 'U'
+    | 'h' -> 'u'
+    | 'I' -> 'V'
+    | 'i' -> 'v'
+    | 'J' -> 'W'
+    | 'j' -> 'w'
+    | 'K' -> 'X'
+    | 'k' -> 'x'
+    | 'L' -> 'Y'
+    | 'l' -> 'y'
+    | 'M' -> 'Z'
+    | 'm' -> 'z'
+    | 'N' -> 'A'
+    | 'n' -> 'a'
+    | 'O' -> 'B'
+    | 'o' -> 'b'
+    | 'P' -> 'C'
+    | 'p' -> 'c'
+    | 'Q' -> 'D'
+    | 'q' -> 'd'
+    | 'R' -> 'E'
+    | 'r' -> 'e'
+    | 'S' -> 'F'
+    | 's' -> 'f'
+    | 'T' -> 'G'
+    | 't' -> 'g'
+    | 'U' -> 'H'
+    | 'u' -> 'h'
+    | 'V' -> 'I'
+    | 'v' -> 'i'
+    | 'W' -> 'J'
+    | 'w' -> 'j'
+    | 'X' -> 'K'
+    | 'x' -> 'k'
+    | 'Y' -> 'L'
+    | 'y' -> 'l'
+    | 'Z' -> 'M'
+    | 'z' -> 'm'
+    | c -> c
 
-type MaybeBuilder() =
-    member this.Bind(m, f) = Option.bind f m
-    member this.Return(v) = Some v
-    
-let maybe = MaybeBuilder()
+let decrypt (secret : string) = 
+    let characters = secret.ToCharArray()
+    characters
+    |> Seq.map substitute
+    |> Seq.map (fun c -> c.ToString())
+    |> Seq.reduce (+)
 
-//with maybe computation expression:
-let stringAdd x y z =
-    maybe {
-        let! a (*int!*) = toInt x (*int option!*)
-        let! b = toInt y
-        let! c = toInt z
-        return a+b+c 
-        (*a+b+c: int but return type of stringAdd = int Option!*)
-    }
-
-let good = stringAdd "12" "3" "2"
-let bad = stringAdd "12" "xyz" "2"
-
-//Or with an infix bind operator:
-let strAdd str i = toInt str |> Option.map ((+) i)
-let (>>=) m f = Option.bind f m
-
-let good2 = toInt "1" >>=  strAdd "2" >>= strAdd "3"
-let bad2 = toInt "1" >>=  strAdd "xyz" >>= strAdd "3"
+decrypt @"ahyivremriraivws ivwsgjrrmrfartramriramrira. TRRA FZF!" 
+|> printfn "%A"
