@@ -50,19 +50,19 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="AgentBasedCalculator.fsx" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="RecursiveTypes.fs" />
-    <Compile Include="PatternMatching.fs" />
-    <Compile Include="Measures.fs" />
-    <Compile Include="ObjectExpressions.fs" />
-    <Compile Include="QueryExpressions.fs" />
-    <Compile Include="CsvTypeProvider.fs" />
-    <Compile Include="RegexTypeProvider.fs" />
-    <None Include="HtmlTypeProviderExample.fsx" />
+    <None Include="AgentBasedCalculator.fsx" />
     <Compile Include="AsyncAndParallel.fs" />
     <Compile Include="ComputationExpressions.fs" />
+    <Compile Include="CsvTypeProvider.fs" />
     <Compile Include="FunctionalReactiveProgramming.fs" />
+    <None Include="HtmlTypeProviderExample.fsx" />
+    <Compile Include="Measures.fs" />
+    <Compile Include="ObjectExpressions.fs" />
+    <Compile Include="PatternMatching.fs" />
+    <Compile Include="QueryExpressions.fs" />
+    <Compile Include="RecursiveTypes.fs" />
+    <Compile Include="RegexTypeProvider.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
     <Content Include="app.config" />

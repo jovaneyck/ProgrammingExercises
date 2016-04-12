@@ -179,6 +179,7 @@ type CustomerId =
     | CustomerId of string
 type OrderId = 
     |OrderId of int
+
 //wrapper type
 type DbResult<'t> =
     | Success of 't
@@ -216,8 +217,3 @@ let wrappedTypeDoesNotHaveToBeTheSameInEachStep()=
 
     test <@ fetchLastOrderIdForCustomer "Alice" = Success (OrderId 1) @>
     test <@ fetchLastOrderIdForCustomer "Bob" = Error "Did not find customer Bob" @>
-
-//At "composition of computation expressions"
-//https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types/
-
-//Aaaaaaand after that perhaps look into monoids: https://fsharpforfunandprofit.com/posts/monoids-without-tears/

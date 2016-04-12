@@ -38,7 +38,7 @@ let areSimultaneous (earlier, later) =
     laterTime.Subtract(earlierTime).Milliseconds < 50
 
 // create the event streams and raw observables
-let runningTime = System.Int32.MaxValue
+let runningTime = 10000
 let timer3, timerEventStream3 = createTimerAndObservable 300 runningTime
 let timer5, timerEventStream5 = createTimerAndObservable 500 runningTime
 
