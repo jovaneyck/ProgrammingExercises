@@ -178,39 +178,46 @@ let canUseInfixBindOperatorInsteadOfComputationExpressions() =
 type CustomerId = 
     | CustomerId of string
 type OrderId = 
-    |OrderId of string
+    |OrderId of int
 //wrapper type
-type DbResult<'T> =
-    | Success of 'T
+type DbResult<'t> =
+    | Success of 't
     | Error of string
 
 //Some query stubs
 let getCustomer name : DbResult<CustomerId> =
     match name with
     | "Alice" -> Success (CustomerId "Alice ID")
-    | "Bob" -> Success (CustomerId "Bob ID")
     | unknown -> Error ("Did not find customer "+unknown)
 
 let getLastOrderId customerId : DbResult<OrderId> =
     match customerId with
-    | CustomerId "Alice" -> Success (OrderId "1")
-    | CustomerId "Bob" -> Error("Bob has no customers")
-    | _ -> failwith "nope"
+    | CustomerId "Alice ID" -> Success (OrderId 1)
+    | CustomerId unknown -> Error ("No orders for customer "+unknown)
 
 type DbResultBuilder() =
-    member this.Bind(m, f) =
+    member this.Bind(m, f) = 
         match m with
-        | Error _ -> m
-        | Success a ->
-            printfn "\tSuccessful: %s" a
-            f a
-    member this.Return(x) =
+        | Error e -> Error e
+        | Success a -> f a
+    member this.Return(x) = 
         Success x
-//
-//let dbresult = DbResultBuilder()
-//[<Fact>]
-//let wrappedTypeDoesNotHaveToBeTheSameInEachStep()=
-//    let result =
-        
+
+let dbresult = new DbResultBuilder()
+
+[<Fact>]
+let wrappedTypeDoesNotHaveToBeTheSameInEachStep()=
+    let fetchLastOrderIdForCustomer name = //string->DbResult<OrderId>
+        dbresult {
+            let! (customerId : CustomerId) = getCustomer name //string->DbResult<CustomerId>
+            let! (orderId : OrderId) = getLastOrderId customerId //CustomerId->DbResult<OrderId>
+            return orderId //OrderId
+        }
+
+    test <@ fetchLastOrderIdForCustomer "Alice" = Success (OrderId 1) @>
+    test <@ fetchLastOrderIdForCustomer "Bob" = Error "Did not find customer Bob" @>
+
+//At "composition of computation expressions"
+//https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types/
 
 //Aaaaaaand after that perhaps look into monoids: https://fsharpforfunandprofit.com/posts/monoids-without-tears/
