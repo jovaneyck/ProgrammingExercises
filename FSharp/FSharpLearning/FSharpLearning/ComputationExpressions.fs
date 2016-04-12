@@ -172,11 +172,11 @@ let canUseInfixBindOperatorInsteadOfComputationExpressions() =
     test <@ badSum = None @>
 
 //Bind signature: M<'T> * ('T -> M<'U>) -> M<'U>
-//Types T and U are generic and don't have to be the same:
+//Types T and U are generic and don't have to be the same (as customer ID and order ID in example below):
 
 //Different types:
-type Customer = 
-    | Customer of string
+type CustomerId = 
+    | CustomerId of string
 type OrderId = 
     |OrderId of string
 //wrapper type
@@ -185,17 +185,32 @@ type DbResult<'T> =
     | Error of string
 
 //Some query stubs
-let getCustomer =
-    | "Alice" ->
+let getCustomer name : DbResult<CustomerId> =
+    match name with
+    | "Alice" -> Success (CustomerId "Alice ID")
+    | "Bob" -> Success (CustomerId "Bob ID")
+    | unknown -> Error ("Did not find customer "+unknown)
+
+let getLastOrderId customerId : DbResult<OrderId> =
+    match customerId with
+    | CustomerId "Alice" -> Success (OrderId "1")
+    | CustomerId "Bob" -> Error("Bob has no customers")
+    | _ -> failwith "nope"
 
 type DbResultBuilder() =
-    member x.ToString() = "DbResultBuilder"
-
-//Currently working through: https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types/
+    member this.Bind(m, f) =
+        match m with
+        | Error _ -> m
+        | Success a ->
+            printfn "\tSuccessful: %s" a
+            f a
+    member this.Return(x) =
+        Success x
+//
 //let dbresult = DbResultBuilder()
 //[<Fact>]
 //let wrappedTypeDoesNotHaveToBeTheSameInEachStep()=
 //    let result =
-//        
+        
 
 //Aaaaaaand after that perhaps look into monoids: https://fsharpforfunandprofit.com/posts/monoids-without-tears/

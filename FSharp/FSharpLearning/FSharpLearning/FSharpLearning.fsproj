@@ -55,6 +55,7 @@
     <Compile Include="RecursiveTypes.fs" />
     <Compile Include="PatternMatching.fs" />
     <Compile Include="Measures.fs" />
+    <Compile Include="ObjectExpressions.fs" />
     <Compile Include="QueryExpressions.fs" />
     <Compile Include="CsvTypeProvider.fs" />
     <Compile Include="RegexTypeProvider.fs" />
