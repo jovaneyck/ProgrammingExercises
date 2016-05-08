@@ -60,3 +60,19 @@ let ``A side of the diamond has the correct letters in the correct order`` (lett
         |> Seq.map Seq.head
         |> Seq.toList
     expected = lettersOnTopLeftSide
+
+[<DiamondProperty>]
+let ``Diamond is symmetric around the horizontal axis`` (letter : char) =
+    let diamond = Diamond.make letter
+    let rows = split diamond
+    let topRows = 
+        rows 
+        |> Seq.takeWhile (fun r -> not (r.Contains(string letter)))
+        |> Seq.toList
+    let bottomRows =
+        rows
+        |> Seq.skipWhile (fun r -> not (r.Contains(string letter)))
+        |> Seq.skip 1
+        |> Seq.toList
+        |> List.rev
+    topRows = bottomRows
