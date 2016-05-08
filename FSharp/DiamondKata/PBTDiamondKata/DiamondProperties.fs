@@ -47,3 +47,16 @@ let ``All rows have a vertically symmetric contour`` (letter : char) =
     rows
     |> Seq.forall (fun r -> 
         (leadingSpaces r) = (trailingSpaces r))
+
+[<DiamondProperty>]
+let ``A side of the diamond has the correct letters in the correct order`` (letter : char) =
+    let diamond = Diamond.make letter
+    let expected = ['A'..letter]
+    let rows = diamond |> split
+    let lettersOnTopLeftSide =
+        rows
+        |> Seq.take expected.Length
+        |> Seq.map trim
+        |> Seq.map Seq.head
+        |> Seq.toList
+    expected = lettersOnTopLeftSide
