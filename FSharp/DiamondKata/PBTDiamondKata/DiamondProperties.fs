@@ -86,3 +86,16 @@ let ``Diamond should be as high as it is wide`` (letter : char) =
     |> Seq.forall(fun r -> 
             let width = r.Length
             width = height)
+
+[<DiamondProperty>]
+let ``All inner rows have two identical letters``(letter : char) =
+    let diamond = Diamond.make letter
+    let hasTwoIdenticalLetters x =
+        let hasTwoLetters = x |> Seq.length = 2
+        let areIdentical = x |> Seq.distinct |> Seq.length = 1
+        hasTwoLetters && areIdentical
+    let rows = split diamond
+    rows
+    |> Seq.filter (fun r -> not (r.Contains("A")))
+    |> Seq.map (fun s -> s.Replace(" ", ""))
+    |> Seq.forall hasTwoIdenticalLetters

@@ -5,7 +5,17 @@ open System
 let make letter = 
     let makeLine width letter =
         let padding = String(' ', width - 1)
-        sprintf "%s%c%s" padding letter padding
+        match letter with
+        | 'A' ->
+            sprintf "%s%c%s" padding letter padding
+        | other ->
+            let left = 
+                sprintf "%c%s" letter padding
+                |> Seq.toList
+            left
+            @ (left |> List.rev |> List.tail)
+            |> List.map string
+            |> List.reduce (sprintf "%s%s")
 
     let letters = ['A'..letter]
     
