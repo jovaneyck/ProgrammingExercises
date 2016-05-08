@@ -99,3 +99,22 @@ let ``All inner rows have two identical letters``(letter : char) =
     |> Seq.filter (fun r -> not (r.Contains("A")))
     |> Seq.map (fun s -> s.Replace(" ", ""))
     |> Seq.forall hasTwoIdenticalLetters
+
+[<DiamondProperty>]
+let ``Lower left outer padding is a isoscele right triangle`` (letter : char) =
+    let diamond = Diamond.make letter
+    let rows = split diamond
+    let lowerLeftOuterPadding =
+        rows
+        |> Seq.skipWhile (fun r -> not (r.Contains(string letter)))
+        |> Seq.map leadingSpaces
+        |> Seq.toList
+    let spaceCounts =
+        lowerLeftOuterPadding
+        |> List.map (fun r -> r.Length)
+
+    let expected = 
+        Seq.initInfinite id 
+        |> Seq.take spaceCounts.Length
+        |> Seq.toList
+    expected = spaceCounts
