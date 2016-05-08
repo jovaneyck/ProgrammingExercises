@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWars", "CodeWars\CodeWars.csproj", "{A03F2521-1AB8-47F0-BE0F-6DA12ED8E5A4}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CodeWars.FSharp", "CodeWars.FSharp\CodeWars.FSharp.fsproj", "{C5928988-99AC-42FC-B946-AB026F9EBB20}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F82E8A4-C88D-49FD-80C1-A1627E0F3017}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-		Performance2.psess = Performance2.psess
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
