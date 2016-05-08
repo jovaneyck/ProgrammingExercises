@@ -73,19 +73,18 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Charting">
-      <HintPath>..\packages\FSharp.Charting.0.90.13\lib\net40\FSharp.Charting.dll</HintPath>
+      <HintPath>..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FSharp.Data">
-      <HintPath>..\packages\FSharp.Data.2.2.5\lib\net40\FSharp.Data.dll</HintPath>
+      <HintPath>..\packages\FSharp.Data.2.3.0\lib\net40\FSharp.Data.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Data.DesignTime">
+      <HintPath>..\packages\FSharp.Data.2.3.0\lib\net40\FSharp.Data.DesignTime.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Text.RegexProvider">
       <HintPath>..\packages\FSharp.Text.RegexProvider.0.0.7\lib\net40\FSharp.Text.RegexProvider.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FSharpx.TypeProviders.Regex">
-      <HintPath>..\packages\FSharpx.TypeProviders.Regex.1.8.41\lib\40\FSharpx.TypeProviders.Regex.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
@@ -97,7 +96,7 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Unquote">
-      <HintPath>..\packages\Unquote.3.1.0\lib\net45\Unquote.dll</HintPath>
+      <HintPath>..\packages\Unquote.3.1.1\lib\net45\Unquote.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.abstractions">
@@ -114,6 +113,10 @@
     </Reference>
     <Reference Include="xunit.execution.desktop">
       <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
