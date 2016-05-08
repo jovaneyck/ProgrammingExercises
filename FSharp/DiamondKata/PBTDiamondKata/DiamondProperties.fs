@@ -76,3 +76,13 @@ let ``Diamond is symmetric around the horizontal axis`` (letter : char) =
         |> Seq.toList
         |> List.rev
     topRows = bottomRows
+
+[<DiamondProperty>]
+let ``Diamond should be as high as it is wide`` (letter : char) =
+    let diamond = Diamond.make letter
+    let rows = split diamond
+    let height = rows.Length
+    rows 
+    |> Seq.forall(fun r -> 
+            let width = r.Length
+            width = height)
