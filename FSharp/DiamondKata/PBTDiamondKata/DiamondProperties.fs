@@ -9,7 +9,11 @@ type UppercaseLetters =
         Arb.Default.Char()
         |> Arb.filter (fun c -> 'A' <= c && c <= 'Z')
 
-[<Property(Arbitrary = [| typeof<UppercaseLetters> |])>]
+type DiamondPropertyAttribute() =
+    inherit PropertyAttribute(
+        Arbitrary = [| typeof<UppercaseLetters> |])
+
+[<DiamondProperty>]
 let ``Diamond is non-empty`` (letter : char) =
     let actual = Diamond.make letter
     not (String.IsNullOrWhiteSpace actual)
