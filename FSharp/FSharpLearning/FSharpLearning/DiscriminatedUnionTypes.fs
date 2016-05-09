@@ -10,6 +10,7 @@ type Tree =
 let rec NbNodes t =
     match t with
     | Leaf _ -> 1
+    | InnerNode(_,l,r) -> 1 + NbNodes l + NbNodes r
 
 [<Fact>]
 let canPatternMatchOnUnionTypes() =

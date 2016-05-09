@@ -61,6 +61,7 @@
     <None Include="HtmlTypeProviderExample.fsx" />
     <Compile Include="Measures.fs" />
     <Compile Include="ObjectExpressions.fs" />
+    <Compile Include="Options.fs" />
     <Compile Include="PatternMatching.fs" />
     <Compile Include="QueryExpressions.fs" />
     <Compile Include="RecursiveTypes.fs" />
