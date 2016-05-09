@@ -55,6 +55,8 @@
     <Compile Include="AsyncAndParallel.fs" />
     <Compile Include="ComputationExpressions.fs" />
     <Compile Include="CsvTypeProvider.fs" />
+    <Compile Include="DiscriminatedUnionTypes.fs" />
+    <Compile Include="Functions.fs" />
     <Compile Include="FunctionalReactiveProgramming.fs" />
     <None Include="HtmlTypeProviderExample.fsx" />
     <Compile Include="Measures.fs" />
