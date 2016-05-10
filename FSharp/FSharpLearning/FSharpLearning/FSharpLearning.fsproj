@@ -50,6 +50,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="Greeter.fs" />
     <Compile Include="AssemblyInfo.fs" />
     <None Include="AgentBasedCalculator.fsx" />
     <Compile Include="AsyncAndParallel.fs" />

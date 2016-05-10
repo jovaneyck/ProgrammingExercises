@@ -120,6 +120,18 @@ type MaybeBuilder() =
    
 let maybe = new MaybeBuilder()
 
+let result =
+    let x = 12 |> safeDivide 3
+    match x with
+    | None -> None
+    | Some xval ->
+        let y = xval |> safeDivide 0
+        match y with
+        | None -> None
+        | Some yval -> 
+            let z = yval |> safeDivide 1
+            z
+
 [<Fact>]
 let canSafelyDivideByZeroUsingTheMaybeMonad() =
     let result =
