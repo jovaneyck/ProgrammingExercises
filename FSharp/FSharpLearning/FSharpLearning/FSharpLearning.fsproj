@@ -58,6 +58,7 @@
     <Compile Include="DiscriminatedUnionTypes.fs" />
     <Compile Include="Functions.fs" />
     <Compile Include="FunctionalReactiveProgramming.fs" />
+    <None Include="Unquote demo.fsx" />
     <None Include="HtmlTypeProviderExample.fsx" />
     <Compile Include="Measures.fs" />
     <Compile Include="ObjectExpressions.fs" />
@@ -67,12 +68,12 @@
     <Compile Include="RecursiveTypes.fs" />
     <Compile Include="RegexTypeProvider.fs" />
     <Compile Include="TailRecursion.fs" />
-    <None Include="Script.fsx" />
     <Content Include="packages.config" />
     <Content Include="app.config" />
     <None Include="_demo_spreadsheet_.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Script.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Charting">
