@@ -76,9 +76,10 @@ let canBuildStrings() =
 //https://fsharpforfunandprofit.com/posts/computation-expressions-intro/
 
 //Loging values
-type LoggingBuilder() =
+type LoggingBuilder(sb : System.Text.StringBuilder) =
+    let log p = sb.AppendLine(sprintf "Log: %A" p) |> ignore
     member this.Bind(x, f) = 
-        printfn "%A" x
+        log x
         f x
 
     member this.Return(x) = 
@@ -87,7 +88,7 @@ type LoggingBuilder() =
 [<Fact>]
 let canAutomagicallyLogBetweenStatementsUsingAComputationExpression() =
     let buffer = System.Text.StringBuilder()
-    let logged = LoggingBuilder()
+    let logged = LoggingBuilder(buffer)
 
     let sum = 
         logged {
