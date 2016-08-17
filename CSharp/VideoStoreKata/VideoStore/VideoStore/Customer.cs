@@ -1,55 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace VideoStore
 {
     public class Customer
     {
-        private string _name;
-        private IList<Rental> _rentals = new List<Rental>();
+        public readonly string Name;
+        private readonly IList<Rental> _rentals = new List<Rental>();
 
-        public Customer(String name)
+        public Customer(string name)
         {
-            this._name = name;
+            Name = name;
         }
 
-        public void addRental(Rental rental)
+        public void AddRental(Rental rental)
         {
             _rentals.Add(rental);
         }
 
-        public String getName()
-        {
-            return _name;
-        }
-
-        public String statement()
+        public string Statement()
         {
             double totalAmount = 0;
-            int frequentRenterPoints = 0;
+            var frequentRenterPoints = 0;
             var rentals = _rentals.GetEnumerator();
-            String result = "Rental Record for " + getName() + "\n";
+            var result = "Rental Record for " + Name + "\n";
 
             while (rentals.MoveNext())
             {
                 double thisAmount = 0;
-                Rental each = rentals.Current;
+                var each = rentals.Current;
 
                 // determines the amount for each line
-                switch (each.getMovie().getPriceCode())
+                switch (each.Movie.PriceCode)
                 {
                     case Movie.REGULAR:
                         thisAmount += 2;
-                        if (each.getDaysRented() > 2)
-                            thisAmount += (each.getDaysRented() - 2) * 1.5;
+                        if (each.DaysRented > 2)
+                            thisAmount += (each.DaysRented - 2)*1.5;
                         break;
                     case Movie.NEW_RELEASE:
-                        thisAmount += each.getDaysRented() * 3;
+                        thisAmount += each.DaysRented*3;
                         break;
                     case Movie.CHILDRENS:
                         thisAmount += 1.5;
-                        if (each.getDaysRented() > 3)
-                            thisAmount += (each.getDaysRented() - 3) * 1.5;
+                        if (each.DaysRented > 3)
+                            thisAmount += (each.DaysRented - 3)*1.5;
                         break;
                 }
 
@@ -57,11 +51,11 @@ namespace VideoStore
                 frequentRenterPoints++;
 
                 // add bonus for a two day new release rental
-                if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1)
+                if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
                     frequentRenterPoints++;
 
                 // show figures for this rental
-                result += "\t" + each.getMovie().getTitle() + "\t" + $"{thisAmount:F1}" + "\n";
+                result += "\t" + each.Movie.Title + "\t" + $"{thisAmount:F1}" + "\n";
                 totalAmount += thisAmount;
             }
 
@@ -72,5 +66,4 @@ namespace VideoStore
             return result;
         }
     }
-
 }

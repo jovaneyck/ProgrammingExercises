@@ -10,12 +10,12 @@ namespace VideoStore
         {
             Customer customer = new Customer("Bob");
 
-            customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
-            customer.addRental(new Rental(new Movie("GoldenEye", Movie.REGULAR), 3));
-            customer.addRental(new Rental(new Movie("ShortNew", Movie.NEW_RELEASE), 1));
-            customer.addRental(new Rental(new Movie("LongNew", Movie.NEW_RELEASE), 2));
-            customer.addRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
-            customer.addRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
+            customer.AddRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
+            customer.AddRental(new Rental(new Movie("GoldenEye", Movie.REGULAR), 3));
+            customer.AddRental(new Rental(new Movie("ShortNew", Movie.NEW_RELEASE), 1));
+            customer.AddRental(new Rental(new Movie("LongNew", Movie.NEW_RELEASE), 2));
+            customer.AddRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
+            customer.AddRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
 
             Assert.Equal(
                 "Rental Record for Bob\n" +
@@ -27,7 +27,7 @@ namespace VideoStore
                 "\tToy Story\t3,0\n" +
                 "You owed 19,0\n" +
                 "You earned 7 frequent renter points", 
-                customer.statement());
+                customer.Statement());
         }
     }
 }
