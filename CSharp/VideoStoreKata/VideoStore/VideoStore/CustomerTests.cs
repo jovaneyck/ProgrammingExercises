@@ -6,7 +6,7 @@ namespace VideoStore
     {
 
         [Fact]
-        public void test()
+        public void TextStatementTest()
         {
             Customer customer = new Customer("Bob");
 
