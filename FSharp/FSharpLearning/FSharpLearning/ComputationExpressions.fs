@@ -78,7 +78,6 @@ let canBuildStrings() =
 //Loging values
 type LoggingBuilder(sb : System.Text.StringBuilder) =
     let log p = sb.AppendLine(sprintf "Log: %A" p) |> ignore
-
     member this.Bind(x, f) = 
         log x
         f x
@@ -89,10 +88,10 @@ type LoggingBuilder(sb : System.Text.StringBuilder) =
 [<Fact>]
 let canAutomagicallyLogBetweenStatementsUsingAComputationExpression() =
     let buffer = System.Text.StringBuilder()
-    let logger = LoggingBuilder(buffer)
+    let logged = LoggingBuilder(buffer)
 
     let sum = 
-        logger {
+        logged {
             let! x = 1
             let! y = 2
             let! z = x + y
@@ -120,6 +119,18 @@ type MaybeBuilder() =
         Some x
    
 let maybe = new MaybeBuilder()
+
+let result =
+    let x = 12 |> safeDivide 3
+    match x with
+    | None -> None
+    | Some xval ->
+        let y = xval |> safeDivide 0
+        match y with
+        | None -> None
+        | Some yval -> 
+            let z = yval |> safeDivide 1
+            z
 
 [<Fact>]
 let canSafelyDivideByZeroUsingTheMaybeMonad() =

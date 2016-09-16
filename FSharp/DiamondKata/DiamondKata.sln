@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpLearning", "FSharpLearning\FSharpLearning.fsproj", "{3F70F368-728C-4CD5-B3E5-5D4ED7A6C70D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PBTDiamondKata", "PBTDiamondKata\PBTDiamondKata.fsproj", "{429C3FD2-BFD5-4B54-A1DE-F4E430FD84C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F70F368-728C-4CD5-B3E5-5D4ED7A6C70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F70F368-728C-4CD5-B3E5-5D4ED7A6C70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F70F368-728C-4CD5-B3E5-5D4ED7A6C70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F70F368-728C-4CD5-B3E5-5D4ED7A6C70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429C3FD2-BFD5-4B54-A1DE-F4E430FD84C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429C3FD2-BFD5-4B54-A1DE-F4E430FD84C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429C3FD2-BFD5-4B54-A1DE-F4E430FD84C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429C3FD2-BFD5-4B54-A1DE-F4E430FD84C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
