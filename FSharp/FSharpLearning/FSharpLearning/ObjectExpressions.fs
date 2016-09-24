@@ -7,7 +7,7 @@ type Order = {Id : int}
 type Customer = { Name: string; NumberOfProductsOrdered: int; Orders : Order list }
 
 [<Fact>]
-let canCopyAValueAndModifySomePropertiesUsingTheWithKeyword() =
+let ``tHIS IS AN ENCHGL``() =
     let john = {Name="John"; NumberOfProductsOrdered=0; Orders = [] }
     let johnAfterOrderingSomething = { john with NumberOfProductsOrdered = 1; Orders= [ {Id = 123} ] }
     let johnAfterARename = {johnAfterOrderingSomething with Name = "Johnny"}

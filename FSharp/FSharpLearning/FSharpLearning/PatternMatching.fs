@@ -118,8 +118,8 @@ let canDefineActivePatternsIncrementallyUsingPartialActivePatterns() =
     let (|Fizz|_|) n = if n % 3 = 0 then Some Fizz else None
     let (|Buzz|_|) n = if n % 5 = 0 then Some Buzz else None
     
-    let fizzBuzzify =
-        function
+    let fizzBuzzify n =
+        match n with
         | Fizz & Buzz -> "FizzBuzz"
         | Fizz -> "Fizz"
         | Buzz -> "Buzz"
