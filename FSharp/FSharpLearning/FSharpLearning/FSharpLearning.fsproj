@@ -59,6 +59,7 @@
     <Compile Include="DiscriminatedUnionTypes.fs" />
     <Compile Include="Functions.fs" />
     <Compile Include="FunctionalReactiveProgramming.fs" />
+    <None Include="frp-fsharpforfunandprofit.fsx" />
     <None Include="Unquote demo.fsx" />
     <None Include="HtmlTypeProviderExample.fsx" />
     <Compile Include="Measures.fs" />
