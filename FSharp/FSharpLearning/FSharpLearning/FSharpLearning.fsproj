@@ -69,6 +69,7 @@
     <Compile Include="QueryExpressions.fs" />
     <Compile Include="RecursiveTypes.fs" />
     <Compile Include="RegexTypeProvider.fs" />
+    <None Include="Result.fsx" />
     <Compile Include="TailRecursion.fs" />
     <Content Include="packages.config" />
     <Content Include="app.config" />
