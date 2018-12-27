@@ -80,7 +80,8 @@
     <None Include="Script.fsx" />
     <None Include="property-based-testing.fsx" />
     <None Include="Collections\deque.fsx" />
-    <None Include="fparsec.fsx" />
+    <None Include="fparsec\fparsec.fsx" />
+    <None Include="fparsec\fparsec-json-example.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FParsec">
