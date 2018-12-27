@@ -79,6 +79,8 @@
     </None>
     <None Include="Script.fsx" />
     <None Include="property-based-testing.fsx" />
+    <None Include="Collections\deque.fsx" />
+    <None Include="fparsec.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FParsec">
