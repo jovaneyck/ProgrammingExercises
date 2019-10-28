@@ -8,6 +8,45 @@ using Xunit;
 
 namespace AutoFixture
 {
+    public class EmailMessage
+    {
+        public string From { get; set; }
+        public string To { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+    }
+
+    public class EmailBuffer
+    {
+        private readonly List<EmailMessage> _bufferedMessages = new List<EmailMessage>();
+        private readonly EmailGateway _gateway;
+
+        public EmailBuffer(EmailGateway gateway)
+        {
+            _gateway = gateway;
+        }
+
+        public void Add(EmailMessage message)
+        {
+            _bufferedMessages.Add(message);
+        }
+
+        public void Send()
+        {
+            foreach(var msg in _bufferedMessages)
+            {
+                _gateway.Send(msg);
+            }
+
+            _bufferedMessages.Clear();
+        }
+    }
+
+    public interface EmailGateway
+    {
+        void Send(EmailMessage msg);
+    }
+
     public class AutoMockingShould
     {
         [Fact]
@@ -96,44 +135,5 @@ namespace AutoFixture
             : base(new Fixture().Customize(new AutoMoqCustomization())) //Boom!
         {
         }
-    }
-
-    public class EmailBuffer
-    {
-        private readonly List<EmailMessage> _bufferedMessages = new List<EmailMessage>();
-        private readonly EmailGateway _gateway;
-
-        public EmailBuffer(EmailGateway gateway)
-        {
-            _gateway = gateway;
-        }
-
-        public void Add(EmailMessage message)
-        {
-            _bufferedMessages.Add(message);
-        }
-
-        public void Send()
-        {
-            foreach(var msg in _bufferedMessages)
-            {
-                _gateway.Send(msg);
-            }
-
-            _bufferedMessages.Clear();
-        }
-    }
-
-    public interface EmailGateway
-    {
-        void Send(EmailMessage msg);
-    }
-
-    public class EmailMessage
-    {
-        public string From { get; set; }
-        public string To { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
     }
 }
