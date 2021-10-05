@@ -48,7 +48,7 @@ let join (m : 'a[,][,]) : 'a[,] =
     let innerDim = Array2D.length1 m.[0,0]
     [for outer in 0..outerDim - 1 do
         for inner in 0..innerDim - 1 ->
-            m.[outer,0..] |> Seq.collect (fun m -> m.[inner,0..]) |> Seq.toList]
+            m.[outer,*] |> Seq.collect (fun m -> m.[inner,*])]
     |> array2D
 
 ///Rotates an Array2D by 90 degrees ccw
