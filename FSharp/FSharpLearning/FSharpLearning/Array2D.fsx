@@ -61,11 +61,21 @@ let rotate (m : 'a[,]) =
 let flip (m : 'a[,]) = [for r in [(Array2D.length1 m - 1) .. (-1) .. 0] -> m.[r,*]] |> array2D
 
 ///Returns all possible orientations (flips, rotations and flips of rotations) of an Array2D
-let orientations (m : 'a[,]) : 'a[,] list = 
-    let r1 = rotate m
-    let r2 = rotate r1
-    let r3 = rotate r2
-    [m;r1;r2;r3; flip m; flip r1; flip r2; flip r3]
+let orientations (m : 'a[,]) : 'a[,] seq =     
+    seq { 
+        yield m
+        let r1 = rotate m
+        yield r1
+        let r2 = rotate r1
+        yield r2
+        let r3 = rotate r2
+        yield r3
+        yield flip m
+        yield flip r1
+        yield flip r2
+        yield flip r3
+    }
+    |> Seq.distinct
 
 test <@ chunkBy 2 (array2D [[1;2;3;4]
                             [5;6;7;8]
