@@ -5,6 +5,7 @@ open Swensen.Unquote
 
 //Constructing an array2D
 let matrix = array2D [[1;2];[3;4]]
+let three_by_three = array2D [[1;2;3];[4;5;6];[7;8;9]]
 let zeroes : int[,] = Array2D.zeroCreate 2 2
 zeroes =! array2D [[0;0];[0;0]]
 
@@ -30,7 +31,7 @@ matrix.[0,..0] =! [|1|]
 //Accessing a slice from a specified index to the end
 matrix.[0,1..] =! [|2|] 
 
-//Some commonly used array2D operations
+//Time for some commonly used array2D operations!
 
 ///Splits an Array2D into multiple Array2Ds by the given chunk size
 let chunkBy (size : int) (m : 'a[,]) : 'a[,][,] = 
@@ -39,6 +40,15 @@ let chunkBy (size : int) (m : 'a[,]) : 'a[,][,] =
     [ for i in indices do 
         [for j in indices -> 
             m.[i..i+(size-1),j..j+(size-1)]]]
+    |> array2D
+
+///Recombines an Array2D of Array2D's into a single Array2D, effectively being the inverse operation of a chunk
+let join (m : 'a[,][,]) : 'a[,] = 
+    let outerDim = Array2D.length1 m
+    let innerDim = Array2D.length1 m.[0,0]
+    [for outer in 0..outerDim - 1 do
+        for inner in 0..innerDim - 1 ->
+            m.[outer,0..] |> Seq.collect (fun m -> m.[inner,0..]) |> Seq.toList]
     |> array2D
 
 ///Rotates an Array2D by 90 degrees ccw
@@ -65,6 +75,16 @@ test <@ chunkBy 2 (array2D [[1;2;3;4]
                 [array2D [[1;2];[5;6]];array2D [[3;4];[7;8]]]
                 [array2D [[9;10];[13;14]];array2D [[11;12];[15;16]]]
             ] @>
+
+test <@ join (array2D [
+                                [array2D [[1;2];[5;6]];array2D [[3;4];[7;8]]]
+                                [array2D [[9;10];[13;14]];array2D [[11;12];[15;16]]]
+                            ]) =
+                    array2D     [[1;2;3;4]
+                                 [5;6;7;8]
+                                 [9;10;11;12]
+                                 [13;14;15;16]] @>
+three_by_three |> chunkBy 1 |> join =! three_by_three
 
 test <@ rotate (array2D [[1;2;3]
                          [4;5;6]
