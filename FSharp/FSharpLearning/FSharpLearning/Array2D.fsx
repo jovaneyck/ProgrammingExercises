@@ -31,6 +31,8 @@ matrix.[0,..0] =! [|1|]
 matrix.[0,1..] =! [|2|] 
 
 //Some commonly used array2D operations
+
+///Splits an Array2D into multiple Array2Ds by the given chunk size
 let chunkBy (size : int) (m : 'a[,]) : 'a[,][,] = 
     let chunks = (m |> Array2D.length1) / size - 1
     let indices = [for i in 0..chunks -> i * size]
@@ -39,13 +41,16 @@ let chunkBy (size : int) (m : 'a[,]) : 'a[,][,] =
             m.[i..i+(size-1),j..j+(size-1)]]]
     |> array2D
 
+///Rotates an Array2D by 90 degrees ccw
 let rotate (m : 'a[,]) = 
     let lastColumn = (m |> Array2D.length1) - 1
     [for c in [lastColumn .. -1 .. 0] -> m.[*,c]]
     |> array2D
 
+///Flips an Array2D on x-axis
 let flip (m : 'a[,]) = [for r in [(Array2D.length1 m - 1) .. (-1) .. 0] -> m.[r,*]] |> array2D
 
+///Returns all possible orientations (flips, rotations and flips of rotations) of an Array2D
 let orientations (m : 'a[,]) : 'a[,] list = 
     let r1 = rotate m
     let r2 = rotate r1
